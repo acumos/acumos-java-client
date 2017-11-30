@@ -1,0 +1,18 @@
+syntax = "proto3";
+option java_package = "com.google.protobuf";
+option java_outer_classname = "DatasetProto";
+message DataFrameRow {
+string param1 = 1;
+string param2 = 2;
+string param3 = 3;
+string param4 = 4;
+}
+message DataFrame {
+ 	repeated DataFrameRow rows = 1;
+}
+message Prediction {
+	repeated string prediction= 1;
+}
+service ClassifyModel {
+	rpc transform(DataFrame) returns (Prediction);
+}
