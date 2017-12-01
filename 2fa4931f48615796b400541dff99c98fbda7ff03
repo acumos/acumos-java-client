@@ -1,0 +1,293 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8171deae_9f6a9f1a",
+        "filename": "LICENSE.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-12-01T13:20:19Z",
+      "side": 1,
+      "message": "this is not the correct version of the license, it needs the copyright statement at the top",
+      "revId": "2fa4931f48615796b400541dff99c98fbda7ff03",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b3dcc81_b149f580",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-12-01T13:20:19Z",
+      "side": 1,
+      "message": "Please move most of this content to a file under docs/ and add a pointer here.",
+      "revId": "2fa4931f48615796b400541dff99c98fbda7ff03",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4da9ee67_68ea68d1",
+        "filename": "docs/acumos-java-client.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-12-01T13:20:19Z",
+      "side": 1,
+      "message": "This seems to duplicate the top-level readme.  Can that README be abbreviated?",
+      "revId": "2fa4931f48615796b400541dff99c98fbda7ff03",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03fc1083_d8cd6664",
+        "filename": "docs/tutorials/index.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-12-01T13:20:19Z",
+      "side": 1,
+      "message": "Please fix, files lesson1, lesson2, and lesson3 are missing",
+      "revId": "2fa4931f48615796b400541dff99c98fbda7ff03",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c166abc_b617fcc2",
+        "filename": "generic_distributable/GenericModelService.jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-12-01T13:20:19Z",
+      "side": 1,
+      "message": "Jars must not be committed. What is the license on this jar?",
+      "revId": "2fa4931f48615796b400541dff99c98fbda7ff03",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "101d866e_e9ee02eb",
+        "filename": "generic_distributable/KnnModel.jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-12-01T13:20:19Z",
+      "side": 1,
+      "message": "Jars must not be committed. What is the license on this jar?",
+      "revId": "2fa4931f48615796b400541dff99c98fbda7ff03",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8504a9e_0d61ffea",
+        "filename": "h2o_distributable/H2OModelService.jar.jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-12-01T13:20:19Z",
+      "side": 1,
+      "message": ".jar.jar suffix? Jars must not be committed.  What is the license on this jar?",
+      "revId": "2fa4931f48615796b400541dff99c98fbda7ff03",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bf03300_5ee074d2",
+        "filename": "h2o_distributable/mode_e911.zip",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-12-01T13:20:19Z",
+      "side": 1,
+      "message": "zip files must not be committed.  What is the content?",
+      "revId": "2fa4931f48615796b400541dff99c98fbda7ff03",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87d2fa56_a4c038f2",
+        "filename": "java_client/.settings/org.eclipse.core.resources.prefs",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-12-01T13:20:19Z",
+      "side": 1,
+      "message": "Eclipse metadata must not be committed, please remove",
+      "revId": "2fa4931f48615796b400541dff99c98fbda7ff03",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39b0286a_be573303",
+        "filename": "java_client/.settings/org.eclipse.jdt.core.prefs",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-12-01T13:20:19Z",
+      "side": 1,
+      "message": "Eclipse metadata must not be committed, please remove",
+      "revId": "2fa4931f48615796b400541dff99c98fbda7ff03",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8de553bd_3429f8ac",
+        "filename": "java_client/.settings/org.eclipse.m2e.core.prefs",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-12-01T13:20:19Z",
+      "side": 1,
+      "message": "Eclipse metadata must not be committed, remove",
+      "revId": "2fa4931f48615796b400541dff99c98fbda7ff03",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73ee72b0_1f06cf27",
+        "filename": "java_client/JavaClient.jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-12-01T13:20:19Z",
+      "side": 1,
+      "message": "Jars must not be committed, what is the content, what is the license?",
+      "revId": "2fa4931f48615796b400541dff99c98fbda7ff03",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed48adf6_aa57da5d",
+        "filename": "java_client/modelpackage.zip",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-12-01T13:20:19Z",
+      "side": 1,
+      "message": "zip files must not be committed, what is the content, what is the license?",
+      "revId": "2fa4931f48615796b400541dff99c98fbda7ff03",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe6e02a3_7a349226",
+        "filename": "java_client/src/main/java/org/acumos/ClientController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-12-01T13:20:19Z",
+      "side": 1,
+      "message": "Remove @author annotations",
+      "revId": "2fa4931f48615796b400541dff99c98fbda7ff03",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4fa5c2e6_0755b10d",
+        "filename": "java_client/src/main/java/org/acumos/ClientController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-12-01T13:20:19Z",
+      "side": 1,
+      "message": "Is this main() method for testing??  Can it be moved to src/test/java/... ?",
+      "revId": "2fa4931f48615796b400541dff99c98fbda7ff03",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3e86427_a0c31b88",
+        "filename": "java_client/src/test/resources/GenericModel.jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-12-01T13:20:19Z",
+      "side": 1,
+      "message": "Jar files must not be committed",
+      "revId": "2fa4931f48615796b400541dff99c98fbda7ff03",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab320856_ccb7d26f",
+        "filename": "java_client/src/test/resources/GenericModelService.jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2017-12-01T13:20:19Z",
+      "side": 1,
+      "message": "Jar files must not be committed",
+      "revId": "2fa4931f48615796b400541dff99c98fbda7ff03",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    }
+  ]
+}
