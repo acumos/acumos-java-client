@@ -1,4 +1,4 @@
 [gerrit]
 host=gerrit.acumos.org
 port=29418
-project=cognita-java-client.git
+project=acumos-java-client.git
