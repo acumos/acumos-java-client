@@ -16,7 +16,10 @@
  */
 package org.acumos;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONObject;
 import org.junit.Test;
@@ -37,7 +40,7 @@ public class ClientControllerTest {
 
 	JSONObject obj = new JSONObject();
 	JSONObject obj1 = new JSONObject();
-	String serviceUrl = "http://cognita-dev1-vm01-core.eastus.cloudapp.azure.com:8090/onboarding-app/v2/auth";
+	String serviceUrl = "http://cognita-dev1-vm01-core.eastus.cloudapp.azure.com:8090/onboarding-app/v2/models";
 	String token = null;
 
 	@Test
@@ -87,7 +90,7 @@ public class ClientControllerTest {
 	public void getAppFileTest() {
 
 		try {
-			cientController.getConfigFile("/", true);
+			cientController.generateProtobuf("/", true);
 			assert (true);
 		} catch (FileNotFoundException e) {
 			assert (true);
@@ -101,6 +104,28 @@ public class ClientControllerTest {
 			cientController.getAppFile("/", true);
 			assert (true);
 		} catch (FileNotFoundException e) {
+			assert (true);
+		}
+	}
+	
+	@Test
+	public void generateProtobufTest() {
+		try {
+			cientController.getAppFile("/", true);
+			assert (true);
+		} catch (FileNotFoundException e) {
+			assert (true);
+		}
+	}
+	
+	@Test
+	public void zipFileTest() {
+		try {
+			List<String> files = new ArrayList<String>();
+			files.add(new File("default.proto").getAbsolutePath());
+			files.add(new File("modelConfig.properties").getAbsolutePath());
+			cientController.zipFile(files, "test.zip");
+		} catch (Exception e) {
 			assert (true);
 		}
 	}
