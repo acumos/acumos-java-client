@@ -4,16 +4,35 @@
 	<groupId>org.acumos</groupId>
 	<artifactId>java_client</artifactId>
 	<version>0.0.1</version>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<!-- The main class to start by executing java -jar -->
 		<eelf.version>1.0.0</eelf.version>
+		<!-- The main class to start by executing java -jar -->
 		<start-class>org.acumos.ClientController</start-class>
 	</properties>
-
+	<!-- Specify repositories here to avoid coordination of ~/.m2/settings.xml 
+		without using variables -->
+	<repositories>
+		<!-- LF -->
+		<repository>
+			<id>public</id>
+			<url>https://nexus.acumos.org/content/groups/public</url>
+		</repository>
+		<!-- begin ONAP repositories for EELF -->
+		<repository>
+			<id>onap-snapshots</id>
+			<name>ONAP Snapshot Repository</name>
+			<url>${onap.nexus.url}/${onap.nexus.snapshot.path}</url>
+		</repository>
+		<repository>
+			<id>onap-releases</id>
+			<name>ONAP Release Repository</name>
+			<url>${onap.nexus.url}/${onap.nexus.release.path}</url>
+		</repository>
+		<!-- end ONAP repositories for EELF -->
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -78,7 +97,6 @@
 			<version>1.10.19</version>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 	<build>
 		<plugins>
@@ -112,5 +130,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
