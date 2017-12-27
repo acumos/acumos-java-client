@@ -66,7 +66,7 @@ public class ClientControllerTest {
 			assert (true);
 		} catch (Exception e) {
 			// pssing in case server is not available.
-			assert (true);
+			assert (false);
 		}
 	}
 
@@ -81,7 +81,7 @@ public class ClientControllerTest {
 			assert (true);
 		} catch (Exception e) {
 			// pssing in case server is not available.
-			assert (true);
+			assert (false);
 		}
 
 	}
@@ -93,7 +93,7 @@ public class ClientControllerTest {
 			cientController.generateProtobuf("/", true);
 			assert (true);
 		} catch (FileNotFoundException e) {
-			assert (true);
+			assert (false);
 		}
 
 	}
@@ -104,7 +104,7 @@ public class ClientControllerTest {
 			cientController.getAppFile("/", true);
 			assert (true);
 		} catch (FileNotFoundException e) {
-			assert (true);
+			assert (false);
 		}
 	}
 	
@@ -114,7 +114,7 @@ public class ClientControllerTest {
 			cientController.getAppFile("/", true);
 			assert (true);
 		} catch (FileNotFoundException e) {
-			assert (true);
+			assert (false);
 		}
 	}
 	
@@ -126,7 +126,7 @@ public class ClientControllerTest {
 			files.add(new File("modelConfig.properties").getAbsolutePath());
 			cientController.zipFile(files, "test.zip");
 		} catch (Exception e) {
-			assert (true);
+			assert (false);
 		}
 	}
 
