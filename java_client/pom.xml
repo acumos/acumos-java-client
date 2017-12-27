@@ -7,17 +7,15 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		<eelf.version>1.0.0</eelf.version>
 		<!-- The main class to start by executing java -jar -->
 		<start-class>org.acumos.ClientController</start-class>
 	</properties>
 	<dependencies>
-                <dependency>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-api</artifactId>
-                        <version>1.7.25</version>
-                </dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.25</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
@@ -26,7 +24,7 @@
 		<dependency>
 			<groupId>com.att.eelf</groupId>
 			<artifactId>eelf-core</artifactId>
-			<version>${eelf.version}</version>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -109,4 +107,15 @@
 			</plugin>
 		</plugins>
 	</build>
+	<distributionManagement>
+		<!-- The IDs must match Jenkins settings to obtain credentials -->
+		<repository>
+			<id>releases</id>
+			<url>https://nexus.acumos.org/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<url>https://nexus.acumos.org/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
