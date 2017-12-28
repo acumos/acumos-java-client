@@ -5,9 +5,9 @@
  * under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *  
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * This file is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
@@ -15,7 +15,7 @@
  * ===============LICENSE_END=========================================================
  */
 
-package org.acumos;
+package org.acumos.java_client;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -51,7 +51,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ClientController {
-	
+
 	static Logger logger = LoggerFactory.getLogger(ClientController.class);
 
 	public static void main(String args[]) {
@@ -95,25 +95,25 @@ public class ClientController {
 						Scanner sc = new Scanner(System.in);
 						System.out.println("Enter Username");
 						username = sc.next();
-			
+
 						System.out.println("Please enter the password");
 						Scanner sc1 = new Scanner(System.in);
 						passwd = sc1.next();
-						
+
 						obj1.put("username", username);
 						obj1.put("password", passwd);
 						obj.put("request_body", obj1);
-						
+
 						logger.info("JSON:" + obj.toString());
 
 					} else {
 						username = args[4];
 						passwd = args[5];
-						
+
 						obj1.put("username", username);
 						obj1.put("password", passwd);
 						obj.put("request_body", obj1);
-						
+
 						logger.info("JSON:" + obj.toString());
 					}
 
@@ -292,7 +292,7 @@ public class ClientController {
 			logger.error(e.toString());
 		} catch (IOException e) {
 			logger.error(e.toString());
-			
+
 		} finally {
 			try {
 				if (fos != null)
@@ -412,9 +412,9 @@ public class ClientController {
 			reqarray.put(reqarrayElementTwo);
 			reqarray.put(reqarrayElementThree);
 
-	
+
 			JSONArray idxarray = new JSONArray();
-	
+
 			JSONObject jav = new JSONObject();
 			jav.put("indexes", idxarray);
 			jav.put("requirements", reqarray);
