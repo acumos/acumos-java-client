@@ -1,0 +1,23 @@
+syntax = "proto3";
+java_package = "com.google.protobuf";
+java_outer_classname = "DatasetProto";
+
+message DataFrameRow {
+int32 doy = 1;
+float latitude = 2;
+float longitude = 3;
+float hod = 4;
+float call_duration_sec = 5;
+string handset = 6;
+string result_code = 7;
+}
+message DataFrame {
+ 	repeated DataFrameRow rows = 1;
+}
+message Prediction {
+	repeated string prediction= 1;
+}
+
+service GenericModel {
+  rpc transform (DataFrame) returns (Prediction);
+}

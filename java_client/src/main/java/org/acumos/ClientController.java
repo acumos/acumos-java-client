@@ -466,7 +466,7 @@ public class ClientController {
 	}
 
 	// Restful service to push the model to onboarding server
-	private static void pushModel(String url, String modelFilePath, String metadataFilePath, File protoFile,
+	public static void pushModel(String url, String modelFilePath, String metadataFilePath, File protoFile,
 			String token) {
 		HttpClient httpclient = null;
 		try {
