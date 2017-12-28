@@ -34,13 +34,25 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class ClientControllerTest {
 
-	
 	ClientController cientController = new ClientController();
 
 	JSONObject obj = new JSONObject();
 	JSONObject obj1 = new JSONObject();
-	String serviceUrl = "http://cognita-dev1-vm01-core.eastus.cloudapp.azure.com:8090/onboarding-app/v2/models";
-	String token = null;
+	static String serviceUrl = "http://cognita-dev1-vm01-core.eastus.cloudapp.azure.com:8090/onboarding-app/v2/models";
+	String modelType = "H";
+	String modelname = "H2O";
+	static String token = "SampleToken";
+
+	@Test
+	public void generateModelServiceTest() {
+		// Passing some dummy files for testing
+		File demo1 = new File("default.proto");
+		File demo2 = new File("modelConfig.properties");
+		File demo3 = new File("metadata.json");
+		File demo4 = new File("LICENSE.txt");
+		File demo5 = new File("tokenfile.txt");
+		cientController.generateModelService(demo1, demo2, demo3, modelType, demo4, demo5);
+	}
 
 	@Test
 	public void getConfigFileTest() {
@@ -68,7 +80,7 @@ public class ClientControllerTest {
 			assert (false);
 		}
 	}
-/*
+
 	@Test
 	public void loginUserTest() {
 
@@ -77,13 +89,13 @@ public class ClientControllerTest {
 			obj1.put("password", "testPswd");
 			obj.put("request_body", obj1);
 			token = ClientController.loginUser(obj.toString(), serviceUrl);
-			assert (true);
+			assert (false);
 		} catch (Exception e) {
 			// pssing in case server is not available.
 			assert (true);
 		}
 
-	}*/
+	}
 
 	@Test
 	public void generateProtobufTest() {
@@ -123,12 +135,35 @@ public class ClientControllerTest {
 	public void generateMetadataTest() {
 
 		try {
-			String modelType = "H";
-			String name = "H2O";
-			cientController.generateMetadata(modelType, name);
+			cientController.generateMetadata(modelType, modelname);
 			assert (true);
 		} catch (Exception e) {
 			assert (false);
+		}
+	}
+
+	@Test
+	public void isValidWordTest() {
+		String value = "Acumos";
+		boolean result;
+		result = cientController.isValidWord(value);
+
+		if (result) {
+			assert (true);
+		} else {
+			assert (false);
+		}
+	}
+
+	@Test
+	public void pushModelTest() {
+
+		try {
+ 			File proto = new File("default.proto");
+			ClientController.pushModel(serviceUrl, "modelpackage.zip", "metadata.json", proto, token);
+			assert (false);
+		} catch (Exception e) {
+			assert (true);
 		}
 	}
 
