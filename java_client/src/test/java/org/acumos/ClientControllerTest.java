@@ -158,14 +158,19 @@ public class ClientControllerTest {
 		}
 	}
 
-	/*
-	 * @Test public void pushModelTest() {
-	 * 
-	 * try { File proto = new File("default.proto");
-	 * ClientController.pushModel(serviceUrl, "modelpackage.zip",
-	 * "metadata.json", proto, token); assert (false); } catch (Exception e) {
-	 * assert (true); } }
-	 */
+	/*@Test
+	public void pushModelTest() {
+
+		try {
+ 			File proto = new File("default.proto");
+			ClientController.pushModel(serviceUrl, "modelpackage.zip", "metadata.json", proto, token);
+			assert (false);
+		} catch (Exception e) {
+			assert (true);
+		}
+	}
+	*/
+
 	private static boolean isWindowsSys() {
 		String osName = System.getProperty("os.name");
 		String osNameMatch = osName.toLowerCase();

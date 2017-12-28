@@ -2,3 +2,6 @@
 .project
 /.settings/
 /target/
+/metadata.json
+/modelpackage.zip
+/test.zip
