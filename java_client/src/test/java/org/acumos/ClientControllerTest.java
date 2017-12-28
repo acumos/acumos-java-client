@@ -81,7 +81,7 @@ public class ClientControllerTest {
 		}
 	}
 
-	@Test
+	// requires server access!  @Test
 	public void loginUserTest() {
 
 		try {
@@ -155,7 +155,7 @@ public class ClientControllerTest {
 		}
 	}
 
-	@Test
+	// requires server access! @Test
 	public void pushModelTest() {
 
 		try {
