@@ -155,7 +155,7 @@ public class ClientControllerTest {
 		}
 	}
 
-	@Test
+	/*@Test
 	public void pushModelTest() {
 
 		try {
@@ -166,7 +166,7 @@ public class ClientControllerTest {
 			assert (true);
 		}
 	}
-
+*/
 	private static boolean isWindowsSys() {
 		String osName = System.getProperty("os.name");
 		String osNameMatch = osName.toLowerCase();
