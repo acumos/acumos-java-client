@@ -38,10 +38,10 @@ public class ClientControllerTest {
 
 	JSONObject obj = new JSONObject();
 	JSONObject obj1 = new JSONObject();
-	static String serviceUrl = "http://cognita-dev1-vm01-core.eastus.cloudapp.azure.com:8090/onboarding-app/v2/models";
+	static String serviceUrl = "TestUrl";
 	String modelType = "H";
 	String modelname = "H2O";
-	static String token = "SampleToken";
+	static String token = null;
 
 	@Test
 	public void generateModelServiceTest() {
@@ -85,14 +85,17 @@ public class ClientControllerTest {
 	public void loginUserTest() {
 
 		try {
+
 			obj1.put("username", "testUser");
 			obj1.put("password", "testPswd");
 			obj.put("request_body", obj1);
 			token = ClientController.loginUser(obj.toString(), serviceUrl);
-			assert (false);
+			if (token != null) {
+				assert (true);
+			} else {
+				assert (false);
+			}
 		} catch (Exception e) {
-			// pssing in case server is not available.
-			assert (true);
 		}
 
 	}
@@ -155,18 +158,14 @@ public class ClientControllerTest {
 		}
 	}
 
-	/*@Test
-	public void pushModelTest() {
-
-		try {
- 			File proto = new File("default.proto");
-			ClientController.pushModel(serviceUrl, "modelpackage.zip", "metadata.json", proto, token);
-			assert (false);
-		} catch (Exception e) {
-			assert (true);
-		}
-	}
-*/
+	/*
+	 * @Test public void pushModelTest() {
+	 * 
+	 * try { File proto = new File("default.proto");
+	 * ClientController.pushModel(serviceUrl, "modelpackage.zip",
+	 * "metadata.json", proto, token); assert (false); } catch (Exception e) {
+	 * assert (true); } }
+	 */
 	private static boolean isWindowsSys() {
 		String osName = System.getProperty("os.name");
 		String osNameMatch = osName.toLowerCase();
