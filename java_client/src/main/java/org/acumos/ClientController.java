@@ -95,10 +95,12 @@ public class ClientController {
 						Scanner sc = new Scanner(System.in);
 						System.out.println("Enter Username");
 						username = sc.next();
+						sc.close();
 			
 						System.out.println("Please enter the password");
 						Scanner sc1 = new Scanner(System.in);
 						passwd = sc1.next();
+						sc1.close();
 						
 						obj1.put("username", username);
 						obj1.put("password", passwd);
@@ -188,7 +190,7 @@ public class ClientController {
 					client.generateMetadata(modelType, modelName);
 
 					if (!defaultValidator.isValid(serviceUrl)) {
-						List<String> files = new ArrayList();
+						List<String> files = new ArrayList<>();
 						files.add(new File("modelpackage.zip").getAbsolutePath());
 						files.add(new File("metadata.json").getAbsolutePath());
 						files.add(protof.getAbsolutePath());
