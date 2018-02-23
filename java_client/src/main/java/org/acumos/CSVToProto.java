@@ -146,7 +146,7 @@ public class CSVToProto
 			dataTypeList.add(getProtoDataType(l));			
 		}	
 		
-		outdataTypeList.add(getProtoDataType(header[header.length-1]));
+		outdataTypeList.add(dataTypeList.get(header.length-1));
 
 		reader.close();	
 		//Creating Proto....!
