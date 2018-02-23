@@ -18,6 +18,7 @@ package org.acumos;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,10 +97,10 @@ public class ClientControllerTest {
 	}
 
 	@Test
-	public void generateProtobufTest() {
+	public void generateProtobufTest() throws IOException {
 
 		try {
-			cientController.generateProtobuf("/", true);
+			cientController.generateProtobuf("/", true, "test.csv");
 			assert (true);
 		} catch (FileNotFoundException e) {
 			assert (false);
