@@ -97,12 +97,12 @@ public class ClientControllerTest {
 	}
 
 	@Test
-	public void generateProtobufTest() throws IOException {
+	public void generateProtobufTest() {
 
 		try {
-			cientController.generateProtobuf("/", true, "test.csv");
+			cientController.generateProtobuf("/", true, null);
 			assert (true);
-		} catch (FileNotFoundException e) {
+		} catch (Exception e) {
 			assert (false);
 		}
 
