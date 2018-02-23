@@ -1,3 +1,4 @@
+package org.acumos;
 /* ===================================================================================
  * Copyright (C) 2017 AT&T Intellectual Property & Tech Mahindra. All rights reserved.
  * ===================================================================================
@@ -15,7 +16,7 @@
  * ===============LICENSE_END=========================================================
  */
 
-package org.acumos;
+
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -30,11 +31,10 @@ import java.util.Scanner;
 import java.util.UUID;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
-
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.validator.routines.UrlValidator;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.commons.validator.routines.UrlValidator;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -51,8 +51,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ClientController {
-	
+
 	static Logger logger = LoggerFactory.getLogger(ClientController.class);
+
 
 	public static void main(String args[]) {
 
@@ -72,18 +73,29 @@ public class ClientController {
 			String username;
 			String passwd;
 			String token = null;
-			int count = 1;
+			int count = 1;		
+			String inputCSVFile = null;
 
 			// get the model name from command line
 			serviceUrl = args[0];
 			modelType = args[1];
 			path = args[2];
 			modelName = args[3];
+			System.out.println("Len : " +args.length);
+
+			if(args.length == 7)
+			{
+				inputCSVFile = args[6];
+			}
+
 			JSONObject obj = new JSONObject();
 			JSONObject obj1 = new JSONObject();
 
+			//boolean valid = false;
+
 			// Code for Authentication
 			if (defaultValidator.isValid(serviceUrl)) {
+			//if (valid) {
 				while (count < 4) {
 					if (args.length <= 4) {
 						if (count == 1) {
@@ -96,26 +108,26 @@ public class ClientController {
 						System.out.println("Enter Username");
 						username = sc.next();
 						sc.close();
-			
+
 						System.out.println("Please enter the password");
 						Scanner sc1 = new Scanner(System.in);
 						passwd = sc1.next();
 						sc1.close();
-						
+
 						obj1.put("username", username);
 						obj1.put("password", passwd);
 						obj.put("request_body", obj1);
-						
+
 						logger.info("JSON:" + obj.toString());
 
 					} else {
 						username = args[4];
-						passwd = args[5];
-						
+						passwd = args[5];						
+
 						obj1.put("username", username);
 						obj1.put("password", passwd);
 						obj.put("request_body", obj1);
-						
+
 						logger.info("JSON:" + obj.toString());
 					}
 
@@ -184,12 +196,15 @@ public class ClientController {
 					client.generateModelService(model, servicejar, congif, modelType, pbuff, appFile);
 
 					// dummy code to generate Protobuf file
-					File protof = client.generateProtobuf(path, isWindows);
+					File protof = client.generateProtobuf(path, isWindows,inputCSVFile);
 
 					// generate Metadata.json file
 					client.generateMetadata(modelType, modelName);
 
+
+
 					if (!defaultValidator.isValid(serviceUrl)) {
+					//if (!valid) {
 						List<String> files = new ArrayList<>();
 						files.add(new File("modelpackage.zip").getAbsolutePath());
 						files.add(new File("metadata.json").getAbsolutePath());
@@ -294,7 +309,7 @@ public class ClientController {
 			logger.error(e.toString());
 		} catch (IOException e) {
 			logger.error(e.toString());
-			
+
 		} finally {
 			try {
 				if (fos != null)
@@ -324,26 +339,51 @@ public class ClientController {
 	}
 
 	// Generate the protobuf file from sample data file
-	public File generateProtobuf(String path, boolean isWindows) throws FileNotFoundException {
-
-		/*
-		 * def _gen_protostr(dataset, classes=None, output_type=None):
-		 * '''Returns a protobuf file str for sklearn''' protofile =
-		 * [pb.PROTO_SYNTAX, pb.gen_dataframe_msg(dataset),
-		 * pb.gen_prediction_msg(classes, output_type=output_type),
-		 * pb.gen_service((pb.TRANSFORM, pb.DATAFRAME, pb.PREDICTION))] if
-		 * classes: protofile.insert(3, pb.gen_classes_enum(classes)) return
-		 * '\n'.join(protofile)
-		 */
-		logger.info("Get the default.proto");
+	public File generateProtobuf(String path, boolean isWindows,String inputCSVFile) throws IOException 
+	{
+		logger.info("Generating proto file");
 		File protoFile = null;
-		if (isWindows) {
-			protoFile = new File(path + "\\default.proto");
-		} else {
-			protoFile = new File(path + "/default.proto");
-		}
+		String inputPath = null;
 
-		return protoFile;
+		if(inputCSVFile == null )
+		{					
+			if (isWindows) {
+				protoFile = new File(path + "\\default.proto");
+			} else {
+				protoFile = new File(path + "/default.proto");
+			}			
+			return protoFile;			
+		}
+		else
+		{		
+			/*String inputPath = null;
+
+			File fd = new File(path);
+			File ff[] = fd.listFiles();
+
+			if (ff != null) 
+			{
+				for (File f : ff) 
+				{
+					if(f.getName().endsWith(".csv"))
+					{
+						System.out.println("File: " +f.getName());
+						inputPath = f.getAbsolutePath();
+					}
+				}	
+			}*/
+
+			if (isWindows) 	{
+				inputPath = path+"\\"+inputCSVFile;
+			} else {
+				inputPath = path+"/"+inputCSVFile;
+			}	
+
+			System.out.println("I/P File : "+inputPath);
+			CSVToProto c = new CSVToProto();				
+			protoFile = c.writeToProto(inputPath);
+			return protoFile;	
+		}
 	}
 
 	// Generate the pBuff jar file from sample data file
@@ -391,7 +431,7 @@ public class ClientController {
 	// Generate metadata.json
 	public void generateMetadata(String modelType, String name) {
 
-	try {
+		try {
 			logger.info("Generate metadata.json");
 
 			JSONObject meta = new JSONObject();
@@ -414,9 +454,9 @@ public class ClientController {
 			reqarray.put(reqarrayElementTwo);
 			reqarray.put(reqarrayElementThree);
 
-	
+
 			JSONArray idxarray = new JSONArray();
-	
+
 			JSONObject jav = new JSONObject();
 			jav.put("indexes", idxarray);
 			jav.put("requirements", reqarray);
