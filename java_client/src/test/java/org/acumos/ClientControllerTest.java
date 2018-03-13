@@ -22,7 +22,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.client.ClientProtocolException;
 import org.json.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -34,7 +36,6 @@ public class ClientControllerTest {
 
 	JSONObject obj = new JSONObject();
 	JSONObject obj1 = new JSONObject();
-	static String serviceUrl = "TestUrl";
 	String modelType = "H";
 	String modelname = "H2O";
 	static String token = null;
@@ -51,94 +52,57 @@ public class ClientControllerTest {
 	}
 
 	@Test
-	public void getConfigFileTest() {
+	public void getConfigFileTest() throws FileNotFoundException {
 
-		try {
+		String projectPath = System.getProperty("user.dir");
+		boolean windowsFlag = isWindowsSys();
 
-			String projectPath = System.getProperty("user.dir");
-			boolean windowsFlag = isWindowsSys();
-
-			if (windowsFlag) {
-				projectPath = projectPath + "\\testdata";
-				System.out.println("windows os");
-			} else {
-				projectPath = projectPath + "/testdata";
-			}
-
-			// ClientController.main(new String[] {
-			// projectPath,"G",projectPath,"GenericModel"});
-
-			cientController.getConfigFile(projectPath, windowsFlag);
-
-			assert (true);
-		} catch (Exception e) {
-			// pssing in case server is not available.
-			assert (false);
+		if (windowsFlag) {
+			projectPath = projectPath + "\\testdata";
+			System.out.println("windows os");
+		} else {
+			projectPath = projectPath + "/testdata";
 		}
+		cientController.getConfigFile(projectPath, windowsFlag);
 	}
 
-	@Test
-	public void loginUserTest() {
-
-		try {
-
-			obj1.put("username", "testUser");
-			obj1.put("password", "testPswd");
-			obj.put("request_body", obj1);
-			token = ClientController.loginUser(obj.toString(), serviceUrl);
-			if (token != null) {
-				assert (true);
-			} else {
-				assert (false);
-			}
-		} catch (Exception e) {
+/*	@Test
+	public void loginUserTest() throws ClientProtocolException, IOException, ParseException {
+		obj1.put("username", "testUser");
+		obj1.put("password", "testPswd");
+		obj.put("request_body", obj1);
+		token = ClientController.loginUser(obj.toString(), serviceUrl);
+		if (token != null) {
+			assert (true);
+		} else {
+			assert (false);
 		}
+	}*/
+
+	@Test
+	public void generateProtobufTest() throws IOException {
+
+		cientController.generateProtobuf("/", true, null);
 
 	}
 
 	@Test
-	public void generateProtobufTest() {
-
-		try {
-			cientController.generateProtobuf("/", true, null);
-			assert (true);
-		} catch (Exception e) {
-			assert (false);
-		}
-
-	}
-
-	@Test
-	public void getAppFileTest() {
-		try {
-			cientController.getAppFile("/", true);
-			assert (true);
-		} catch (FileNotFoundException e) {
-			assert (false);
-		}
+	public void getAppFileTest() throws FileNotFoundException {
+		cientController.getAppFile("/", true);
 	}
 
 	@Test
 	public void zipFileTest() {
-		try {
-			List<String> files = new ArrayList<String>();
-			files.add(new File("default.proto").getAbsolutePath());
-			files.add(new File("modelConfig.properties").getAbsolutePath());
-			cientController.zipFile(files, "test.zip");
-		} catch (Exception e) {
-			assert (false);
-		}
+		List<String> files = new ArrayList<String>();
+		files.add(new File("default.proto").getAbsolutePath());
+		files.add(new File("modelConfig.properties").getAbsolutePath());
+		cientController.zipFile(files, "test.zip");
 	}
 
 	@Test
 	public void generateMetadataTest() {
 
-		try {
-			cientController.generateMetadata(modelType, modelname);
-			assert (true);
-		} catch (Exception e) {
-			assert (false);
-		}
+		cientController.generateMetadata(modelType, modelname);
 	}
 
 	@Test
@@ -154,18 +118,14 @@ public class ClientControllerTest {
 		}
 	}
 
-	/*@Test
-	public void pushModelTest() {
-
-		try {
- 			File proto = new File("default.proto");
-			ClientController.pushModel(serviceUrl, "modelpackage.zip", "metadata.json", proto, token);
-			assert (false);
-		} catch (Exception e) {
-			assert (true);
-		}
-	}
-	*/
+	/*
+	 * @Test public void pushModelTest() {
+	 * 
+	 * try { File proto = new File("default.proto");
+	 * ClientController.pushModel(serviceUrl, "modelpackage.zip",
+	 * "metadata.json", proto, token); assert (false); } catch (Exception e) {
+	 * assert (true); } }
+	 */
 
 	private static boolean isWindowsSys() {
 		String osName = System.getProperty("os.name");

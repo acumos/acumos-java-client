@@ -48,7 +48,7 @@ public class CSVToProto
 		}	
 	}
 	
-	private static String getProtoDataType(String value)
+	public static String getProtoDataType(String value)
 	{
 		String dataType =null;
 		
@@ -119,9 +119,8 @@ public class CSVToProto
 	}
 	
 	
-	public  File writeToProto(String SAMPLE_CSV_FILE_PATH) throws FileNotFoundException, IOException
+	public File writeToProto(String SAMPLE_CSV_FILE_PATH) throws FileNotFoundException, IOException
 	{
-		
 		BufferedReader reader = new BufferedReader(new FileReader(SAMPLE_CSV_FILE_PATH));		
 
 		String[] header = reader.readLine().split(",");
@@ -134,7 +133,6 @@ public class CSVToProto
 		{
 			inputFields.add(h);		
 		}
-
 		inputFields.remove(header[header.length-1]);
 		outputFields.add(header[header.length-1]);
 
