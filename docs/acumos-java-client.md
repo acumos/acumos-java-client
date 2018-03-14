@@ -6,7 +6,7 @@
 
 
 ----------
-### Onboarding client Library (https://bitbucket.org/cognita_dev/cognita-java-client):
+### Onboarding client Library (git clone https://gerrit.acumos.org/r/acumos-java-client):
 ----------
  Allows the H2o or Generic Java model and other artifacts to become avaiable in the onbarding server for the H2o Model runner to be able use them
 
@@ -15,7 +15,7 @@
 - He runs the JavaClient jar, which (TODO: creates a Protobuf file for the Model), creates the required metadata.json file and onboards the model onto the onboarding server.
 
 ----------
-### Model Runner (https://bitbucket.org/cognita_dev/generic-model-runner):
+### Model Runner (git clone https://gerrit.acumos.org/r/generic-model-runner):
 ----------
  Allows the onboarded Model to be run as containerised microservice and allows other external applications to use the onboarded Model for predictions.
 
@@ -30,22 +30,21 @@
 
 You will need the following zips / jars from the above 2 projects:
 Create a runnable client jar from below project:
-https://bitbucket.org/cognita_dev/cognita-java-client/src/b8d60346b6c23f7a2cd795bc2fe512a441157c8b/java_client/?at=master
+https://gerrit.acumos.org/r/acumos-java-client
 
 If you are using H2o, you will need H2OModelService.jar.
 To get the model service jar file build the below project code
-https://bitbucket.org/cognita_dev/generic-model-runner
+https://gerrit.acumos.org/r/generic-model-runner
 
 If you are using Generic Java, you will need GenericModelService.
 To get the model service jar file build the below project code
-https://bitbucket.org/cognita_dev/generic-model-runner
+https://gerrit.acumos.org/r/generic-model-runner
 
 #### For the Developer:
 
-To clone the client library (https://bitbucket.org/cognita_dev/cognita-java-client) project:
+To clone the client library (https://gerrit.acumos.org/r/acumos-java-client) project:
 ```
-git clone https://devenpanchal@bitbucket.org/cognita_dev/cognita-java-client.git
-git clone devenpanchal@bitbucket.org:cognita_dev/cognita-java-client.git
+git clone https://gerrit.acumos.org/r/acumos-java-client
 ```
 
 To run the client project,you will need the following installed on your machine.
@@ -60,12 +59,11 @@ mvn clean install
 ```
 
 
-To clone the model runner (https://bitbucket.org/cognita_dev/generic-model-runner) project:
+To clone the model runner (https://gerrit.acumos.org/r/generic-model-runne) project:
 ```
-git clone https://devenpanchal@bitbucket.org/cognita_dev/generic-model-runner.git 
-git clone devenpanchal@bitbucket.org:cognita_dev/generic-model-runner.git
+git clone https://gerrit.acumos.org/r/generic-model-runner
 ```
-To build the model runner project, refer to instructions on https://bitbucket.org/cognita_dev/generic-model-runner.
+To build the model runner project, refer to instructions on https://gerrit.acumos.org/r/generic-model-runner.
 
 
 ----------
@@ -132,13 +130,13 @@ The parameters to run the client jar are:
 For example, if you want to onboard a H2o model called Resource_utilization_predictor.zip which you have placed under D:\User\Desktop\model_folder, you would use the following command-
 
 ```
-java -jar JavaClient.jar http://cognita-dev1-vm01-core.eastus.cloudapp.azure.com:8090/onboarding-app/v2/models H D:\User\Desktop\model_folder Resource_utilization_predictor 
+java -jar JavaClient.jar <ServerUrl> H <PathOfSupportingFolder> <modelname> <username> <password> 
 ```
 
 For example, if you want to onboard a Generic Java model called Customer_churn_predictor.jar which you have placed under C:\User\mymodels, you would use the following command-
 
 ```
-java -jar JavaClient.jar http://cognita-dev1-vm01-core.eastus.cloudapp.azure.com:8090/onboarding-app/v2/models G C:\User\mymodels Customer_churn_predictor 
+java -jar JavaClient.jar <ServerUrl> G <PathOfSupportingFolder> <modelname> <username> <password>
 ```
 
 
