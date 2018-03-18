@@ -1,4 +1,3 @@
-package org.acumos;
 /* ===================================================================================
  * Copyright (C) 2017 AT&T Intellectual Property & Tech Mahindra. All rights reserved.
  * ===================================================================================
@@ -15,8 +14,7 @@ package org.acumos;
  * limitations under the License.
  * ===============LICENSE_END=========================================================
  */
-
-
+package org.acumos;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -49,13 +47,19 @@ import org.json.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.acumos.CSVToProto;
+import org.acumos.H2oCSVtoProto;
 
 public class ClientController {
 
 	static Logger logger = LoggerFactory.getLogger(ClientController.class);
 
-
 	public static void main(String args[]) {
+
+		if (args.length == 0) {
+			System.err.println("No arguments!");
+			System.exit(0);
+		}
 
 		ClientController client = new ClientController();
 		UrlValidator defaultValidator = new UrlValidator();
@@ -73,7 +77,7 @@ public class ClientController {
 			String username;
 			String passwd;
 			String token = null;
-			int count = 1;		
+			int count = 1;
 			String inputCSVFile = null;
 
 			// get the model name from command line
@@ -81,27 +85,37 @@ public class ClientController {
 			modelType = args[1];
 			path = args[2];
 			modelName = args[3];
-			System.out.println("Len : " +args.length);
+			logger.info("Length : {} ", args.length);
 
-			if(args.length == 7)
-			{
+			logger.info("Model type is {}", modelType);
+
+			if (args.length == 7) {
 				inputCSVFile = args[6];
+			}
+
+			/*
+			 * If web based onboarding,there is no username or password required. In this
+			 * case, the 4th argument will be the csv file if at all it is present.
+			 */
+			if (args.length == 5) {
+				inputCSVFile = args[4];
 			}
 
 			JSONObject obj = new JSONObject();
 			JSONObject obj1 = new JSONObject();
 
-			//boolean valid = false;
+			// boolean valid = false;
 
 			// Code for Authentication
 			if (defaultValidator.isValid(serviceUrl)) {
-			//if (valid) {
+				// if (valid) {
 				while (count < 4) {
 					if (args.length <= 4) {
 						if (count == 1) {
 							System.out.println("Please enter Username and Password");
 						} else {
-							System.out.println("Username or Password is not correct, Please enter again");
+							System.out.println(
+									"Username or Password is not correct, Please enter the correct credentials");
 						}
 
 						Scanner sc = new Scanner(System.in);
@@ -122,7 +136,7 @@ public class ClientController {
 
 					} else {
 						username = args[4];
-						passwd = args[5];						
+						passwd = args[5];
 
 						obj1.put("username", username);
 						obj1.put("password", passwd);
@@ -143,8 +157,8 @@ public class ClientController {
 							count++;
 							break;
 						} catch (Exception e) {
-							logger.error(e.getMessage(),e);
-							//logger.info(e);
+							logger.error(e.getMessage(), e);
+							// logger.info(e);
 						}
 					} else {
 						count++;
@@ -164,10 +178,10 @@ public class ClientController {
 				switch (modelType) {
 				case "H":
 					if (isWindows) {
-						servicejar = new File(modelName + "Service.jar");
+						servicejar = new File(path + "\\" + modelName + "Service.jar");
 						model = new File(path + "\\" + modelName + ".zip");
 					} else {
-						servicejar = new File(modelName + "Service.jar");
+						servicejar = new File(path + "/" + modelName + "Service.jar");
 						model = new File(path + "/" + modelName + ".zip");
 					}
 					break;
@@ -182,7 +196,7 @@ public class ClientController {
 					break;
 
 				default:
-					logger.info("Invallid model type");
+					logger.info("Invalid model type");
 					break;
 				}
 				try {
@@ -195,16 +209,14 @@ public class ClientController {
 					// Call generateModelService input is modelService.jar
 					client.generateModelService(model, servicejar, congif, modelType, pbuff, appFile);
 
-					// dummy code to generate Protobuf file
-					File protof = client.generateProtobuf(path, isWindows,inputCSVFile);
+					// Generate Protobuf file
+					File protof = client.generateProtobuf(path, isWindows, inputCSVFile, modelType, modelName);
 
-					// generate Metadata.json file
+					// Generate Metadata.json file
 					client.generateMetadata(modelType, modelName);
 
-
-
 					if (!defaultValidator.isValid(serviceUrl)) {
-					//if (!valid) {
+						// if (!valid) {
 						List<String> files = new ArrayList<>();
 						files.add(new File("modelpackage.zip").getAbsolutePath());
 						files.add(new File("metadata.json").getAbsolutePath());
@@ -225,7 +237,8 @@ public class ClientController {
 				}
 
 			} else {
-				logger.info("Model name should not contain special character or spaces");
+				logger.info(
+						"Model name should not contain special character or spaces. Don't include the file extensions.");
 			}
 
 		} catch (ArrayIndexOutOfBoundsException ae) {
@@ -268,7 +281,7 @@ public class ClientController {
 
 		HttpResponse r = c.execute(p);
 
-		org.apache.http.Header head  = r.getFirstHeader("jwtToken");
+		org.apache.http.Header head = r.getFirstHeader("jwtToken");
 
 		if (head != null) {
 			token = head.getValue();
@@ -339,50 +352,58 @@ public class ClientController {
 	}
 
 	// Generate the protobuf file from sample data file
-	public File generateProtobuf(String path, boolean isWindows,String inputCSVFile) throws IOException 
-	{
+	public File generateProtobuf(String path, boolean isWindows, String inputCSVFile, String modelType,
+			String modelName) throws IOException {
 		logger.info("Generating proto file");
+		logger.info("Model type is {}" ,modelType);
 		File protoFile = null;
 		String inputPath = null;
+		String h2oModelFullPath = null;
 
-		if(inputCSVFile == null )
-		{					
+		if (inputCSVFile == null) {
+			logger.info("The input csv file is null");
 			if (isWindows) {
 				protoFile = new File(path + "\\default.proto");
 			} else {
 				protoFile = new File(path + "/default.proto");
-			}			
-			return protoFile;			
-		}
-		else
-		{		
-			/*String inputPath = null;
+			}
+			return protoFile;
+		} else {
+			/*
+			 * String inputPath = null;
+			 * 
+			 * File fd = new File(path); File ff[] = fd.listFiles();
+			 * 
+			 * if (ff != null) { for (File f : ff) { if(f.getName().endsWith(".csv")) {
+			 * System.out.println("File: " +f.getName()); inputPath = f.getAbsolutePath(); }
+			 * } }
+			 */
 
-			File fd = new File(path);
-			File ff[] = fd.listFiles();
-
-			if (ff != null) 
-			{
-				for (File f : ff) 
-				{
-					if(f.getName().endsWith(".csv"))
-					{
-						System.out.println("File: " +f.getName());
-						inputPath = f.getAbsolutePath();
-					}
-				}	
-			}*/
-
-			if (isWindows) 	{
-				inputPath = path+"\\"+inputCSVFile;
+			if (isWindows) {
+				inputPath = path + "\\" + inputCSVFile;
 			} else {
-				inputPath = path+"/"+inputCSVFile;
-			}	
+				inputPath = path + "/" + inputCSVFile;
+			}
 
-			System.out.println("I/P File : "+inputPath);
-			CSVToProto c = new CSVToProto();				
-			protoFile = c.writeToProto(inputPath);
-			return protoFile;	
+			if (isWindows) {
+				h2oModelFullPath = path + "\\" + modelName + ".zip";
+			} else {
+				h2oModelFullPath = path + "/" + modelName + ".zip";
+			}
+
+			logger.info("I/P File : {} ", inputPath);
+			logger.info("Model type is {}", modelType);
+			if (modelType.equals("H")) {
+				logger.debug("Entered h2o protobuf generation call");
+				H2oCSVtoProto c = new H2oCSVtoProto();
+				protoFile = c.writeToProto(inputPath, h2oModelFullPath);
+
+			} else {
+				logger.debug("Entered generic java protobuf generation call");
+				CSVToProto c = new CSVToProto();
+				protoFile = c.writeToProto(inputPath);
+			}
+			return protoFile;
 		}
 	}
 
@@ -453,7 +474,6 @@ public class ClientController {
 			reqarray.put(reqarrayElementOne);
 			reqarray.put(reqarrayElementTwo);
 			reqarray.put(reqarrayElementThree);
-
 
 			JSONArray idxarray = new JSONArray();
 
