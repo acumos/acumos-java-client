@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.acumos.acumos-java-client</groupId>
 	<artifactId>java_client</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<name>Acumos Java Client</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -78,6 +78,17 @@
 			<version>1.10.19</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>ai.h2o</groupId>
+			<artifactId>h2o-genmodel</artifactId>
+			<version>3.14.0.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -91,7 +102,7 @@
 			</plugin>
 			<!-- add build information to manifest. Java provides access to the implementation 
 				version for a package, so cram the build number into there. -->
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>2.5</version>
@@ -105,14 +116,14 @@
 							<Implementation-Version>${project.version}-b${build.number}</Implementation-Version>
 						</manifestEntries>
 					</archive>
-					<!-- exclude logback.xml -->
+					exclude logback.xml
 					<excludes>
 						<exclude>**/logback.xml</exclude>
 					</excludes>
 				</configuration>
-			</plugin>
+			</plugin> -->
 			<!-- Generate javadoc jar; see profile for Java 8 -->
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.10.3</version>
@@ -124,9 +135,9 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<!-- Generate source jar -->
-			<plugin>
+			</plugin> -->
+			 <!-- Generate source jar -->
+			<!--<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 				<version>3.0.0</version>
@@ -138,7 +149,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
@@ -146,6 +157,9 @@
 						<manifest>
 							<mainClass>org.acumos.ClientController</mainClass>
 						</manifest>
+							<manifestEntries>
+							<Implementation-Version>${project.version}-b${build.number}</Implementation-Version>
+						</manifestEntries>
 					</archive>
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>

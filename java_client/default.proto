@@ -1,23 +1,19 @@
 syntax = "proto3";
-java_package = "com.google.protobuf";
-java_outer_classname = "DatasetProto";
-
-message DataFrameRow {
-int32 doy = 1;
-float latitude = 2;
-float longitude = 3;
-float hod = 4;
-float call_duration_sec = 5;
-string handset = 6;
-string result_code = 7;
-}
-message DataFrame {
- 	repeated DataFrameRow rows = 1;
-}
-message Prediction {
-	repeated string prediction= 1;
-}
-
-service GenericModel {
+option java_package = "com.google.protobuf";
+option java_outer_classname = "DatasetProto";
+service csvService {
   rpc transform (DataFrame) returns (Prediction);
+}
+message DataFrameRow {
+double DOY = 1;
+double LATITUDE = 2;
+double LONGITUDE = 3;
+double HOD = 4;
+string CALL_DURATION_SEC = 5;
+}
+message DataFrame { 
+repeated DataFrameRow rows = 1;
+ }
+message Prediction {
+repeated string prediction = 1;
 }

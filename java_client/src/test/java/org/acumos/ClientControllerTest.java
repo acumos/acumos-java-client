@@ -66,23 +66,18 @@ public class ClientControllerTest {
 		cientController.getConfigFile(projectPath, windowsFlag);
 	}
 
-/*	@Test
-	public void loginUserTest() throws ClientProtocolException, IOException, ParseException {
-		obj1.put("username", "testUser");
-		obj1.put("password", "testPswd");
-		obj.put("request_body", obj1);
-		token = ClientController.loginUser(obj.toString(), serviceUrl);
-		if (token != null) {
-			assert (true);
-		} else {
-			assert (false);
-		}
-	}*/
+	/*
+	 * @Test public void loginUserTest() throws ClientProtocolException,
+	 * IOException, ParseException { obj1.put("username", "testUser");
+	 * obj1.put("password", "testPswd"); obj.put("request_body", obj1); token =
+	 * ClientController.loginUser(obj.toString(), serviceUrl); if (token != null) {
+	 * assert (true); } else { assert (false); } }
+	 */
 
 	@Test
 	public void generateProtobufTest() throws IOException {
 
-		cientController.generateProtobuf("/", true, null);
+		cientController.generateProtobuf("/", true, null, null, null);
 
 	}
 
@@ -122,9 +117,8 @@ public class ClientControllerTest {
 	 * @Test public void pushModelTest() {
 	 * 
 	 * try { File proto = new File("default.proto");
-	 * ClientController.pushModel(serviceUrl, "modelpackage.zip",
-	 * "metadata.json", proto, token); assert (false); } catch (Exception e) {
-	 * assert (true); } }
+	 * ClientController.pushModel(serviceUrl, "modelpackage.zip", "metadata.json",
+	 * proto, token); assert (false); } catch (Exception e) { assert (true); } }
 	 */
 
 	private static boolean isWindowsSys() {
