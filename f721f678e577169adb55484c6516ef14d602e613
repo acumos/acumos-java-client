@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb7a7d34_cd188284",
+        "filename": "docs/acumos-java-client.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-19T13:17:54Z",
+      "side": 1,
+      "message": "This should be RST, not MD",
+      "revId": "f721f678e577169adb55484c6516ef14d602e613",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    }
+  ]
+}
