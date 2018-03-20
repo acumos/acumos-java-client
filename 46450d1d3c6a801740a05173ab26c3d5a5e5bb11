@@ -1,0 +1,310 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba4137c1_49adf74d",
+        "filename": "java_client/src/main/java/org/acumos/CSVToProto.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "Why is there a main here?  If you need to test, create a JUnit class in src/test/java",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34502846_7b210b8d",
+        "filename": "java_client/src/main/java/org/acumos/CSVToProto.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "Why all upper case parameter name?  This convention is used for constants, not parameters.",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4422cfa1_65bb7f6f",
+        "filename": "java_client/src/main/java/org/acumos/CSVToProto.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "Remove code, don\u0027t comment out",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "970343d3_1bd0892f",
+        "filename": "java_client/src/main/java/org/acumos/CSVToProto.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "Don\u0027t use system.out",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4819155_26d353f8",
+        "filename": "java_client/src/main/java/org/acumos/CSVToProto.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "Remove code, don\u0027t comment out",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00d5c76_0d751f63",
+        "filename": "java_client/src/main/java/org/acumos/ClientController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "I recommend a much more specific package name.  This could be any component.",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e1a3fcc_9f33623a",
+        "filename": "java_client/src/main/java/org/acumos/ClientController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "Is this test code?",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e410d57_588d007b",
+        "filename": "java_client/src/main/java/org/acumos/ClientController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "System.err?  Logger??",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa1aa24_e7470497",
+        "filename": "java_client/src/main/java/org/acumos/ClientController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "What?  This reads from stdin?",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e31b1c1_ab5b749f",
+        "filename": "java_client/src/main/java/org/acumos/ClientController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "Don\u0027t call tostring",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cb72ced_567b3ef4",
+        "filename": "java_client/src/main/java/org/acumos/ClientController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "Use this:\n\nlogger.error(\"Message\", e);",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10cf407d_3478de4e",
+        "filename": "java_client/src/main/java/org/acumos/ClientController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "Remove code don\u0027t comment out",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c3c77a9_5ae49702",
+        "filename": "java_client/src/main/java/org/acumos/ClientController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "What? Hardcoding a jar file by path for Windows?  REMOVE",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67395277_94dad159",
+        "filename": "java_client/src/main/java/org/acumos/H2oCSVtoProto.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "Missing license",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45f712f7_e31e6b5c",
+        "filename": "java_client/src/main/java/org/acumos/H2oCSVtoProto.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "DOn\u0027t use import *",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16e5637c_df5bc9ea",
+        "filename": "java_client/src/main/java/org/acumos/H2oCSVtoProto.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "private static final ..",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "266ecc68_6595aa2e",
+        "filename": "java_client/src/test/java/org/acumos/ClientControllerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "Remove, don\u0027t comment out",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d6bd7d9_fa5aec42",
+        "filename": "java_client/src/test/java/org/acumos/ClientControllerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-20T14:18:25Z",
+      "side": 1,
+      "message": "Remove don\u0027t comment out",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    }
+  ]
+}
