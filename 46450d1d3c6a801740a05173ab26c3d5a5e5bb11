@@ -104,6 +104,24 @@
     },
     {
       "key": {
+        "uuid": "cf8593b2_5647920a",
+        "filename": "java_client/src/main/java/org/acumos/ClientController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 40
+      },
+      "writtenOn": "2018-03-20T15:09:15Z",
+      "side": 1,
+      "message": "Done. But will have to discuss with other contributers and committers if we need to revert.",
+      "parentUuid": "f00d5c76_0d751f63",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e1a3fcc_9f33623a",
         "filename": "java_client/src/main/java/org/acumos/ClientController.java",
         "patchSetId": 3
@@ -206,6 +224,24 @@
     },
     {
       "key": {
+        "uuid": "47e3a403_dc934f0d",
+        "filename": "java_client/src/main/java/org/acumos/ClientController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 40
+      },
+      "writtenOn": "2018-03-20T15:09:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10cf407d_3478de4e",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c3c77a9_5ae49702",
         "filename": "java_client/src/main/java/org/acumos/ClientController.java",
         "patchSetId": 3
@@ -217,6 +253,24 @@
       "writtenOn": "2018-03-20T14:18:25Z",
       "side": 1,
       "message": "What? Hardcoding a jar file by path for Windows?  REMOVE",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f2d1c87_3b75ec95",
+        "filename": "java_client/src/main/java/org/acumos/ClientController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 40
+      },
+      "writtenOn": "2018-03-20T15:09:15Z",
+      "side": 1,
+      "message": "this is a utility to be run on a client machine. This is what was decided. don\u0027t think that should be an issue. we have run it on windows and linux and it works perfectly.",
+      "parentUuid": "8c3c77a9_5ae49702",
       "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
       "serverId": "655300a2-7a56-4504-9153-881edd907bea",
       "unresolved": false
@@ -240,6 +294,24 @@
     },
     {
       "key": {
+        "uuid": "fb8c8bcc_819b3ddf",
+        "filename": "java_client/src/main/java/org/acumos/H2oCSVtoProto.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 40
+      },
+      "writtenOn": "2018-03-20T15:09:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67395277_94dad159",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45f712f7_e31e6b5c",
         "filename": "java_client/src/main/java/org/acumos/H2oCSVtoProto.java",
         "patchSetId": 3
@@ -257,6 +329,24 @@
     },
     {
       "key": {
+        "uuid": "c23be4aa_8ec6b0fc",
+        "filename": "java_client/src/main/java/org/acumos/H2oCSVtoProto.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 40
+      },
+      "writtenOn": "2018-03-20T15:09:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45f712f7_e31e6b5c",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16e5637c_df5bc9ea",
         "filename": "java_client/src/main/java/org/acumos/H2oCSVtoProto.java",
         "patchSetId": 3
@@ -268,6 +358,24 @@
       "writtenOn": "2018-03-20T14:18:25Z",
       "side": 1,
       "message": "private static final ..",
+      "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "203d0213_2b3a0d54",
+        "filename": "java_client/src/main/java/org/acumos/H2oCSVtoProto.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 40
+      },
+      "writtenOn": "2018-03-20T15:09:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16e5637c_df5bc9ea",
       "revId": "46450d1d3c6a801740a05173ab26c3d5a5e5bb11",
       "serverId": "655300a2-7a56-4504-9153-881edd907bea",
       "unresolved": false
