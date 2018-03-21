@@ -9,7 +9,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<!-- The main class to start by executing java -jar -->
-		<start-class>org.acumos.ClientController</start-class>
+		<start-class>org.acumos.javah20client.ClientController</start-class>
 		<!-- For distributionManagement section -->
 		<acumos.nexus.url>https://nexus.acumos.org</acumos.nexus.url>
 	</properties>
@@ -110,7 +110,7 @@
 					<archive>
 						<manifest>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-							<mainClass>org.acumos.ClientController</mainClass>
+							<mainClass>org.acumos.javah20client.ClientController</mainClass>
 						</manifest>
 						<manifestEntries>
 							<Implementation-Version>${project.version}-b${build.number}</Implementation-Version>
@@ -155,7 +155,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>org.acumos.ClientController</mainClass>
+							<mainClass>org.acumos.javah20client.ClientController</mainClass>
 						</manifest>
 						<manifestEntries>
 							<Implementation-Version>${project.version}-b${build.number}</Implementation-Version>

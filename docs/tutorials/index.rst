@@ -16,7 +16,6 @@
 .. limitations under the License.
 .. ===============LICENSE_END=========================================================
 
-=============
 
 Acumos Java Client Tutorial
 --------
@@ -24,4 +23,3 @@ Acumos Java Client Tutorial
 .. toctree::
        :maxdepth: 2
        lesson1
-       lesson2

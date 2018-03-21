@@ -16,7 +16,7 @@
 .. limitations under the License.
 .. ===============LICENSE_END=========================================================
 
-=============
+
 For Generic Java models:
 If modeler wants to change the name of the model.
 

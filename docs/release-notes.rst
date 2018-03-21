@@ -16,24 +16,23 @@
 .. limitations under the License.
 .. ===============LICENSE_END=========================================================
 
-=============
+================================
 Acumos Java Client Release Notes
-=============
+================================
 
-
-Version 1.0.0 December 2017
+Version 1.0.3 March 2018
 ---------------------------
-* Initial Release
+* Protobuf autogeneration implemented for H2o
+
+Version 1.0.2 March 2017
+---------------------------
+* Accepts csv file for protobuf generation for Generic java models
 
 Version 1.0.1 January 2018
 ---------------------------
 * Hardening
 * Integration with Onboarding
 
-Version 1.0.2 Match 2017
+Version 1.0.0 December 2017
 ---------------------------
-* Accepts csv file for protobuf generation for Generic java models
-
-Version 1.0.3 March 2018
----------------------------
-* Protobuf autogeneration implemented for H2o
+* Initial Release
