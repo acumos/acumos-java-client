@@ -1,0 +1,429 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bed039ed_100ba0fa",
+        "filename": "docs/index.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "Please fix RST format lines.  Should be:\n\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nAcumos Java Client\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26a0fc01_7ba03ceb",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "Please fix format lines - must be as long as text",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f5c622a_6cc4fea5",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "Sort the other way - latest on top please",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e1f962e_b41fab00",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "Match?",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8012e2db_9f0afa61",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "Where are the Jira issue numbers?",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "332c0676_c53de694",
+        "filename": "docs/tutorials/lesson1.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "Missing header.\n\nHow is this a tutorial?  You don\u0027t HAVE to have a tutorial.  This material might fit better in a developer or user guide??",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3c08714_89de3e7f",
+        "filename": "docs/tutorials/lesson2.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "Remove!",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79b46781_bd1d8a96",
+        "filename": "docs/user-guide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "Fix line lengths please",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d20e6cdf_79f334e6",
+        "filename": "docs/user-guide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "Probably want hyphens here, not equals, so it\u0027s a level below the top title",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b7f63c1_94c1b526",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/CSVToProto.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "This does no work!  Can this be removed??",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fbe8518_f316cb48",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/CSVToProto.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "Use .equalsIgnoreCase() instead of fancy regexp matching.  Your examples don\u0027t match TRUE, tRUE, and so on.",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb7baa2e_34a36fd5",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/CSVToProto.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "remove, don\u0027t comment out",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f8c79ca_889b6335",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/CSVToProto.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "WHy the system.out?",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68b476f6_512215da",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/CSVToProto.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "delete don\u0027t comment out",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b375b6c4_544f99c3",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/ClientController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "Remove, don\u0027t comment out",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c33e6b06_cfe3d6ad",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/ClientController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "No, print the method name, not the exception message twice",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4fbc7ebb_560d2d92",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/ClientController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a73f42de_ac2cce19",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/ClientController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "NO!  Use the Java-provided file system separator character!  Do not hardcode to windows like this.",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2d98459_a88b55af",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/H2oCSVtoProto.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "WHy is this constant here?",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "212eabc1_279a2a64",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/H2oCSVtoProto.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "What?? How about logging the exception?",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d6ee8cb_992c414e",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/H2oCSVtoProto.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "Remove! This is dead code, this main()",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8bbaf8c_4441cf0f",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/H2oCSVtoProto.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "How should I know if it\u0027s the right thing?",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92bd555c_acdacc3d",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/H2oCSVtoProto.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "Remove don\u0027t comment out",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c455b30_9d309ac0",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/H2oCSVtoProto.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "Use Java\u0027s try-with-resources construct here to ensure the file gets closed",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa92a104_cf35471f",
+        "filename": "java_client/src/test/java/org/acumos/javah20client/ClientControllerTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-21T00:07:41Z",
+      "side": 1,
+      "message": "Remove or repair; don\u0027t comment out",
+      "revId": "e22ea831a1b45ab3cb5deb2c539ca876ff2439db",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    }
+  ]
+}
