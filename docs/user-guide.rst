@@ -100,11 +100,13 @@ b. Create an additional supporting folder which will contain all that the JavaCl
 
 i) Models - In case of H2o, your model will be a MOJO zip file. In case of Generic Java, your model will be .jar file. We have included sample models for you to play around with.
 ii) Protobuf compiler for java version 3.4.0 - Download protobuf-java-3.4.0.jar from http://central.maven.org/maven2/com/google/protobuf/protobuf-java/3.4.0/ and place it in this folder.
-iii) Model runner or Service jar - Rename h2o-genericjava-modelrunner.jar obtained from the 1st section to abcService.jar if your model name is abc. Place it in this folder. NOTE: For Generic Java, this is placed in the same folder as Java Client jar.
-
+iii) Model runner or Service jar - For H2o rename h2o-genericjava-modelrunner.jar obtained from the 1st section to abcService.jar if your model name is abc. Place it in this folder.
+Rename the jar as GenericModelService.jar for Generic Java onboarding
 iv) csv file used for training the model - Place the csv file (with header having the same column names used for training) you used for training the model here. This is used for autogenerating the .proto file. If you don't have the .proto file, you will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto
 v) default.proto - This is only needed if you don't have the csv file used to train the model. In this case, Java Client cannot autogenerate the .proto file. You will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto Also make sure, 
 the default.proto file for the model is in the following format. You need to appropriately replace the data and datatypes under DataFrameRow and Prediction according to your model.
+vi) application.properties file - Pass the port number on which the service should run in this file
+vii) modelConfig.properties - Add this file only in case of Generic Java model onboarding. This file contains the modelMethod and modelClassName of the model.
 ```
 syntax = "proto3";
 option java_package = "com.google.protobuf";
@@ -139,20 +141,42 @@ JavaClient.jar is the executable client jar file.
 For Web-based onboarding of H2o models, the parameters to run the client jar are: 
 
 1. Current Folder path : Full folder path in which Java client jar is placed and run from. 
-2. Model Type for H2o : H 
-3. Supporting folder path : Full Folder path of the supporting folder which contains items 
-4. Name of the model : For h2o just the name of the model without the .zip extension. Make sure this matches name of the supplied MOJO model file exactly.
-5. Input csv file : csv file that was used for training the model. Include the .csv extension in the csv file name. This will be used to autogenerate the default.proto file. This parameter will be empty if you yourself have supplied a default.proto for your model.
+2. Pass the authentication url
+3. Model Type for H2o : H 
+4. Supporting folder path : Full Folder path of the supporting folder which contains items 
+5. Name of the model : For h2o just the name of the model without the .zip extension. Make sure this matches name of the supplied MOJO model file exactly.
+6. Input csv file : csv file that was used for training the model. Include the .csv extension in the csv file name. This will be used to autogenerate the default.proto file. This parameter will be empty if you yourself have supplied a default.proto for your model.
 
 For CLI-based onabording of H2o models, the parameters to run the client jar are: 
 
 1. Onboarding server url
-2. Model Type for H2o : H 
-3. Supporting folder path : Full Folder path of the supporting folder which contains items 
-4. Name of the model : For h2o just the name of the model without the .zip extension. Make sure this matches name of the supplied MOJO model file exactly.
-5. Username
-6. Password
-7. Input csv file : csv file that was used for training the model. Include the .csv extension in the csv file name. This will be used to autogenerate the default.proto file. This parameter will be empty if you yourself have supplied a default.proto for your model.
+2. Pass the authentication url
+3. Model Type for H2o : H 
+4. Supporting folder path : Full Folder path of the supporting folder which contains items 
+5. Name of the model : For h2o just the name of the model without the .zip extension. Make sure this matches name of the supplied MOJO model file exactly.
+6. Username of the Portal MarketPlace account
+7. Password of the Portal MarketPlace account
+8. Input csv file : csv file that was used for training the model. Include the .csv extension in the csv file name. This will be used to autogenerate the default.proto file. This parameter will be empty if you yourself have supplied a default.proto for your model.
+
+For Web-based onboarding of Generic models, the parameters to run the client jar are: 
+
+1. Current Folder path : Full folder path in which Java client jar is placed and run from. 
+2. Pass the authentication url
+3. Model Type for Generic Java : G 
+4. Supporting folder path : Full Folder path of the supporting folder which contains items 
+5. Name of the model : For Generic Java just the name of the model without the .jar extension. Make sure this matches name of the supplied MOJO model file exactly.
+6. Input csv file : csv file that was used for training the model. Include the .csv extension in the csv file name. This will be used to autogenerate the default.proto file. This parameter will be empty if you yourself have supplied a default.proto for your model.
+
+For CLI-based onabording of Generic models, the parameters to run the client jar are: 
+
+1. Onboarding server url
+2. Pass the authentication url
+3. Model Type for Generic Java : G 
+4. Supporting folder path : Full Folder path of the supporting folder which contains items 
+5. Name of the model : For Generic Java just the name of the model without the .jar extension. Make sure this matches name of the supplied MOJO model file exactly.
+6. Username of the Portal MarketPlace account
+7. Password of the Portal MarketPlace account
+8. Input csv file : csv file that was used for training the model. Include the .csv extension in the csv file name. This will be used to autogenerate the default.proto file. This parameter will be empty if you yourself have supplied a default.proto for your model.
 
 ----------
 Example onboarding and folder structure:
