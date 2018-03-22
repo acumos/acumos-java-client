@@ -68,10 +68,6 @@ public class ClientController {
 			boolean isWindows;
 			boolean modelVal;
 			isWindows = isWindowsSys();
-			String modelType;
-			String serviceUrl;
-			String path;
-			String modelName;
 			File model = null;
 			File servicejar = null;
 			String username;
@@ -81,24 +77,25 @@ public class ClientController {
 			String inputCSVFile = null;
 
 			// get the model name from command line
-			serviceUrl = args[0];
-			modelType = args[1];
-			path = args[2];
-			modelName = args[3];
+			String serviceUrl = args[0];
+			String authUrl = args[1];
+			String modelType = args[2];
+			String path = args[3];
+			String modelName = args[4];
 			logger.info("Length : {} ", args.length);
 
 			logger.info("Model type is {}", modelType);
 
-			if (args.length == 7) {
-				inputCSVFile = args[6];
+			if (args.length == 8) {
+				inputCSVFile = args[7];
 			}
 
 			/*
 			 * If web based onboarding,there is no username or password required. In this
 			 * case, the 4th argument will be the csv file if at all it is present.
 			 */
-			if (args.length == 5) {
-				inputCSVFile = args[4];
+			if (args.length == 6) {
+				inputCSVFile = args[5];
 			}
 
 			JSONObject obj = new JSONObject();
@@ -110,7 +107,7 @@ public class ClientController {
 			if (defaultValidator.isValid(serviceUrl)) {
 				// if (valid) {
 				while (count < 4) {
-					if (args.length <= 4) {
+					if (args.length <= 5) {
 						if (count == 1) {
 							System.out.println("Please enter Username and Password");
 						} else {
@@ -121,12 +118,12 @@ public class ClientController {
 						Scanner sc = new Scanner(System.in);
 						System.out.println("Enter Username");
 						username = sc.next();
-						sc.close();
+						//sc.close();
 
 						System.out.println("Please enter the password");
 						Scanner sc1 = new Scanner(System.in);
 						passwd = sc1.next();
-						sc1.close();
+						//sc1.close();
 
 						obj1.put("username", username);
 						obj1.put("password", passwd);
@@ -135,8 +132,8 @@ public class ClientController {
 						logger.info("JSON:" + obj.toString());
 
 					} else {
-						username = args[4];
-						passwd = args[5];
+						username = args[5];
+						passwd = args[6];
 
 						obj1.put("username", username);
 						obj1.put("password", passwd);
@@ -145,7 +142,7 @@ public class ClientController {
 						logger.info("JSON:" + obj.toString());
 					}
 
-					token = loginUser(obj.toString(), serviceUrl);
+					token = loginUser(obj.toString(), authUrl);
 
 					if (token != null) {
 						try {
@@ -187,10 +184,10 @@ public class ClientController {
 					break;
 				case "G":
 					if (isWindows) {
-						servicejar = new File("GenericModelService.jar");
+						servicejar = new File(path + "\\" + "GenericModelService.jar");
 						model = new File(path + "\\" + modelName + ".jar");
 					} else {
-						servicejar = new File("GenericModelService.jar");
+						servicejar = new File(path + "/" +"GenericModelService.jar");
 						model = new File(path + "/" + modelName + ".jar");
 					}
 					break;
@@ -256,14 +253,14 @@ public class ClientController {
 		return w.matches("^[a-zA-Z0-9_-]*$");
 	}
 
-	public static String loginUser(String obj, String serviceUrl)
+	public static String loginUser(String obj, String authUrl)
 			throws ClientProtocolException, IOException, ParseException {
 		logger.info("Started User Authentication...!");
 		HttpClient c = new DefaultHttpClient();
-
-		String loginURL = null;
 		String token = null;
 
+		/*String loginURL = null;
+		
 		if (serviceUrl.contains("dev1")) {
 			loginURL = "http://cognita-dev1-vm01-core.eastus.cloudapp.azure.com:8090/onboarding-app/v2/auth";
 			logger.info("loginToAcumos: " + loginURL);
@@ -273,9 +270,9 @@ public class ClientController {
 		} else if (serviceUrl.contains("ist")) {
 			loginURL = "http://cognita-ist-vm01-core.eastus.cloudapp.azure.com:8090/onboarding-app/v2/auth";
 			logger.info("loginToAcumos: " + loginURL);
-		}
+		}*/
 
-		HttpPost p = new HttpPost(loginURL);
+		HttpPost p = new HttpPost(authUrl);
 
 		p.setEntity(new StringEntity(obj, ContentType.create("application/json")));
 
@@ -392,7 +389,7 @@ public class ClientController {
 			} else {
 				logger.debug("Entered generic java protobuf generation call");
 				CSVToProto c = new CSVToProto();
-				protoFile = c.writeToProto(inputPath);
+				protoFile = c.writeToProto(inputPath, modelName);
 			}
 			return protoFile;
 		}
