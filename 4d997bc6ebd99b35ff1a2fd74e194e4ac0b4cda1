@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e09d7052_cf4be67f",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 40
+      },
+      "writtenOn": "2018-03-22T13:16:58Z",
+      "side": 1,
+      "message": "Can you change the name to the name of the fat jar which will be created and used?  Also change this in the user-guide. Also Change this in the introduction/initial parts of this document.",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 49
+      },
+      "revId": "4d997bc6ebd99b35ff1a2fd74e194e4ac0b4cda1",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b93b5a1_8e5511ff",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 40
+      },
+      "writtenOn": "2018-03-22T13:16:58Z",
+      "side": 1,
+      "message": "Can you write in brackets what this authentication url is for? / How the person who will onboar, know what this url should be?",
+      "range": {
+        "startLine": 208,
+        "startChar": 3,
+        "endLine": 208,
+        "endChar": 30
+      },
+      "revId": "4d997bc6ebd99b35ff1a2fd74e194e4ac0b4cda1",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd4002e3_9cce806e",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 40
+      },
+      "writtenOn": "2018-03-22T13:16:58Z",
+      "side": 1,
+      "message": "Rename to fat jar\u0027s name",
+      "range": {
+        "startLine": 219,
+        "startChar": 14,
+        "endLine": 219,
+        "endChar": 28
+      },
+      "revId": "4d997bc6ebd99b35ff1a2fd74e194e4ac0b4cda1",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc953b54_45c8a723",
+        "filename": "docs/user-guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 40
+      },
+      "writtenOn": "2018-03-22T13:16:58Z",
+      "side": 1,
+      "message": "Can you change the name to the name of the fat jar which will be created and used?  Also change this in the developer-guide. Also Change this in the introduction/initial parts of this document.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 14
+      },
+      "revId": "4d997bc6ebd99b35ff1a2fd74e194e4ac0b4cda1",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac3b7920_7ee29a00",
+        "filename": "docs/user-guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 40
+      },
+      "writtenOn": "2018-03-22T13:16:58Z",
+      "side": 1,
+      "message": "Can you change the name to the name of the fat jar which will be created and used?  Also change this in the developer-guide. Also Change this in the introduction/initial parts of this document.",
+      "range": {
+        "startLine": 184,
+        "startChar": 14,
+        "endLine": 184,
+        "endChar": 28
+      },
+      "revId": "4d997bc6ebd99b35ff1a2fd74e194e4ac0b4cda1",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27f8b279_d68b2e27",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/CSVToProto.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 40
+      },
+      "writtenOn": "2018-03-22T13:16:58Z",
+      "side": 1,
+      "message": "Service name would look better if it was \u003cmodelName\u003eService. With this, your service\u0027s name will be the Model Name. I would suggest instead of passing modelName, pass svcName. You already have that code on line 134. Uncomment it and pass svcName here.",
+      "range": {
+        "startLine": 141,
+        "startChar": 26,
+        "endLine": 141,
+        "endChar": 35
+      },
+      "revId": "4d997bc6ebd99b35ff1a2fd74e194e4ac0b4cda1",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b676261_1bb73ea8",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/ClientController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 40
+      },
+      "writtenOn": "2018-03-22T13:16:58Z",
+      "side": 1,
+      "message": "Check if this is correct. It was args.length\u003c\u003d4 originally.",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 28
+      },
+      "revId": "4d997bc6ebd99b35ff1a2fd74e194e4ac0b4cda1",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41877e7a_af20ada6",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/ClientController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 40
+      },
+      "writtenOn": "2018-03-22T13:16:58Z",
+      "side": 1,
+      "message": "Check this",
+      "range": {
+        "startLine": 150,
+        "startChar": 39,
+        "endLine": 150,
+        "endChar": 47
+      },
+      "revId": "4d997bc6ebd99b35ff1a2fd74e194e4ac0b4cda1",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89b0bda1_50b508e5",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/ClientController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 40
+      },
+      "writtenOn": "2018-03-22T13:16:58Z",
+      "side": 1,
+      "message": "Make sure in the documentation (both user and developer guide) you tell them that for Generic Model Service you need to rename the Jar as GenericModelService.jar.",
+      "range": {
+        "startLine": 195,
+        "startChar": 41,
+        "endLine": 195,
+        "endChar": 63
+      },
+      "revId": "4d997bc6ebd99b35ff1a2fd74e194e4ac0b4cda1",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be3b5808_e03fc023",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/ClientController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 40
+      },
+      "writtenOn": "2018-03-22T13:16:58Z",
+      "side": 1,
+      "message": "Check",
+      "range": {
+        "startLine": 261,
+        "startChar": 51,
+        "endLine": 261,
+        "endChar": 57
+      },
+      "revId": "4d997bc6ebd99b35ff1a2fd74e194e4ac0b4cda1",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2675b3a_e9e05632",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/ClientController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 40
+      },
+      "writtenOn": "2018-03-22T13:16:58Z",
+      "side": 1,
+      "message": "check",
+      "range": {
+        "startLine": 280,
+        "startChar": 28,
+        "endLine": 280,
+        "endChar": 36
+      },
+      "revId": "4d997bc6ebd99b35ff1a2fd74e194e4ac0b4cda1",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    }
+  ]
+}
