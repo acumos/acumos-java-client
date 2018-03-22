@@ -100,7 +100,7 @@ public class CSVToProto {
 		return sb.toString();
 	}
 
-	public File writeToProto(String SAMPLE_CSV_FILE_PATH) throws FileNotFoundException, IOException {
+	public File writeToProto(String SAMPLE_CSV_FILE_PATH, String modelName) throws FileNotFoundException, IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(SAMPLE_CSV_FILE_PATH));
 
 		String[] header = reader.readLine().split(",");
@@ -131,13 +131,14 @@ public class CSVToProto {
 		sb.append(createProtoHeader());
 		sb.append('\n');
 
+		//String svcName = modelName + "Service";
 		final String inputMessageName = "DataFrameRow";
 		final String outputMessageName = "Prediction";
 		sb.append("option java_package = \"com.google.protobuf\";");
 		sb.append('\n');
 		sb.append("option java_outer_classname = \"DatasetProto\";");
 		sb.append('\n');
-		sb.append(createService("csvService", "DataFrame", outputMessageName));
+		sb.append(createService(modelName, "DataFrame", outputMessageName));
 		sb.append('\n');
 		sb.append(createMessage(inputMessageName, inputFields, dataTypeList, false));
 		sb.append('\n');
