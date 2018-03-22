@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aad4b8b_a6394f0b",
+        "filename": "java_client/pom.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-22T16:50:52Z",
+      "side": 1,
+      "message": "Suggest upgrading to jacoco 0.7.9 which almost all others are also using",
+      "revId": "6432fd28d109b51b821c16c779bf896310efba85",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ef975ff_f2cb3dd7",
+        "filename": "java_client/pom.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-22T16:50:52Z",
+      "side": 1,
+      "message": "Good.  I really don\u0027t think you should specify this.  Might want to remove entirely, instead of commenting out.",
+      "revId": "6432fd28d109b51b821c16c779bf896310efba85",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26255f6c_cc5c482e",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/ClientController.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-22T16:50:52Z",
+      "side": 1,
+      "message": "Could you possibly use names that are less similar, to avoid accidental mistakes?",
+      "revId": "6432fd28d109b51b821c16c779bf896310efba85",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    }
+  ]
+}
