@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68408794_13dc8c07",
+        "filename": "java_client/pom.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-22T15:18:03Z",
+      "side": 1,
+      "message": "It may be even easier than this - you can omit the finalName entirely and Maven will use the artifact ID, version and packaging.  Why do you need to specify the final name anyhow?",
+      "revId": "b47dc097138b3c37a52d313866ec0c60159e6c84",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adb4421_baba74b5",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/ClientController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-03-22T15:18:03Z",
+      "side": 1,
+      "message": "This is Java, stop using C++ practices.  Declare like this:\n\n    String serviceUrl \u003d args[0];\n    String authUrl \u003d args[1];\n\nand so on.",
+      "revId": "b47dc097138b3c37a52d313866ec0c60159e6c84",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    }
+  ]
+}
