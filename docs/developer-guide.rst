@@ -38,7 +38,7 @@ Allows the H2o or Generic Java model and other artifacts to become available in 
 
 - The Modeller/Onboarder/ ML expert/Data Scientist creates his model in H2o and exports it in the MOJO model format (.zip file) using any interface (eg.Python, Flow, R) provided by H2o
 - For Generic Java, the Modeller/Onboarder/ ML expert creates his model and exports it in the .jar format.
-- He runs the JavaClient jar, which creates a Protobuf (default.proto) file for the Model, creates the required metadata.json file and an artifact called modelpackage.zip.
+- He runs the JavaClient jar (from Nexus https://nexus.acumos.org/#nexus-search;quick~java_client), which creates a Protobuf (default.proto) file for the Model, creates the required metadata.json file and an artifact called modelpackage.zip.
 - Depending on the choice of the modeler, he can manually upload these generated artifacts to the Acumos Marketplace via its Web interface. This is Web-based onboarding. We will see how to do this in this article.
 - Or the Java client library itself, onboards the model onto the onboarding server if the modeler provides the onboarding server URL. This is CLI-based onboarding. We will also see how to do this in this article.
 
@@ -138,11 +138,10 @@ Rename the jar as GenericModelService.jar for Generic Java onboarding
 iv) csv file used for training the model - Place the csv file (with header having the same column names used for training) you used for training the model here. This is used for autogenerating the .proto file. If you don't have the .proto file, you will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto
 v) default.proto - This is only needed if you don't have the csv file used to train the model. In this case, Java Client cannot autogenerate the .proto file. You will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto Also make sure, 
 the default.proto file for the model is in the following format. You need to appropriately replace the data and datatypes under DataFrameRow and Prediction according to your model.
-vi) application.properties file - Mention the port number on which the service exposed by the model will finally run on.
-vii) modelConfig.properties - Add this file only in case of Generic Java model onboarding. This file contains the modelMethod and modelClassName of the model.
 
-```
-syntax = "proto3";
+.. code-block:: python
+
+   syntax = "proto3";
    option java_package = "com.google.protobuf";
    option java_outer_classname = "DatasetProto";
 
@@ -155,15 +154,16 @@ syntax = "proto3";
    message DataFrame {
                repeated DataFrameRow rows = 1;
    }
-  message Prediction {
-                repeated string prediction= 1;
-  }
+   message Prediction {
+               repeated string prediction= 1;
+   }
 
-  service Model {
-  rpc transform (DataFrame) returns (Prediction);
-  }
+   service Model {
+   rpc transform (DataFrame) returns (Prediction);
+   }
 
-```
+vi) application.properties file - Mention the port number on which the service exposed by the model will finally run on.
+vii) modelConfig.properties - Add this file only in case of Generic Java model onboarding. This file contains the modelMethod and modelClassName of the model.
 
 
 ---------------------
@@ -183,7 +183,7 @@ For Web-based onboarding of H2o models, the parameters to run the client jar are
 For CLI-based onabording of H2o models, the parameters to run the client jar are: 
 
 1. Onboarding server url
-2. Pass the authentication url - This is the onboarding component which intern call Portal marketplace to get the jwtToken.
+2. Pass the authentication url - This is the onboarding component which in turn calls Portal marketplace to get the jwtToken. This url can be obtained from the Onboarding Component team.
 3. Model Type for H2o : H 
 4. Supporting folder path : Full Folder path of the supporting folder which contains items 
 5. Name of the model : For h2o just the name of the model without the .zip extension. Make sure this matches name of the supplied MOJO model file exactly.
@@ -203,7 +203,7 @@ For Web-based onboarding of Generic Java models, the parameters to run the clien
 For CLI-based onabording of Generic models, the parameters to run the client jar are: 
 
 1. Onboarding server url
-2. Pass the authentication url - This is the onboarding component which intern call Portal marketplace to get the jwtToken.
+2. Pass the authentication url - This is the onboarding component which in turn calls Portal marketplace to get the jwtToken. This url can be obtained from the Onboarding Component team.
 3. Model Type for Generic Java : G 
 4. Supporting folder path : Full Folder path of the supporting folder which contains items 
 5. Name of the model : For Generic Java just the name of the model without the .jar extension. Make sure this matches name of the supplied MOJO model file exactly.
@@ -260,8 +260,9 @@ As an example, below we show how to create a model using the Python innterface o
 #### Here is a sample H2o iris example program that shows how a model can be created and downloaded as a MOJO using the Python Interface 
   
   
-```python
-import h2o
+.. code-block:: python
+
+   import h2o
    import pandas as pd
    import numpy as np
    import matplotlib.pyplot as plt
@@ -319,7 +320,6 @@ import h2o
    predictions=model.predict(test)
    predictions
 
-``` 
 
 Here is a sample H2o iris example program that shows how a model can be created and downloaded as a MOJO using the H2o Flow GUI.
  
