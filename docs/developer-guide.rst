@@ -170,7 +170,7 @@ vii) modelConfig.properties - Add this file only in case of Generic Java model o
 Onboarding your model
 ---------------------
 
-JavaClient.jar is the executable client jar file.
+Java Client jar is the executable client jar file.
 
 For Web-based onboarding of H2o models, the parameters to run the client jar are: 
 
@@ -235,13 +235,25 @@ So I also pass along the csv file I used to train it. The sample command looks l
  
 How to Test
 ===========
-mvn test
+For developers:
+
+.. code-block:: python
+   
+   mvn test
 
 
-------------------------------
-What happens after onboarding?
-------------------------------
-- You will be able to get a success message if your model was onboarded successfully. If you use Web-based onboarding, you will be able to see a success method in the Web interface. If you use CLI based onboarding, you will see a message on the terminal that tells it was onboarded succesfully.
+
+
+------------------------------------------------
+Onboarding/ Publishing to the Acumos marketplace
+------------------------------------------------
+- You will be able to get a success message if your model was onboarded successfully. 
+- If you use Web-based onboarding, 
+a. After you run the client, you will see a modeldump.zip file generated in the same folder where we ran the Java Client for.
+b. Upload this file in the Web based interface. 
+c. Enter the model's name. This name should be same as the one you named it when running the jar.
+d. You will be able to see a success method in the Web interface. you will be able to see a success method in the Web interface. 
+- If you use CLI based onboarding,  you don't need to perform a-d outlined just above. The Java client will do it for you. You will see a message on the terminal that tells it was onboarded succesfully.
 - The needed TOSCA artifacts, docker images are produced and the model is published to the marketplace.
 - You and your teammates can now see, rate, review, comment, collaborate on your model in the Acumos marketplace.
 - When requested and deployed by a user, your model runs as a docker containerised microservice on the infrastructure of your choice and exposes a predict method as a rest endpoint.
