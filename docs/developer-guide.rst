@@ -15,9 +15,9 @@
 .. See the License for the specific language governing permissions and
 .. limitations under the License.
 .. ===============LICENSE_END=========================================================
-================================
+==================================
 Acumos Java Client Developer Guide
-================================
+==================================
  
 Overview
 ========
@@ -31,9 +31,9 @@ Overview
 Architecture and Design
 =======================
 
-----------
+---------------------------------------------------------------------
 Java Client Library (https://gerrit.acumos.org/r/acumos-java-client):
-----------
+---------------------------------------------------------------------
 Allows the H2o or Generic Java model and other artifacts to become available in the onboarding server for the H2o Model runner to be able to use them.
 
 - The Modeller/Onboarder/ ML expert/Data Scientist creates his model in H2o and exports it in the MOJO model format (.zip file) using any interface (eg.Python, Flow, R) provided by H2o
@@ -42,9 +42,9 @@ Allows the H2o or Generic Java model and other artifacts to become available in 
 - Depending on the choice of the modeler, he can manually upload these generated artifacts to the Acumos Marketplace via its Web interface. This is Web-based onboarding. We will see how to do this in this article.
 - Or the Java client library itself, onboards the model onto the onboarding server if the modeler provides the onboarding server URL. This is CLI-based onboarding. We will also see how to do this in this article.
 
-----------
+----------------------------------------------------------------
 Model Runner (https://gerrit.acumos.org/r/generic-model-runner):
-----------
+----------------------------------------------------------------
  Allows the onboarded Model to be run as containerized microservice and allows other external applications to use the onboarded Model for predictions.
 
 - Essentially, provides a wrapper around the ML model, packages it as a containerized microservice and exposes a predict method as a rest endpoint.
@@ -69,7 +69,7 @@ Development Setup
 =================
 ---------- 
 For the Modeller/Onboarder/ ML expert/Data Scientist:
-----------
+-----------------------------------------------------
 You will need the jars from the above 2 projects:
 
 You can download the Java Client (ie. executable jar for https://gerrit.acumos.org/r/acumos-java-client project) from Nexus. 
@@ -78,13 +78,13 @@ Go to https://nexus.acumos.org/#nexus-search;quick~java-client and download the 
 You can download the h2o-genericjava-modelrunner (ie. executable jar for https://gerrit.acumos.org/r/generic-model-runner project) from Nexus. 
 Go to https://nexus.acumos.org/#nexus-search;quick~runner and download the latest version of the h2o-genericjava-modelrunner jar.
 
-----------
+------------------
 For the Developer:
-----------
+------------------
 To clone the client library (https://gerrit.acumos.org/r/acumos-java-client) project:
-```
+`````````````````````````````````````````````````````````````````````````````````````
 git clone https://gerrit.acumos.org/r/acumos-java-client
-```
+````````````````````````````````````````````````````````
 
 To run the client project,you will need the following installed on your machine.
 - Java (jdk) 1.8
@@ -93,30 +93,30 @@ To run the client project,you will need the following installed on your machine.
 - Protobuf Java runtime 3.4.0
 
 To build the project, you can use:
-```
+``````````````````````````````````
 mvn clean install
-```
+`````````````````
 This will give you the same Java Client jar mentioned earlier.
 
 
 
 To clone the model runner (https://gerrit.acumos.org/r/generic-model-runner) project:
-```
+`````````````````````````````````````````````````````````````````````````````````````
 git clone https://gerrit.acumos.org/r/generic-model-runner
-```
+``````````````````````````````````````````````````````````
 To build the model runner project, refer to instructions on https://gerrit.acumos.org/r/generic-model-runner
 This will give you the same h2o-genericjava-modelrunner mentioned earlier.
 
 
 You must have the following installed on your machine-
 
-----------
+-----------------------------------------------------
 For the Modeller/Onboarder/ ML expert/Data Scientist:
-----------
+-----------------------------------------------------
 - Java 1.8
 ----------
 For the Developer:
-----------
+------------------
 - Java 1.8
 - Maven
 It is a Maven Project. You can clean, install, test as with any Maven project.
@@ -124,12 +124,12 @@ It is a Maven Project. You can clean, install, test as with any Maven project.
 
 How to Run
 ==========
-----------
+------------------------------------------------------
 Preparing to Onboard your H2o or a Generic Java Model:
-----------
-a. Place JavaClient.jar in one folder locally. This is the folder from which you intend to run the jar. After the jar runs, the created artifacts will also be available in this folder. You will use some of these artifacts if you are doing Web-based onboarding. We will see this later.
+------------------------------------------------------
+a. Place Java Client jar in one folder locally. This is the folder from which you intend to run the jar. After the jar runs, the created artifacts will also be available in this folder. You will use some of these artifacts if you are doing Web-based onboarding. We will see this later.
 
-b. Create an additional supporting folder which will contain all that the JavaClient.jar needs to run. It will contain-
+b. Create an additional supporting folder which will contain all that the Java Client jar needs to run. It will contain-
 
 i) Models - In case of H2o, your model will be a MOJO zip file. In case of Generic Java, your model will be .jar file. We have included sample models for you to play around with.
 ii) Protobuf compiler for java version 3.4.0 - Download protobuf-java-3.4.0.jar from http://central.maven.org/maven2/com/google/protobuf/protobuf-java/3.4.0/ and place it in this folder.
@@ -138,8 +138,6 @@ Rename the jar as GenericModelService.jar for Generic Java onboarding
 iv) csv file used for training the model - Place the csv file (with header having the same column names used for training) you used for training the model here. This is used for autogenerating the .proto file. If you don't have the .proto file, you will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto
 v) default.proto - This is only needed if you don't have the csv file used to train the model. In this case, Java Client cannot autogenerate the .proto file. You will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto Also make sure, 
 the default.proto file for the model is in the following format. You need to appropriately replace the data and datatypes under DataFrameRow and Prediction according to your model.
-vi) application.properties file - Pass the port number on which the service should run in this file
-vii) modelConfig.properties - Add this file only in case of Generic Java model onboarding. This file contains the modelMethod and modelClassName of the model.
 
 ```
 syntax = "proto3";
@@ -163,11 +161,14 @@ service Model {
   rpc transform (DataFrame) returns (Prediction);
 }
 ```
+vi) application.properties file - Mention the port number on which the service should run in this file
+vii) modelConfig.properties - Add this file only in case of Generic Java model onboarding. This file contains the modelMethod and modelClassName of the model.
 
 
-----------
+
+---------------------
 Onboarding your model
-----------
+---------------------
 
 JavaClient.jar is the executable client jar file.
 
@@ -212,9 +213,9 @@ For CLI-based onabording of Generic models, the parameters to run the client jar
 7. Password of the Portal MarketPlace account
 8. Input csv file : csv file that was used for training the model. Include the .csv extension in the csv file name. This will be used to autogenerate the default.proto file. This parameter will be empty if you yourself have supplied a default.proto for your model.
 
-----------
+----------------------------------------
 Example onboarding and folder structure:
-----------
+----------------------------------------
 1. I place my Javaclient.jar in /home/deven/tryoutjavaclient/ folder. This is where I intend to run the jar from. After the jar runs, the created artifacts will also be available in this folder.
 
 |image0|
@@ -239,9 +240,9 @@ How to Test
 mvn test
 
 
-----------
+------------------------------
 What happens after onboarding?
-----------
+------------------------------
 - You will be able to get a success message if your model was onboarded successfully. If you use Web-based onboarding, you will be able to see a success method in the Web interface. If you use CLI based onboarding, you will see a message on the terminal that tells it was onboarded succesfully.
 - The needed TOSCA artifacts, docker images are produced and the model is published to the marketplace.
 - You and your teammates can now see, rate, review, comment, collaborate on your model in the Acumos marketplace.
@@ -249,9 +250,9 @@ What happens after onboarding?
 - This method can be called by other external applications to request predictions off of your model.
 
 
-----------
+-----------------------------------
 Addendum : Creating a model in H2o:
-----------
+-----------------------------------
 You must have H2o 3.14.0.2 installed on your machine. For instructions on how to install visit https://www.h2o.ai/download/
 
 H2o provides different interfaces to create models and use H2o for eg. Python, Flow GUI, R, etc.
