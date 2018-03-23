@@ -75,20 +75,15 @@ public class ClientController {
 			String token = null;
 			int count = 1;
 			String inputCSVFile = null;
+			String authUrl, modelType, path, modelName;
 
-			// get the model name from command line
-			String serviceUrl = args[0];
-			String authUrl = args[1];
-			String modelType = args[2];
-			String path = args[3];
-			String modelName = args[4];
 			logger.info("Length : {} ", args.length);
-
-			logger.info("Model type is {}", modelType);
 
 			if (args.length == 8) {
 				inputCSVFile = args[7];
 			}
+			
+			String serviceUrl = args[0];
 
 			/*
 			 * If web based onboarding,there is no username or password required. In this
@@ -105,9 +100,17 @@ public class ClientController {
 
 			// Code for Authentication
 			if (defaultValidator.isValid(serviceUrl)) {
+				
+				// get the model name from command line
+				authUrl = args[1];
+				modelType = args[2];
+				path = args[3];
+				modelName = args[4];
+				logger.info("Model type is {}", modelType);
+				
 				// if (valid) {
 				while (count < 4) {
-					if (args.length <= 5) {
+					if (args.length <= 6) {
 						if (count == 1) {
 							System.out.println("Please enter Username and Password");
 						} else {
@@ -162,6 +165,11 @@ public class ClientController {
 					}
 				}
 
+			} else {
+				modelType = args[1];
+				path = args[2];
+				modelName = args[3];
+				logger.info("Model type is {}", modelType);
 			}
 
 			if (count == 4) {
