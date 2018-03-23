@@ -138,32 +138,32 @@ Rename the jar as GenericModelService.jar for Generic Java onboarding
 iv) csv file used for training the model - Place the csv file (with header having the same column names used for training) you used for training the model here. This is used for autogenerating the .proto file. If you don't have the .proto file, you will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto
 v) default.proto - This is only needed if you don't have the csv file used to train the model. In this case, Java Client cannot autogenerate the .proto file. You will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto Also make sure, 
 the default.proto file for the model is in the following format. You need to appropriately replace the data and datatypes under DataFrameRow and Prediction according to your model.
+vi) application.properties file - Mention the port number on which the service exposed by the model will finally run on.
+vii) modelConfig.properties - Add this file only in case of Generic Java model onboarding. This file contains the modelMethod and modelClassName of the model.
 
 ```
 syntax = "proto3";
-option java_package = "com.google.protobuf";
-option java_outer_classname = "DatasetProto";
+   option java_package = "com.google.protobuf";
+   option java_outer_classname = "DatasetProto";
 
-message DataFrameRow {
-string sepal_len = 1;
-string sepal_wid = 2;
-string petal_len = 3;
-string petal_wid = 4;
-}
-message DataFrame {
- 	repeated DataFrameRow rows = 1;
-}
-message Prediction {
-	repeated string prediction= 1;
-}
+   message DataFrameRow {
+   string sepal_len = 1;
+   string sepal_wid = 2;
+   string petal_len = 3;
+   string petal_wid = 4;
+   }
+   message DataFrame {
+               repeated DataFrameRow rows = 1;
+   }
+  message Prediction {
+                repeated string prediction= 1;
+  }
 
-service Model {
+  service Model {
   rpc transform (DataFrame) returns (Prediction);
-}
-```
-vi) application.properties file - Mention the port number on which the service should run in this file
-vii) modelConfig.properties - Add this file only in case of Generic Java model onboarding. This file contains the modelMethod and modelClassName of the model.
+  }
 
+```
 
 
 ---------------------
@@ -174,17 +174,16 @@ JavaClient.jar is the executable client jar file.
 
 For Web-based onboarding of H2o models, the parameters to run the client jar are: 
 
-1. Current Folder path : Full folder path in which Java client jar is placed and run from. 
-2. Pass the authentication url
-3. Model Type for H2o : H 
-4. Supporting folder path : Full Folder path of the supporting folder which contains items 
-5. Name of the model : For h2o just the name of the model without the .zip extension. Make sure this matches name of the supplied MOJO model file exactly.
-6. Input csv file : csv file that was used for training the model. Include the .csv extension in the csv file name. This will be used to autogenerate the default.proto file. This parameter will be empty if you yourself have supplied a default.proto for your model.
+1. Current Folder path : Full folder path in which Java client jar is placed and run from.
+2. Model Type for H2o : H 
+3. Supporting folder path : Full Folder path of the supporting folder which contains items 
+4. Name of the model : For h2o just the name of the model without the .zip extension. Make sure this matches name of the supplied MOJO model file exactly.
+5. Input csv file : csv file that was used for training the model. Include the .csv extension in the csv file name. This will be used to autogenerate the default.proto file. This parameter will be empty if you yourself have supplied a default.proto for your model.
 
 For CLI-based onabording of H2o models, the parameters to run the client jar are: 
 
 1. Onboarding server url
-2. Pass the authentication url
+2. Pass the authentication url - This is the onboarding component which intern call Portal marketplace to get the jwtToken.
 3. Model Type for H2o : H 
 4. Supporting folder path : Full Folder path of the supporting folder which contains items 
 5. Name of the model : For h2o just the name of the model without the .zip extension. Make sure this matches name of the supplied MOJO model file exactly.
@@ -196,16 +195,15 @@ For CLI-based onabording of H2o models, the parameters to run the client jar are
 For Web-based onboarding of Generic Java models, the parameters to run the client jar are: 
 
 1. Current Folder path : Full folder path in which Java client jar is placed and run from. 
-2. Pass the authentication url
-3. Model Type for Generic Java : G 
-4. Supporting folder path : Full Folder path of the supporting folder which contains items 
-5. Name of the model : For Generic Java just the name of the model without the .jar extension. Make sure this matches name of the supplied MOJO model file exactly.
-6. Input csv file : csv file that was used for training the model. Include the .csv extension in the csv file name. This will be used to autogenerate the default.proto file. This parameter will be empty if you yourself have supplied a default.proto for your model.
+2. Model Type for Generic Java : G 
+3. Supporting folder path : Full Folder path of the supporting folder which contains items 
+4. Name of the model : For Generic Java just the name of the model without the .jar extension. Make sure this matches name of the supplied MOJO model file exactly.
+5. Input csv file : csv file that was used for training the model. Include the .csv extension in the csv file name. This will be used to autogenerate the default.proto file. This parameter will be empty if you yourself have supplied a default.proto for your model.
 
 For CLI-based onabording of Generic models, the parameters to run the client jar are: 
 
 1. Onboarding server url
-2. Pass the authentication url
+2. Pass the authentication url - This is the onboarding component which intern call Portal marketplace to get the jwtToken.
 3. Model Type for Generic Java : G 
 4. Supporting folder path : Full Folder path of the supporting folder which contains items 
 5. Name of the model : For Generic Java just the name of the model without the .jar extension. Make sure this matches name of the supplied MOJO model file exactly.
@@ -264,61 +262,63 @@ As an example, below we show how to create a model using the Python innterface o
   
 ```python
 import h2o
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+   import pandas as pd
+   import numpy as np
+   import matplotlib.pyplot as plt
+   import seaborn as sns
 
-# for jupyter notebook plotting,
-%matplotlib inline
-sns.set_context("notebook")
+   # for jupyter notebook plotting,
+   %matplotlib inline
+   sns.set_context("notebook")
 
-h2o.init()
+   h2o.init()
 
-# Load data from CSV
-iris = h2o.import_file('https://raw.githubusercontent.com/h2oai/h2o-3/master/h2o-r/h2o-package/inst/extdata/iris_wheader.csv')
+   # Load data from CSV
+   iris = h2o.import_file('https://raw.githubusercontent.com/h2oai/h2o-3/master/h2o-r/h2o- 
+   package/inst/extdata/iris_wheader.csv')
 
-Iris data set description
--------------------------
-1. sepal length in cm
-2. sepal width in cm
-3. petal length in cm
-4. petal width in cm
-5. class:
+   Iris data set description
+   -------------------------
+   1. sepal length in cm
+   2. sepal width in cm
+   3. petal length in cm
+   4. petal width in cm
+   5. class:
     Iris Setosa
     Iris Versicolour
     Iris Virginica
 
 
-iris.head()
-iris.describe()
-# training parameters
-training_columns = ['sepal_len', 'sepal_wid', 'petal_len', 'petal_wid']
-#  response parameter
-response_column = 'class'
+   iris.head()
+   iris.describe()
+   # training parameters
+   training_columns = ['sepal_len', 'sepal_wid', 'petal_len', 'petal_wid']
+   #  response parameter
+   response_column = 'class'
 
-# Split data into train and testing
-train, test = iris.split_frame(ratios=[0.8])
-train.describe()
-test.describe()
+   # Split data into train and testing 
+   train, test = iris.split_frame(ratios=[0.8])
+   train.describe()
+   test.describe()
 
-from h2o.estimators import H2ORandomForestEstimator
-model = H2ORandomForestEstimator(ntrees=50, max_depth=20, nfolds=10)
+   from h2o.estimators import H2ORandomForestEstimator
+   model = H2ORandomForestEstimator(ntrees=50, max_depth=20, nfolds=10)
 
-# Train model
-model.train(x=training_columns, y=response_column, training_frame=train)
+   # Train model
+   model.train(x=training_columns, y=response_column, training_frame=train)
 
-print (model)
+   print (model)
 
-# Model performance
-performance = model.model_performance(test_data=test)
-print (performance)
+   # Model performance
+   performance = model.model_performance(test_data=test)
+   print (performance)
 
-# Download the model in MOJO format. Also download the h2o-genmodel.jar file
-modelfile = model.download_mojo(path="/home/deven/Desktop/", get_genmodel_jar=True)
+   # Download the model in MOJO format. Also download the h2o-genmodel.jar file
+   modelfile = model.download_mojo(path="/home/deven/Desktop/", get_genmodel_jar=True)
 
-predictions=model.predict(test)
-predictions
+   predictions=model.predict(test)
+   predictions
+
 ``` 
 
 Here is a sample H2o iris example program that shows how a model can be created and downloaded as a MOJO using the H2o Flow GUI.
