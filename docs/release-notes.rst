@@ -9,7 +9,7 @@
 .. You may obtain a copy of the License at
 ..
 .. http://creativecommons.org/licenses/by/4.0
-..
+.............................................
 .. This file is distributed on an "AS IS" BASIS,
 .. WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 .. See the License for the specific language governing permissions and
@@ -20,16 +20,25 @@
 Acumos Java Client Release Notes
 ================================
 
+
+Version 1.0.5 March 2018
+------------------------
+* Fix : Now authentication url needed for web based onboarding
+
+Version 1.0.4 March 2018
+------------------------
+* Fix for building fat jar and rename packages
+
 Version 1.0.3 March 2018
----------------------------
+------------------------
 * Protobuf autogeneration implemented for H2o
 
-Version 1.0.2 March 2017
----------------------------
+Version 1.0.2 March 2018
+------------------------
 * Accepts csv file for protobuf generation for Generic java models
 
 Version 1.0.1 January 2018
----------------------------
+--------------------------
 * Hardening
 * Integration with Onboarding
 
