@@ -571,7 +571,7 @@ public class ClientController {
 		}
 	}
 
-	private static boolean isWindowsSys() {
+	public static boolean isWindowsSys() {
 		String osName = System.getProperty("os.name");
 		String osNameMatch = osName.toLowerCase();
 		if (osNameMatch.contains("windows"))

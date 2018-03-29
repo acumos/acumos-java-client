@@ -49,6 +49,8 @@ public class ClientControllerTest {
 		File demo4 = new File("LICENSE.txt");
 		File demo5 = new File("tokenfile.txt");
 		cientController.generateModelService(demo1, demo2, demo3, modelType, demo4, demo5);
+		modelType = "G";
+		cientController.generateModelService(demo1, demo2, demo3, modelType, demo4, demo5);
 	}
 
 	@Test
@@ -64,6 +66,7 @@ public class ClientControllerTest {
 			projectPath = projectPath + "/testdata";
 		}
 		cientController.getConfigFile(projectPath, windowsFlag);
+		cientController.getConfigFile(projectPath, false);
 	}
 
 	/*
@@ -84,6 +87,7 @@ public class ClientControllerTest {
 	@Test
 	public void getAppFileTest() throws FileNotFoundException {
 		cientController.getAppFile("/", true);
+		cientController.getAppFile("/", false);
 	}
 
 	@Test
