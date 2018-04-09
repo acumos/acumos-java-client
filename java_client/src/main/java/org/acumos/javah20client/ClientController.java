@@ -87,10 +87,10 @@ public class ClientController {
 
 			/*
 			 * If web based onboarding,there is no username or password required. In this
-			 * case, the 4th argument will be the csv file if at all it is present.
+			 * case, the 5th argument will be the csv file if at all it is present.
 			 */
-			if (args.length == 6) {
-				inputCSVFile = args[5];
+			if (args.length == 5) {
+				inputCSVFile = args[4];
 			}
 
 			JSONObject obj = new JSONObject();
