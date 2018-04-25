@@ -1,19 +1,18 @@
 syntax = "proto3";
 option java_package = "com.google.protobuf";
 option java_outer_classname = "DatasetProto";
-service samplemodelService {
+service MaliciousService {
   rpc transform (DataFrame) returns (Prediction);
 }
 message DataFrameRow {
-double DOY = 1;
-double LATITUDE = 2;
-double LONGITUDE = 3;
-double HOD = 4;
-string CALL_DURATION_SEC = 5;
+int32 length = 1;
+double entropy = 2;
+double p_vowels = 3;
+int32 num_words = 4;
 }
 message DataFrame { 
 repeated DataFrameRow rows = 1;
  }
 message Prediction {
-repeated string prediction = 1;
+repeated string malicious = 1;
 }

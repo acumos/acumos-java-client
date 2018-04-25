@@ -20,6 +20,17 @@
 Acumos Java Client Release Notes
 ================================
 
+Version 1.0.8 March 2018
+------------------------
+* Generates the correct output datatype for output message based on model inspection (More datatypes will be supported in the future)
+
+Version 1.0.7 March 2018
+------------------------
+*  Bug fix in Web based onboarding. Wrong arguments were being read.
+
+Version 1.0.6 March 2018
+------------------------
+* More test cases added
 
 Version 1.0.5 March 2018
 ------------------------

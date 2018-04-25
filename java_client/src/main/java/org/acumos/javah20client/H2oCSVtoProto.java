@@ -39,6 +39,7 @@ public class H2oCSVtoProto {
 	List<String> inputFields = new ArrayList<>();
 	List<String> outputFields = new ArrayList<>();
 	boolean modelIsSupervised = false;
+	String opDatatype;
 
 	public void getH2oModelInfo(String h2oModelFullPath, List<String> inputFields, List<String> outputFields)
 			throws Exception {
@@ -67,6 +68,28 @@ public class H2oCSVtoProto {
 
 		logger.info("Number of columns used as input for training (i.e., exclude response and offset columns). : {}",
 				mojo.getNumCols());
+
+		// Code to find the datatype of the output message
+		switch (current_model_category) {
+		case "Binomial":
+			opDatatype = "string";
+			break;
+
+		case "Multinomial":
+			opDatatype = "string";
+			break;
+
+		case "Regression":
+			opDatatype = "double";
+			break;
+
+		case "Clustering":
+			opDatatype = "int32";
+			break;
+		default:
+			opDatatype = "string";
+			break;
+		}
 
 		String[] allColumnNames = mojo.getNames();
 		List<String> inputColumnNames = new ArrayList<String>();
@@ -241,11 +264,14 @@ public class H2oCSVtoProto {
 		// supervised.
 		// If the model was unsupervised, then the header.length-1 will not be the
 		// 'target' column. Infact, there will be no target column in the csv file.
-		// In this case, we will set the datatype of that non existent column to be
-		// simply String.
+		// In this case, we will set the datatype of that expected result column to be
+		// simply string.
 		// This will be used in the model runner as String prediction.
 		if (modelIsSupervised == true) {
-			outdataTypeList.add(dataTypeList.get(header.length - 1));
+			// outdataTypeList.add(dataTypeList.get(header.length - 1));
+			// The output message dataype will not be interpreted by looking at the model
+			// considering h2o's limitation.
+			outdataTypeList.add(opDatatype);
 		} else
 			outdataTypeList.add("string");
 
