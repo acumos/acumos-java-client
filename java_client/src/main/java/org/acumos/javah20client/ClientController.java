@@ -267,19 +267,6 @@ public class ClientController {
 		HttpClient c = new DefaultHttpClient();
 		String token = null;
 
-		/*String loginURL = null;
-		
-		if (serviceUrl.contains("dev1")) {
-			loginURL = "http://cognita-dev1-vm01-core.eastus.cloudapp.azure.com:8090/onboarding-app/v2/auth";
-			logger.info("loginToAcumos: " + loginURL);
-		} else if (serviceUrl.contains("ist2")) {
-			loginURL = "http://cognita-ist2-vm01-core.eastus.cloudapp.azure.com:8090/onboarding-app/v2/auth";
-			logger.info("loginToAcumos: " + loginURL);
-		} else if (serviceUrl.contains("ist")) {
-			loginURL = "http://cognita-ist-vm01-core.eastus.cloudapp.azure.com:8090/onboarding-app/v2/auth";
-			logger.info("loginToAcumos: " + loginURL);
-		}*/
-
 		HttpPost p = new HttpPost(authUrl);
 
 		p.setEntity(new StringEntity(obj, ContentType.create("application/json")));
@@ -493,7 +480,7 @@ public class ClientController {
 
 			JSONObject met = new JSONObject();
 
-			meta.put("schema", "cognita.schema.model:0.3.0");
+			meta.put("schema", "acumos.schema.model:0.4.0");
 			// replace h2o_helloworld with model_name_for_json
 			meta.put("name", name); // name of the zip file
 			meta.put("runtime", rnt);
