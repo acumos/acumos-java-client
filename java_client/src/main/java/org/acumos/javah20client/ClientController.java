@@ -65,9 +65,7 @@ public class ClientController {
 		UrlValidator defaultValidator = new UrlValidator();
 
 		try {
-			boolean isWindows;
 			boolean modelVal;
-			isWindows = isWindowsSys();
 			File model = null;
 			File servicejar = null;
 			String username;
@@ -182,40 +180,29 @@ public class ClientController {
 
 				switch (modelType) {
 				case "H":
-					if (isWindows) {
-						servicejar = new File(path + "\\" + modelName + "Service.jar");
-						model = new File(path + "\\" + modelName + ".zip");
-					} else {
-						servicejar = new File(path + "/" + modelName + "Service.jar");
-						model = new File(path + "/" + modelName + ".zip");
-					}
+					servicejar = new File(path + File.separator + "H2OModelService.jar");
+					model = new File(path + File.separator + modelName + ".zip");
 					break;
 				case "G":
-					if (isWindows) {
-						servicejar = new File(path + "\\" + "GenericModelService.jar");
-						model = new File(path + "\\" + modelName + ".jar");
-					} else {
-						servicejar = new File(path + "/" +"GenericModelService.jar");
-						model = new File(path + "/" + modelName + ".jar");
-					}
+					servicejar = new File(path + File.separator + "GenericModelService.jar");
+					model = new File(path + File.separator + modelName + ".jar");
 					break;
-
 				default:
 					logger.info("Invalid model type");
 					break;
 				}
 				try {
-					File pbuff = client.getPBuffJar(path, isWindows);
+					File pbuff = client.getPBuffJar(path);
 
-					File congif = client.getConfigFile(path, isWindows);
+					File congif = client.getConfigFile(path);
 
-					File appFile = client.getAppFile(path, isWindows);
+					File appFile = client.getAppFile(path);
 
 					// Call generateModelService input is modelService.jar
 					client.generateModelService(model, servicejar, congif, modelType, pbuff, appFile);
 
 					// Generate Protobuf file
-					File protof = client.generateProtobuf(path, isWindows, inputCSVFile, modelType, modelName);
+					File protof = client.generateProtobuf(path, inputCSVFile, modelType, modelName);
 
 					// Generate Metadata.json file
 					client.generateMetadata(modelType, modelName);
@@ -344,7 +331,7 @@ public class ClientController {
 	}
 
 	// Generate the protobuf file from sample data file
-	public File generateProtobuf(String path, boolean isWindows, String inputCSVFile, String modelType,
+	public File generateProtobuf(String path, String inputCSVFile, String modelType,
 			String modelName) throws IOException {
 		logger.info("Generating proto file");
 		logger.info("Model type is {}", modelType);
@@ -354,25 +341,11 @@ public class ClientController {
 
 		if (inputCSVFile == null) {
 			logger.info("The input csv file is null");
-			if (isWindows) {
-				protoFile = new File(path + "\\default.proto");
-			} else {
-				protoFile = new File(path + "/default.proto");
-			}
+			protoFile = new File(path + File.separator + "default.proto");
 			return protoFile;
 		} else {
-
-			if (isWindows) {
-				inputPath = path + "\\" + inputCSVFile;
-			} else {
-				inputPath = path + "/" + inputCSVFile;
-			}
-
-			if (isWindows) {
-				h2oModelFullPath = path + "\\" + modelName + ".zip";
-			} else {
-				h2oModelFullPath = path + "/" + modelName + ".zip";
-			}
+			inputPath = path + File.separator + inputCSVFile;
+			h2oModelFullPath = path + File.separator + modelName + ".zip";
 
 			logger.info("I/P File : {} ", inputPath);
 			logger.info("Model type is {}", modelType);
@@ -391,44 +364,30 @@ public class ClientController {
 	}
 
 	// Generate the pBuff jar file from sample data file
-	public File getPBuffJar(String path, boolean isWindows) throws FileNotFoundException {
+	public File getPBuffJar(String path) throws FileNotFoundException {
 
 		logger.info("Get the protobuf jar");
 		File pBuffFile = null;
-		if (isWindows) {
-			pBuffFile = new File(path + "\\protobuf-java-3.4.0.jar");
-		} else {
-			pBuffFile = new File(path + "/protobuf-java-3.4.0.jar");
-		}
+			pBuffFile = new File(path + File.separator +"protobuf-java-3.4.0.jar");
 
 		return pBuffFile;
 	}
 
 	// Generate the modelConfig.properties file from directory
-	public File getConfigFile(String path, boolean isWindows) throws FileNotFoundException {
+	public File getConfigFile(String path) throws FileNotFoundException {
 
 		logger.info("Get modelConfig.properties");
 		File conFile = null;
-		if (isWindows) {
-			conFile = new File(path + "\\modelConfig.properties");
-		} else {
-			conFile = new File(path + "/modelConfig.properties");
-		}
-
+		conFile = new File(path + File.separator + "modelConfig.properties");
 		return conFile;
 	}
 
 	// Generate the application.properties file from directory
-	public File getAppFile(String path, boolean isWindows) throws FileNotFoundException {
+	public File getAppFile(String path) throws FileNotFoundException {
 
 		logger.info("Get application.properties");
 		File appFile = null;
-		if (isWindows) {
-			appFile = new File(path + "\\application.properties");
-		} else {
-			appFile = new File(path + "/application.properties");
-		}
-
+		appFile = new File(path + File.separator + "application.properties");
 		return appFile;
 	}
 
@@ -556,14 +515,6 @@ public class ClientController {
 		} finally {
 			httpclient.getConnectionManager().shutdown();
 		}
-	}
-
-	public static boolean isWindowsSys() {
-		String osName = System.getProperty("os.name");
-		String osNameMatch = osName.toLowerCase();
-		if (osNameMatch.contains("windows"))
-			return true;
-		return false;
 	}
 
 }

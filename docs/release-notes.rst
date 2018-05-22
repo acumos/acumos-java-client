@@ -20,6 +20,10 @@
 Acumos Java Client Release Notes
 ================================
 
+Version 1.0.9 22-May 2018
+------------------------
+* Clean windows-specific code that constructs file paths - (ACUMOS-818)
+
 Version 1.0.8 March 2018
 ------------------------
 * Generates the correct output datatype for output message based on model inspection (More datatypes will be supported in the future)

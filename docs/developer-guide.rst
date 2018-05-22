@@ -133,7 +133,7 @@ b. Create an additional supporting folder which will contain all that the Java C
 
 i) Models - In case of H2o, your model will be a MOJO zip file. In case of Generic Java, your model will be .jar file. We have included sample models for you to play around with.
 ii) Protobuf compiler for java version 3.4.0 - Download protobuf-java-3.4.0.jar from http://central.maven.org/maven2/com/google/protobuf/protobuf-java/3.4.0/ and place it in this folder.
-iii) Model runner or Service jar - For H2O rename h2o-genericjava-modelrunner.jar obtained from the 1st section to abcService.jar if your model name is abc. Place it in this folder.
+iii) Model runner or Service jar - For H2O rename h2o-genericjava-modelrunner.jar obtained from the 1st section to H2OModelService.jar. Place it in this folder.
 Rename the jar as GenericModelService.jar for Generic Java onboarding
 iv) csv file used for training the model - Place the csv file (with header having the same column names used for training) you used for training the model here. This is used for autogenerating the .proto file. If you don't have the .proto file, you will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto
 v) default.proto - This is only needed if you don't have the csv file used to train the model. In this case, Java Client cannot autogenerate the .proto file. You will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto Also make sure, 

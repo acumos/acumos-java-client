@@ -57,16 +57,8 @@ public class ClientControllerTest {
 	public void getConfigFileTest() throws FileNotFoundException {
 
 		String projectPath = System.getProperty("user.dir");
-		boolean windowsFlag = isWindowsSys();
-
-		if (windowsFlag) {
-			projectPath = projectPath + "\\testdata";
-			System.out.println("windows os");
-		} else {
-			projectPath = projectPath + "/testdata";
-		}
-		cientController.getConfigFile(projectPath, windowsFlag);
-		cientController.getConfigFile(projectPath, false);
+		projectPath = projectPath + File.separator + "testdata";
+		cientController.getConfigFile(projectPath);
 	}
 
 	/*
@@ -80,14 +72,13 @@ public class ClientControllerTest {
 	@Test
 	public void generateProtobufTest() throws IOException {
 
-		cientController.generateProtobuf("/", true, null, null, null);
+		cientController.generateProtobuf("/", null, null, null);
 
 	}
 
 	@Test
 	public void getAppFileTest() throws FileNotFoundException {
-		cientController.getAppFile("/", true);
-		cientController.getAppFile("/", false);
+		cientController.getAppFile("/");
 	}
 
 	@Test
@@ -124,13 +115,4 @@ public class ClientControllerTest {
 	 * ClientController.pushModel(serviceUrl, "modelpackage.zip", "metadata.json",
 	 * proto, token); assert (false); } catch (Exception e) { assert (true); } }
 	 */
-
-	private static boolean isWindowsSys() {
-		String osName = System.getProperty("os.name");
-		String osNameMatch = osName.toLowerCase();
-		if (osNameMatch.contains("windows"))
-			return true;
-		return false;
-	}
-
 }
