@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61573832_d4f678ba",
+        "filename": "java_client/src/main/java/org/acumos/javah20client/ClientController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-05-22T13:50:11Z",
+      "side": 1,
+      "message": "Uh, ouch, no you must not hardwire this jar and version.  this file name must move out to configuration.",
+      "revId": "cff489e589ed91bea3ea26bd43bd3310e854a800",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    }
+  ]
+}
