@@ -130,8 +130,6 @@ public class ClientController {
 						obj1.put("password", passwd);
 						obj.put("request_body", obj1);
 
-						logger.info("JSON:" + obj.toString());
-
 					} else {
 						username = args[5];
 						passwd = args[6];
@@ -139,8 +137,6 @@ public class ClientController {
 						obj1.put("username", username);
 						obj1.put("password", passwd);
 						obj.put("request_body", obj1);
-
-						logger.info("JSON:" + obj.toString());
 					}
 
 					token = loginUser(obj.toString(), authUrl);
@@ -192,14 +188,13 @@ public class ClientController {
 					break;
 				}
 				try {
-					File pbuff = client.getPBuffJar(path);
 
 					File congif = client.getConfigFile(path);
 
 					File appFile = client.getAppFile(path);
 
 					// Call generateModelService input is modelService.jar
-					client.generateModelService(model, servicejar, congif, modelType, pbuff, appFile);
+					client.generateModelService(model, servicejar, congif, modelType, appFile);
 
 					// Generate Protobuf file
 					File protof = client.generateProtobuf(path, inputCSVFile, modelType, modelName);
@@ -315,14 +310,12 @@ public class ClientController {
 	}
 
 	// Get the model.jar file
-	public void generateModelService(File model, File service, File congif, String modelType, File pbuff,
-			File appFile) {
+	public void generateModelService(File model, File service, File congif, String modelType, File appFile) {
 
 		// Pack modelService.jar and model.jar into zip file
 		List<String> files = new ArrayList<String>();
 		files.add(model.getAbsolutePath());
 		files.add(service.getAbsolutePath());
-		files.add(pbuff.getAbsolutePath());
 		files.add(appFile.getAbsolutePath());
 		if (modelType.equals("G")) {
 			files.add(congif.getAbsolutePath());
@@ -361,16 +354,6 @@ public class ClientController {
 			}
 			return protoFile;
 		}
-	}
-
-	// Generate the pBuff jar file from sample data file
-	public File getPBuffJar(String path) throws FileNotFoundException {
-
-		logger.info("Get the protobuf jar");
-		File pBuffFile = null;
-			pBuffFile = new File(path + File.separator +"protobuf-java-3.4.0.jar");
-
-		return pBuffFile;
 	}
 
 	// Generate the modelConfig.properties file from directory

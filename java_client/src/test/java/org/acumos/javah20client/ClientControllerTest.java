@@ -46,11 +46,10 @@ public class ClientControllerTest {
 		File demo1 = new File("default.proto");
 		File demo2 = new File("modelConfig.properties");
 		File demo3 = new File("metadata.json");
-		File demo4 = new File("LICENSE.txt");
-		File demo5 = new File("tokenfile.txt");
-		cientController.generateModelService(demo1, demo2, demo3, modelType, demo4, demo5);
+		File demo4 = new File("tokenfile.txt");
+		cientController.generateModelService(demo1, demo2, demo3, modelType, demo4);
 		modelType = "G";
-		cientController.generateModelService(demo1, demo2, demo3, modelType, demo4, demo5);
+		cientController.generateModelService(demo1, demo2, demo3, modelType, demo4);
 	}
 
 	@Test
