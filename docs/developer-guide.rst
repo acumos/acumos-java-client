@@ -22,7 +22,7 @@ Acumos Java Client Developer Guide
 Overview
 ========
 - It is 1 part of the Acumos Tools for H2o.ai and Generic Java models.
-- The Java client (https://gerrit.acumos.org/r/acumos-java-client) is a command line utility that the Modeller/Onboarder/ ML expert/Data Scientist runs on his local machine or wherever he has the model to onboard it into Acumos.
+- The Java client is a command line utility that the Modeller/Onboarder/ ML expert/Data Scientist runs on his local machine or wherever he has the model to onboard it into Acumos.
 - Both of them together provide a way to use H2o.ai and Generic Java in the Acumos Platform. 
 
 
@@ -32,7 +32,7 @@ Architecture and Design
 =======================
 
 ---------------------------------------------------------------------
-Java Client Library (https://gerrit.acumos.org/r/acumos-java-client):
+Java Client Library:
 ---------------------------------------------------------------------
 Allows the H2o or Generic Java model and other artifacts to become available in the onboarding server for the H2o Model runner to be able to use them.
 
@@ -43,7 +43,7 @@ Allows the H2o or Generic Java model and other artifacts to become available in 
 - Or the Java client library itself, onboards the model onto the onboarding server if the modeler provides the onboarding server URL. This is CLI-based onboarding. We will also see how to do this in this article.
 
 ----------------------------------------------------------------
-Model Runner (https://gerrit.acumos.org/r/generic-model-runner):
+Model Runner:
 ----------------------------------------------------------------
  Allows the onboarded Model to be run as containerized microservice and allows other external applications to use the onboarded Model for predictions.
 
@@ -61,7 +61,7 @@ Technology and Frameworks
  
 Project Resources
 =================
-- Gerrit repo: https://gerrit.acumos.org/r/acumos-java-client
+- Gerrit repo: acumos-java-client
 - `Jira <https://jira.acumos.org>`_  acumos-java-client
 
 
@@ -72,16 +72,16 @@ For the Modeller/Onboarder/ ML expert/Data Scientist:
 -----------------------------------------------------
 You will need the jars from the above 2 projects:
 
-You can download the Java Client (ie. executable jar for https://gerrit.acumos.org/r/acumos-java-client project) from Nexus. 
+You can download the Java Client (ie. executable jar of gerrit repo - acumos-java-client project) from Nexus. 
 Go to https://nexus.acumos.org/#nexus-search;quick~java-client and download the latest version of the Java client jar.
 
-You can download the h2o-genericjava-modelrunner (ie. executable jar for https://gerrit.acumos.org/r/generic-model-runner project) from Nexus. 
+You can download the h2o-genericjava-modelrunner (ie. executable jar of gerrit repo - generic-model-runner project) from Nexus. 
 Go to https://nexus.acumos.org/#nexus-search;quick~runner and download the latest version of the h2o-genericjava-modelrunner jar.
 
 ------------------
 For the Developer:
 ------------------
-To clone the client library (https://gerrit.acumos.org/r/acumos-java-client) project:
+To clone the client library project:
 `````````````````````````````````````````````````````````````````````````````````````
 git clone https://gerrit.acumos.org/r/acumos-java-client
 ````````````````````````````````````````````````````````
@@ -100,11 +100,11 @@ This will give you the same Java Client jar mentioned earlier.
 
 
 
-To clone the model runner (https://gerrit.acumos.org/r/generic-model-runner) project:
+To clone the model runner project:
 `````````````````````````````````````````````````````````````````````````````````````
 git clone https://gerrit.acumos.org/r/generic-model-runner
 ``````````````````````````````````````````````````````````
-To build the model runner project, refer to instructions on https://gerrit.acumos.org/r/generic-model-runner
+To build the model runner project, refer to instructions provided in generic-model-runner folder
 This will give you the same h2o-genericjava-modelrunner mentioned earlier.
 
 
@@ -132,11 +132,10 @@ a. Place Java Client jar in one folder locally. This is the folder from which yo
 b. Create an additional supporting folder which will contain all that the Java Client jar needs to run. It will contain-
 
 i) Models - In case of H2o, your model will be a MOJO zip file. In case of Generic Java, your model will be .jar file. We have included sample models for you to play around with.
-ii) Protobuf compiler for java version 3.4.0 - Download protobuf-java-3.4.0.jar from http://central.maven.org/maven2/com/google/protobuf/protobuf-java/3.4.0/ and place it in this folder.
-iii) Model runner or Service jar - For H2O rename h2o-genericjava-modelrunner.jar obtained from the 1st section to H2OModelService.jar. Place it in this folder.
+ii) Model runner or Service jar - For H2O rename h2o-genericjava-modelrunner.jar obtained from the 1st section to H2OModelService.jar. Place it in this folder.
 Rename the jar as GenericModelService.jar for Generic Java onboarding
-iv) csv file used for training the model - Place the csv file (with header having the same column names used for training) you used for training the model here. This is used for autogenerating the .proto file. If you don't have the .proto file, you will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto
-v) default.proto - This is only needed if you don't have the csv file used to train the model. In this case, Java Client cannot autogenerate the .proto file. You will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto Also make sure, 
+iii) csv file used for training the model - Place the csv file (with header having the same column names used for training) you used for training the model here. This is used for autogenerating the .proto file. If you don't have the .proto file, you will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto
+iv) default.proto - This is only needed if you don't have the csv file used to train the model. In this case, Java Client cannot autogenerate the .proto file. You will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto Also make sure, 
 the default.proto file for the model is in the following format. You need to appropriately replace the data and datatypes under DataFrameRow and Prediction according to your model.
 
 .. code-block:: python
