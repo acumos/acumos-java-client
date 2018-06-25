@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f32935f_4c85dd76",
+        "filename": "INFO.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2018-06-25T18:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6c9f9c3_0d6ea053",
+      "range": {
+        "startLine": 52,
+        "startChar": 16,
+        "endLine": 52,
+        "endChar": 18
+      },
+      "revId": "8f9a632278f05bb04b163c991ae5b14c6580fe45",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66185010_4efacf6a",
         "filename": "INFO.yaml",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-25T17:42:46Z",
       "side": 1,
       "message": "India/Pune for Jabeen",
+      "range": {
+        "startLine": 57,
+        "startChar": 16,
+        "endLine": 57,
+        "endChar": 17
+      },
+      "revId": "8f9a632278f05bb04b163c991ae5b14c6580fe45",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d7ac51d_7981d225",
+        "filename": "INFO.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2018-06-25T18:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66185010_4efacf6a",
       "range": {
         "startLine": 57,
         "startChar": 16,
