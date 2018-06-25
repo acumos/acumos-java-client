@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6c9f9c3_0d6ea053",
+        "filename": "INFO.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-06-25T17:42:46Z",
+      "side": 1,
+      "message": "America/New_York for Deven, please",
+      "range": {
+        "startLine": 52,
+        "startChar": 16,
+        "endLine": 52,
+        "endChar": 18
+      },
+      "revId": "8f9a632278f05bb04b163c991ae5b14c6580fe45",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66185010_4efacf6a",
+        "filename": "INFO.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-06-25T17:42:46Z",
+      "side": 1,
+      "message": "India/Pune for Jabeen",
+      "range": {
+        "startLine": 57,
+        "startChar": 16,
+        "endLine": 57,
+        "endChar": 17
+      },
+      "revId": "8f9a632278f05bb04b163c991ae5b14c6580fe45",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    }
+  ]
+}
