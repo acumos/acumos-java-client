@@ -46,6 +46,30 @@
       "revId": "2acb98796dd461186a854a58e196730b4ea5513d",
       "serverId": "655300a2-7a56-4504-9153-881edd907bea",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7b459d1_cb3e0be6",
+        "filename": "INFO.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-06-26T13:57:30Z",
+      "side": 1,
+      "message": "Jessica - you are right - MOB has 2 weekly meetings at different times with different Zoom meeting URLs",
+      "parentUuid": "6fd480a5_c6e32c1e",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 18
+      },
+      "revId": "2acb98796dd461186a854a58e196730b4ea5513d",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
     }
   ]
 }
