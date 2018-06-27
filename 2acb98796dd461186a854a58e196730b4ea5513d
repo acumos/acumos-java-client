@@ -93,6 +93,30 @@
       "revId": "2acb98796dd461186a854a58e196730b4ea5513d",
       "serverId": "655300a2-7a56-4504-9153-881edd907bea",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d422d401_26fea19c",
+        "filename": "INFO.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-06-27T13:12:18Z",
+      "side": 1,
+      "message": "These committers look correct based on the repo activity that I\u0027ve seen over the past months, and what is listed here: https://wiki.acumos.org/display/AC/Acumos+Architecture+Mapping+to+Repos+Jira+etc#AcumosArchitectureMappingtoReposJiraetc-MappingofRepostoJira%22Components%22,Jenkinsjobs,andCommitters\n\nI think these committers were pulled by the LF support team from LDAP using a script .",
+      "parentUuid": "9fc33541_517b17d0",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 11
+      },
+      "revId": "2acb98796dd461186a854a58e196730b4ea5513d",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
     }
   ]
 }
