@@ -117,6 +117,30 @@
       "revId": "2acb98796dd461186a854a58e196730b4ea5513d",
       "serverId": "655300a2-7a56-4504-9153-881edd907bea",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47c2d4fa_ef1574ef",
+        "filename": "INFO.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 212
+      },
+      "writtenOn": "2018-06-27T20:31:43Z",
+      "side": 1,
+      "message": "Ok it\u0027s clear for me now",
+      "parentUuid": "d422d401_26fea19c",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 11
+      },
+      "revId": "2acb98796dd461186a854a58e196730b4ea5513d",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
     }
   ]
 }
