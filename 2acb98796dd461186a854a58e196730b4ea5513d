@@ -70,6 +70,29 @@
       "revId": "2acb98796dd461186a854a58e196730b4ea5513d",
       "serverId": "655300a2-7a56-4504-9153-881edd907bea",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fc33541_517b17d0",
+        "filename": "INFO.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 212
+      },
+      "writtenOn": "2018-06-27T07:36:10Z",
+      "side": 1,
+      "message": "the listed committers here are not listed as committers in the on-boarding home page\n\nUp to now my \"official\" committers are Guy Jacobson and Mukthar Shaik does I have to add you as committers also ?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 11
+      },
+      "revId": "2acb98796dd461186a854a58e196730b4ea5513d",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
     }
   ]
 }
