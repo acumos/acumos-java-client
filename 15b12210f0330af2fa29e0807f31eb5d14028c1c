@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efb7b64e_836e90b7",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2018-07-24T19:12:25Z",
+      "side": 1,
+      "message": "I think you should put back the sentence about having \".jar\" file in case of generic java. In addition to that, we must clarify that the model jar need to be creates as a fat jar with dependencies in it, otherwise it will not work.",
+      "revId": "15b12210f0330af2fa29e0807f31eb5d14028c1c",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5435e332_004c0d2a",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2018-07-24T19:12:25Z",
+      "side": 1,
+      "message": "does this port matter? for me I used 8334, while testing generic java.",
+      "range": {
+        "startLine": 176,
+        "startChar": 15,
+        "endLine": 176,
+        "endChar": 19
+      },
+      "revId": "15b12210f0330af2fa29e0807f31eb5d14028c1c",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7727b696_19d29eca",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2018-07-24T19:12:25Z",
+      "side": 1,
+      "message": "I believe this must be jar not zip for generic java. Are you sure?\n\ndefault_model\u003d/models/model.jar",
+      "range": {
+        "startLine": 184,
+        "startChar": 3,
+        "endLine": 184,
+        "endChar": 34
+      },
+      "revId": "15b12210f0330af2fa29e0807f31eb5d14028c1c",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4b4daeb_7996636f",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2018-07-24T19:12:25Z",
+      "side": 1,
+      "message": "I believe this must be G for generic java. Better mention that here too?",
+      "range": {
+        "startLine": 193,
+        "startChar": 14,
+        "endLine": 193,
+        "endChar": 15
+      },
+      "revId": "15b12210f0330af2fa29e0807f31eb5d14028c1c",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71486029_3222029f",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2018-07-24T19:12:25Z",
+      "side": 1,
+      "message": "better to add a sample block of modelConfig.properties file for generic java. For example file containing values:\n\nmodelClassName\u003dorg.acumos.ml.XModel\nmodelMethod\u003dpredict",
+      "range": {
+        "startLine": 194,
+        "startChar": 24,
+        "endLine": 194,
+        "endChar": 46
+      },
+      "revId": "15b12210f0330af2fa29e0807f31eb5d14028c1c",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    }
+  ]
+}
