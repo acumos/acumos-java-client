@@ -129,14 +129,18 @@ Preparing to Onboard your H2o or a Generic Java Model:
 ------------------------------------------------------
 a. Place Java Client jar in one folder locally. This is the folder from which you intend to run the jar. After the jar runs, the created artifacts will also be available in this folder. You will use some of these artifacts if you are doing Web-based onboarding. We will see this later.
 
-b. Create an additional supporting folder which will contain all that the Java Client jar needs to run. It will contain-
+ |image0|
 
-i) Models - In case of H2o, your model will be a MOJO zip file. In case of Generic Java, your model will be .jar file. We have included sample models for you to play around with.
-ii) Model runner or Service jar - For H2O rename h2o-genericjava-modelrunner.jar obtained from the 1st section to H2OModelService.jar. Place it in this folder.
-Rename the jar as GenericModelService.jar for Generic Java onboarding
-iii) csv file used for training the model - Place the csv file (with header having the same column names used for training) you used for training the model here. This is used for autogenerating the .proto file. If you don't have the .proto file, you will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto
-iv) default.proto - This is only needed if you don't have the csv file used to train the model. In this case, Java Client cannot autogenerate the .proto file. You will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto Also make sure, 
-the default.proto file for the model is in the following format. You need to appropriately replace the data and datatypes under DataFrameRow and Prediction according to your model.
+b. Prepare a supporting folder with the following contents. Items of this folder will be used as input for the java client jar. 
+
+ |image1|
+
+It will contain-
+i) Models - In case of H2o, your model will be a MOJO zip file. 
+ii) Protobuf compiler for java version 3.4.0 - Download protobuf-java-3.4.0.jar from http://central.maven.org/maven2/com/google/protobuf/protobuf-java/3.4.0/ and place it in this folder.
+iii) Model runner or Service jar - For H2O rename h2o-genericjava-modelrunner.jar obtained from the 1st section to abcService.jar if your model name is abc. Place it in this folder. 
+iv) csv file used for training the model - Place the csv file (with header having the same column names used for training but without the quotes (“ ”) ) you used for training the model here. This is used for autogenerating the .proto file. If you don’t have the .proto file, you will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto.
+v)  default.proto - This is only needed if you don’t have the csv file used to train the model. In this case, Java Client cannot autogenerate the .proto file. You will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto Also make sure, the default.proto file for the model is in the following format. You need to appropriately replace the data and datatypes under DataFrameRow and Prediction according to your model.
 
 .. code-block:: python
 
@@ -162,6 +166,65 @@ the default.proto file for the model is in the following format. You need to app
    }
 
 vi) application.properties file - Mention the port number on which the service exposed by the model will finally run on.
+
+
+.. code-block:: python
+
+   ###
+   # ===============LICENSE_START=======================================================
+   # Acumos
+   # ===================================================================================
+   # Copyright (C) 2017 AT&T Intellectual Property & Tech Mahindra. All rights reserved.
+   # ===================================================================================
+   # This Acumos software file is distributed by AT&T and Tech Mahindra
+   # under the Apache License, Version 2.0 (the "License");
+   # you may not use this file except in compliance with the License.
+   # You may obtain a copy of the License at
+   #  
+   #      http://www.apache.org/licenses/LICENSE-2.0
+   #  
+   # This file is distributed on an "AS IS" BASIS,
+   # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   # See the License for the specific language governing permissions and
+   # limitations under the License.
+   # ===============LICENSE_END=========================================================
+   ###
+
+   server.contextPath=/modelrunner       
+   # IF WORKING WITH MODEL CONNECTOR AND COMPOSITE SOLUTION, THE #server.contextPath will be / 
+   # NOTE: THIS WILL TAKE AWAY SWAGGER
+   server.port=8336
+
+   spring.http.multipart.max-file-size=100MB
+   spring.http.multipart.max-request-size=100MB
+
+   # Linux version
+
+   #default_model=/models/model.jar
+   default_model=/models/Model.zip
+   default_protofile=/models/default.proto
+
+   logging.file = ./logs/modelrunner.log 
+
+   # The value of model_type can be H or G
+   # if model_type is H, then the /predict method will use H2O model; otherwise, it will use generic Model
+   # if model_type is not present, then the default is H
+
+   model_type=H
+   model_config=/models/modelConfig.properties
+
+   # Linux some properties are specific to java generic models
+
+   # The plugin_root path has to be outside of ModelRunner root or the code won't work 
+   # Default proto java file, classes and jar
+   # DatasetProto.java will be in $plugin_root\src
+   # DatasetProto$*.classes will be in $plugin_root\classes
+   # pbuff.jar will be in $plugin_root\classes
+
+   plugin_root=/tmp/plugins
+
+
+
 vii) modelConfig.properties - Add this file only in case of Generic Java model onboarding. This file contains the modelMethod and modelClassName of the model.
 
 
@@ -171,13 +234,18 @@ Onboarding your model
 
 Java Client jar is the executable client jar file.
 
-For Web-based onboarding of H2o models, the parameters to run the client jar are: 
+For Web-based onboarding of H2o models, the parameters to run the client jar are:
+1.	Current Folder path : Folder path where you want the output modeldump.zip file.
+2.	Model Type for H2o : H
+3.	Supporting folder path : Full Folder path of the supporting folder which contains items
+4.	Name of the model : For h2o just the name of the model without the .zip extension. Make sure this matches name of the supplied MOJO model file exactly.
+5.	Input csv file : csv file that was used for training the model. Include the .csv extension in the csv file name. This will be used to autogenerate the default.proto file. This parameter will be empty if you yourself have supplied a default.proto for your model.
 
-1. Current Folder path : Full folder path in which Java client jar is placed and run from.
-2. Model Type for H2o : H 
-3. Supporting folder path : Full Folder path of the supporting folder which contains items 
-4. Name of the model : For h2o just the name of the model without the .zip extension. Make sure this matches name of the supplied MOJO model file exactly.
-5. Input csv file : csv file that was used for training the model. Include the .csv extension in the csv file name. This will be used to autogenerate the default.proto file. This parameter will be empty if you yourself have supplied a default.proto for your model.
+See example below for how to run the client jar and how the modeldump.zip artifact appears after its successful run:
+ |image2|
+ 
+ |image3|
+ 
 
 For CLI-based onabording of H2o models, the parameters to run the client jar are: 
 
@@ -210,27 +278,6 @@ For CLI-based onabording of Generic models, the parameters to run the client jar
 7. Password of the Portal MarketPlace account
 8. Input csv file : csv file that was used for training the model. Include the .csv extension in the csv file name. This will be used to autogenerate the default.proto file. This parameter will be empty if you yourself have supplied a default.proto for your model.
 
-----------------------------------------
-Example onboarding and folder structure:
-----------------------------------------
-1. I place my Javaclient.jar in /home/deven/tryoutjavaclient/ folder. This is where I intend to run the jar from. After the jar runs, the created artifacts will also be available in this folder.
-
-|image0|
-
-2. I prepare a supporting folder /home/deven/mojoprinter2/all-models like so. It has everything I need to onboard my java model.
-In this case, I am onboarding samplemodel.zip which is a K-means Clustering H2o model which does partitioning of a large calls dataset.
-
-|image1|
-
-3. I intend to do Web-based onboarding for my H2o model called samplemodel.zip. And I intend to use the proto file autogeneration capabilities of the Java client.
-So I also pass along the csv file I used to train it. The sample command looks like this-
-
-|image2|
-
-4. Now I go back to /home/deven/tryoutjavaclient/ (i.e from where I ran the Java client) to find the generated artifacts. I will now manually upload the metadata.json file, modelpackage.zip and the default.proto file to the web interface of the marketplace.
-
-|image3|
-
  
 How to Test
 ===========
@@ -250,8 +297,11 @@ Onboarding/ Publishing to the Acumos marketplace
 - If you use Web-based onboarding, 
 a. After you run the client, you will see a modeldump.zip file generated in the same folder where we ran the Java Client for.
 b. Upload this file in the Web based interface. 
-c. Enter the model's name. This name should be same as the one you named it when running the jar.
+c. Enter a name for the model.
 d. You will be able to see a success method in the Web interface. you will be able to see a success method in the Web interface. 
+
+ |image9|
+
 - If you use CLI based onboarding,  you don't need to perform a-d outlined just above. The Java client will do it for you. You will see a message on the terminal that tells it was onboarded succesfully.
 - The needed TOSCA artifacts, docker images are produced and the model is published to the marketplace.
 - You and your teammates can now see, rate, review, comment, collaborate on your model in the Acumos marketplace.
@@ -345,7 +395,7 @@ Here is a sample H2o iris example program that shows how a model can be created 
  |image8|
  
 
-.. |image0| image:: ./images/before_running_javaclient.PNG
+.. |image0| image:: ./images/downloaded_java_client.png
 .. |image1| image:: ./images/supporting_folder.PNG
 .. |image2| image:: ./images/running_the_java_client.PNG
 .. |image3| image:: ./images/after_running_java_client.PNG
@@ -354,3 +404,4 @@ Here is a sample H2o iris example program that shows how a model can be created 
 .. |image6| image:: ./images/3.png
 .. |image7| image:: ./images/4.png
 .. |image8| image:: ./images/5.png
+.. |image9| image:: ./images/upload_modeldump.png
