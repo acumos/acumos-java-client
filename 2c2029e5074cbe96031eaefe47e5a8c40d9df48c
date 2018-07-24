@@ -22,6 +22,29 @@
       "revId": "2c2029e5074cbe96031eaefe47e5a8c40d9df48c",
       "serverId": "655300a2-7a56-4504-9153-881edd907bea",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e796caf5_2bcfd2c6",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2018-07-24T18:53:56Z",
+      "side": 1,
+      "message": "the license text in the middle of the file do not seem right. It should be at the top of the file.",
+      "range": {
+        "startLine": 173,
+        "startChar": 2,
+        "endLine": 191,
+        "endChar": 6
+      },
+      "revId": "2c2029e5074cbe96031eaefe47e5a8c40d9df48c",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
     }
   ]
 }
