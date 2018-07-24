@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "220a798a_3b3ee754",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-07-24T18:42:37Z",
+      "side": 1,
+      "message": "Is this intended to be an example properties file?  If so please remove the license block that\u0027s totally irrelevant here.",
+      "range": {
+        "startLine": 171,
+        "startChar": 7,
+        "endLine": 171,
+        "endChar": 8
+      },
+      "revId": "2c2029e5074cbe96031eaefe47e5a8c40d9df48c",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    }
+  ]
+}
