@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e94c895_c3f12d05",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-07-25T15:14:03Z",
+      "side": 1,
+      "message": "Please remove this section and point instead to the instructions in the Portal and Marketplace User Guide  https://docs.acumos.org/en/latest/AcumosUser/portal-user/portal/onboarding-java-guide.html",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 264
+      },
+      "revId": "eb2eec40b528d177c8b6e19a7b7c62f93dc0689c",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    }
+  ]
+}
