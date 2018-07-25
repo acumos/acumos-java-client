@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ffa2ab6_79e0ba38",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-07-25T12:44:22Z",
+      "side": 1,
+      "message": "Is version 3.4.0 specifically required?  If not, simply say \"download latest; these instructions were developed using version 3.4.0\"",
+      "range": {
+        "startLine": 140,
+        "startChar": 39,
+        "endLine": 140,
+        "endChar": 44
+      },
+      "revId": "ab6d838ddd22245fc9e49db6ed717824e04d463b",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3626cb11_11427207",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-07-25T12:44:22Z",
+      "side": 1,
+      "message": "What are other choices for code block in RST? Perhaps using \"python\" isn\u0027t the best.  This is a java-style properties file.",
+      "range": {
+        "startLine": 171,
+        "startChar": 16,
+        "endLine": 171,
+        "endChar": 22
+      },
+      "revId": "ab6d838ddd22245fc9e49db6ed717824e04d463b",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25db472f_e719abb0",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-07-25T12:44:22Z",
+      "side": 1,
+      "message": "Is the prefix org.acumos required?  If not maybe use an example like \"org.myname.mywork.\" or something silly like that",
+      "range": {
+        "startLine": 217,
+        "startChar": 15,
+        "endLine": 217,
+        "endChar": 25
+      },
+      "revId": "ab6d838ddd22245fc9e49db6ed717824e04d463b",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37dce2fa_e5028ff5",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-07-25T12:44:22Z",
+      "side": 1,
+      "message": "Is there a character missing here?",
+      "revId": "ab6d838ddd22245fc9e49db6ed717824e04d463b",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fbbdf3d_8d1db5b7",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-07-25T12:44:22Z",
+      "side": 1,
+      "message": "Should this be a two-letter code?",
+      "range": {
+        "startLine": 244,
+        "startChar": 24,
+        "endLine": 244,
+        "endChar": 26
+      },
+      "revId": "ab6d838ddd22245fc9e49db6ed717824e04d463b",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5f4eaf7_2de94428",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-07-25T12:44:22Z",
+      "side": 1,
+      "message": "Should this be a two-letter code?",
+      "range": {
+        "startLine": 264,
+        "startChar": 33,
+        "endLine": 264,
+        "endChar": 35
+      },
+      "revId": "ab6d838ddd22245fc9e49db6ed717824e04d463b",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab34f9ec_55b52085",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-07-25T12:44:22Z",
+      "side": 1,
+      "message": "This step is no longer available in web onboarding.",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 30
+      },
+      "revId": "ab6d838ddd22245fc9e49db6ed717824e04d463b",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4504675f_fb8d0440",
+        "filename": "java_client/pom.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2018-07-25T12:44:22Z",
+      "side": 1,
+      "message": "If there are no code changes -- if no new deployment is required -- you don\u0027t have to bump the version number. The docs get deployed automagically to readthedocs.io",
+      "range": {
+        "startLine": 6,
+        "startChar": 15,
+        "endLine": 6,
+        "endChar": 16
+      },
+      "revId": "ab6d838ddd22245fc9e49db6ed717824e04d463b",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    }
+  ]
+}
