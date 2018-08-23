@@ -1,0 +1,441 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b66bf5c4_ea2f8aaf",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "this line should be removed",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 69
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "800fc837_65891e2c",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "this line should only be as long as the line above it - the dashed line means the line above is a Section Title (having the line that long causes the docs-verify job to throw a warning for this line)",
+      "range": {
+        "startLine": 37,
+        "startChar": 19,
+        "endLine": 37,
+        "endChar": 69
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "871e094f_04e95f40",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "this line should be removed",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 64
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "672c53f2_2cc701c0",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "this line should only be as long as the line above it - the dashed line means the line above is a Section Title",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 64
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49a369ac_abf1aa77",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "this line of \"-\" is not needed and may be deleted",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 53
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "265de81a_daaf0a0a",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "Since this is be a guide for developers working on the code, maybe this section can be deleted since it\u0027s aimed at data scientists.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 129
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d055a6ba_3ffe9ed5",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "this line should be removed",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 18
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8f36d4e_f6798de5",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "Actually, this may be removed as well. The section is \"Development Setup\" so there really is no need for a subsection called \"For the Developer\"",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 18
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6580e5a1_137aa35f",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "this line can be deleted since it makes the line above it a section title, which isn\u0027t needed here",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 85
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f55617b_a21e3504",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "this line may be deleted since it make the line above it a section title, which isn\u0027t needed here",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 56
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8967655_e37c06a4",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "this line may be deleted since it make the line above it a section title, which isn\u0027t needed here",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 34
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a26f9257_da9fcb04",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "this line may be deleted since it make the line above it a section title, which isn\u0027t needed here",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 17
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a66c5a9_1602df04",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "this line may be deleted since it make the line above it a section title, which isn\u0027t needed here",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 85
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3b96520_ceafdfc4",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "this line may be deleted since it make the line above it a section title, which isn\u0027t needed here",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 58
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78dfe31b_2630b650",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "this section may be removed",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 10
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0da5305c_ce520f7b",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "I think this can be removed; a new section title isn\u0027t needed here",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 18
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "597ccea7_a95a7a39",
+        "filename": "docs/developer-guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "This seems like the same information that\u0027s in the Java client onboarding section of the Portal User Guide. It is probably best to delete this whole \"how to run\" section.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 34
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1f84677_06e7f619",
+        "filename": "docs/index.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "Since there aren\u0027t any tutorials, perhaps it would be better to remove this line and delete the tutorials directory",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b24d35d_fc0fea81",
+        "filename": "docs/tutorials/lesson1.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 94
+      },
+      "writtenOn": "2018-08-23T16:05:37Z",
+      "side": 1,
+      "message": "This file needs a title line, something like:\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nTutorial 1\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "ae1ae0797701b2158fa7cb0f983a4c290bef07f7",
+      "serverId": "655300a2-7a56-4504-9153-881edd907bea",
+      "unresolved": false
+    }
+  ]
+}
