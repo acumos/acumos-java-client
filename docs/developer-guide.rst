@@ -8,13 +8,14 @@
 .. you may not use this file except in compliance with the License.
 .. You may obtain a copy of the License at
 .. 
-..      http://creativecommons.org/licenses/by/4.0
+.. http://creativecommons.org/licenses/by/4.0
 .. 
 .. This file is distributed on an "AS IS" BASIS,
 .. WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 .. See the License for the specific language governing permissions and
 .. limitations under the License.
 .. ===============LICENSE_END=========================================================
+
 ==================================
 Acumos Java Client Developer Guide
 ==================================
@@ -67,7 +68,7 @@ Project Resources
 
 Development Setup
 =================
----------- 
+-----------------------------------------------------
 For the Modeller/Onboarder/ ML expert/Data Scientist:
 -----------------------------------------------------
 You will need the jars from the above 2 projects:
@@ -114,11 +115,13 @@ You must have the following installed on your machine-
 For the Modeller/Onboarder/ ML expert/Data Scientist:
 -----------------------------------------------------
 - Java 1.8
-----------
+
+------------------
 For the Developer:
 ------------------
 - Java 1.8
 - Maven
+
 It is a Maven Project. You can clean, install, test as with any Maven project.
  
 
@@ -128,12 +131,10 @@ How to Run
 Preparing to Onboard your H2o or a Generic Java Model:
 ------------------------------------------------------
 a. Place Java Client jar in one folder locally. This is the folder from which you intend to run the jar. After the jar runs, the created artifacts will also be available in this folder. You will use some of these artifacts if you are doing Web-based onboarding. We will see this later.
-
 b. Create an additional supporting folder which will contain all that the Java Client jar needs to run. It will contain-
 
 i) Models - In case of H2o, your model will be a MOJO zip file. In case of Generic Java, your model will be .jar file. We have included sample models for you to play around with.
-ii) Model runner or Service jar - For H2O rename h2o-genericjava-modelrunner.jar obtained from the 1st section to H2OModelService.jar. Place it in this folder.
-Rename the jar as GenericModelService.jar for Generic Java onboarding
+ii) Model runner or Service jar - For H2O rename h2o-genericjava-modelrunner.jar obtained from the 1st section to H2OModelService.jar. Place it in this folder.Rename the jar as GenericModelService.jar for Generic Java onboarding.
 iii) csv file used for training the model - Place the csv file (with header having the same column names used for training) you used for training the model here. This is used for autogenerating the .proto file. If you don't have the .proto file, you will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto
 iv) default.proto - This is only needed if you don't have the csv file used to train the model. In this case, Java Client cannot autogenerate the .proto file. You will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto Also make sure, 
 the default.proto file for the model is in the following format. You need to appropriately replace the data and datatypes under DataFrameRow and Prediction according to your model.
@@ -247,11 +248,13 @@ For developers:
 Onboarding/ Publishing to the Acumos marketplace
 ------------------------------------------------
 - You will be able to get a success message if your model was onboarded successfully. 
-- If you use Web-based onboarding, 
+- If you use Web-based onboarding,
+
 a. After you run the client, you will see a modeldump.zip file generated in the same folder where we ran the Java Client for.
 b. Upload this file in the Web based interface. 
 c. Enter the model's name. This name should be same as the one you named it when running the jar.
 d. You will be able to see a success method in the Web interface. you will be able to see a success method in the Web interface. 
+
 - If you use CLI based onboarding,  you don't need to perform a-d outlined just above. The Java client will do it for you. You will see a message on the terminal that tells it was onboarded succesfully.
 - The needed TOSCA artifacts, docker images are produced and the model is published to the marketplace.
 - You and your teammates can now see, rate, review, comment, collaborate on your model in the Acumos marketplace.
