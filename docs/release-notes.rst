@@ -20,9 +20,14 @@
 Acumos Java Client Release Notes
 ================================
 
+Version 1.1.0 27-August 2018
+----------------------------
+* `ACUMOS-1337 <https://jira.acumos.org/browse/ACUMOS-1337/>`_
+* `ACUMOS-1312 <https://jira.acumos.org/browse/ACUMOS-1312/>`_
+
 Version 1.0.9 22-May 2018
 -------------------------
-* Clean windows-specific code that constructs file paths - (ACUMOS-818)
+* `ACUMOS-818 <https://jira.acumos.org/browse/ACUMOS-818/>`_
 
 Version 1.0.8 March 2018
 ------------------------
