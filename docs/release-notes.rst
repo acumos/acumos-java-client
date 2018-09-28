@@ -20,10 +20,15 @@
 Acumos Java Client Release Notes
 ================================
 
-Version 1.1.0 27-August 2018
+Version 1.11.0 28-September 2018
 ----------------------------
 * `ACUMOS-1337 <https://jira.acumos.org/browse/ACUMOS-1337/>`_
 * `ACUMOS-1312 <https://jira.acumos.org/browse/ACUMOS-1312/>`_
+
+Version 1.10.0 5-June 2018
+----------------------------
+* `ACUMOS-909 <https://jira.acumos.org/browse/ACUMOS-909/>`_
+* `ACUMOS-954 <https://jira.acumos.org/browse/ACUMOS-954/>`_
 
 Version 1.0.9 22-May 2018
 -------------------------
