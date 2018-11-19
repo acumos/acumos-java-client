@@ -154,8 +154,8 @@ public class ClientController {
 					// Generate Metadata.json file
 					client.generateMetadata(modelType, modelName);
 
-					if (onboardingType.equalsIgnoreCase("webonboard")) {
-						// if (!valid) {
+					if (onboardingType != null && onboardingType.equalsIgnoreCase("webonboard")) {
+						logger.info("Creating modeldump for web based onboarding");
 						List<String> files = new ArrayList<>();
 						files.add(new File("modelpackage.zip").getAbsolutePath());
 						files.add(new File("metadata.json").getAbsolutePath());
@@ -462,6 +462,8 @@ public class ClientController {
 		JSONObject obj = new JSONObject();
 		JSONObject obj1 = new JSONObject();
 		String token = null;
+		
+		logger.info("Token Type is: " + tokenType);
 
 		if (tokenType.equalsIgnoreCase("apitoken")) {
 
