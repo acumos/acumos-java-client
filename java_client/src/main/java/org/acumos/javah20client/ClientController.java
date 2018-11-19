@@ -17,14 +17,18 @@
 package org.acumos.javah20client;
 
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.Scanner;
 import java.util.UUID;
 import java.util.zip.ZipEntry;
@@ -63,116 +67,64 @@ public class ClientController {
 
 		ClientController client = new ClientController();
 		UrlValidator defaultValidator = new UrlValidator();
+		String serviceUrl = null, authUrl = null;
 
 		try {
 			boolean modelVal;
 			File model = null;
 			File servicejar = null;
-			String username;
-			String passwd;
-			String token = null;
+			String token = null, tokenType = null, tokenFilePath = null;
 			int count = 1;
 			String inputCSVFile = null;
-			String authUrl, modelType, path, modelName;
+			String modelType = null, path = null, modelName = null, onboardingType = null, dumpPath = null;
 
 			logger.info("Length : {} ", args.length);
+			path = args[1];
 
-			if (args.length == 8) {
-				inputCSVFile = args[7];
+			//String projectPath = System.getProperty("user.dir");
+			Properties prop = new Properties();
+			InputStream input = null;
+			try {
+				input = new FileInputStream(new File(path, "application.properties"));
+				prop.load(input);
+				serviceUrl = prop.getProperty("push_url");
+				authUrl = prop.getProperty("auth_url");
+				tokenType = prop.getProperty("token_type");
+				tokenFilePath = prop.getProperty("token_file");
+				dumpPath = prop.getProperty("dump_path");
+
+				// get the model name from command line
+				modelType = args[0];
+				modelName = args[2];
+
+				if (args.length < 5) {
+
+					String temp = args[3];
+					if (temp.contains("csv")) {
+						inputCSVFile = temp;
+					} else {
+						onboardingType = temp;
+					}
+
+				} else {
+					inputCSVFile = args[3];
+					onboardingType = args[4];
+				}
+
+				logger.info("Model type is {}", modelType);
+			} catch (IOException e) {
+				logger.error(e.getMessage());
 			}
-			
-			String serviceUrl = args[0];
-
-			/*
-			 * If web based onboarding,there is no username or password required. In this
-			 * case, the 5th argument will be the csv file if at all it is present.
-			 */
-			if (args.length == 5) {
-				inputCSVFile = args[4];
-			}
-
-			JSONObject obj = new JSONObject();
-			JSONObject obj1 = new JSONObject();
 
 			// boolean valid = false;
 
-			// Code for Authentication
-			if (defaultValidator.isValid(serviceUrl)) {
-				
-				// get the model name from command line
-				authUrl = args[1];
-				modelType = args[2];
-				path = args[3];
-				modelName = args[4];
-				logger.info("Model type is {}", modelType);
-				
-				// if (valid) {
-				while (count < 4) {
-					if (args.length <= 6) {
-						if (count == 1) {
-							System.out.println("Please enter Username and Password");
-						} else {
-							System.out.println(
-									"Username or Password is not correct, Please enter the correct credentials");
-						}
-
-						Scanner sc = new Scanner(System.in);
-						System.out.println("Enter Username");
-						username = sc.next();
-						//sc.close();
-
-						System.out.println("Please enter the password");
-						Scanner sc1 = new Scanner(System.in);
-						passwd = sc1.next();
-						//sc1.close();
-
-						obj1.put("username", username);
-						obj1.put("password", passwd);
-						obj.put("request_body", obj1);
-
-					} else {
-						username = args[5];
-						passwd = args[6];
-
-						obj1.put("username", username);
-						obj1.put("password", passwd);
-						obj.put("request_body", obj1);
-					}
-
-					token = loginUser(obj.toString(), authUrl);
-
-					if (token != null) {
-						try {
-							// Create a new FileWriter object
-							FileWriter fileWriter = new FileWriter("tokenfile.txt");
-							fileWriter.write(token);
-							fileWriter.close();
-							FileUtils.copyFileToDirectory(new File("tokenfile.txt"), new File(path));
-							count++;
-							break;
-						} catch (Exception e) {
-							logger.error(e.getMessage(), e);
-							// logger.info(e);
-						}
-					} else {
-						count++;
-					}
-				}
-
-			} else {
-				modelType = args[1];
-				path = args[2];
-				modelName = args[3];
-				logger.info("Model type is {}", modelType);
-			}
-
-			if (count == 4) {
-				throw new RuntimeException();
-			}
+			token = client.checkToken(tokenType, tokenFilePath, authUrl);
+			
+			if (token!=null && !token.isEmpty()) {
 
 			modelVal = client.isValidWord(modelName);
 
-			if (modelVal == true) {
+			if (modelVal == true ) {
 
 				switch (modelType) {
 				case "H":
@@ -202,14 +154,14 @@ public class ClientController {
 					// Generate Metadata.json file
 					client.generateMetadata(modelType, modelName);
 
-					if (!defaultValidator.isValid(serviceUrl)) {
-						// if (!valid) {
+					if (onboardingType != null && onboardingType.equalsIgnoreCase("webonboard")) {
+						logger.info("Creating modeldump for web based onboarding");
 						List<String> files = new ArrayList<>();
 						files.add(new File("modelpackage.zip").getAbsolutePath());
 						files.add(new File("metadata.json").getAbsolutePath());
 						files.add(protof.getAbsolutePath());
 						client.zipFile(files, "modeldump.zip");
-						FileUtils.copyFileToDirectory(new File("modeldump.zip"), new File(serviceUrl));
+						FileUtils.copyFileToDirectory(new File("modeldump.zip"), new File(dumpPath));
 						logger.info("copied modeldump.zip to destination folder");
 
 					} else {
@@ -224,15 +176,20 @@ public class ClientController {
 				}
 
 			} else {
-				logger.info(
+				logger.error(
 						"Model name should not contain special character or spaces. Don't include the file extensions.");
+				throw new Exception("Model name should not contain special character or spaces. Don't include the file extensions");
+			}
+			} else {
+				logger.error(
+						"Invalid authentication, Update the Tokenfile with valid token and provide valid Token Type");
+				throw new Exception("Invalid authentication, Update the Tokenfile with valid token and provide valid Token Type");
 			}
 
 		} catch (ArrayIndexOutOfBoundsException ae) {
 			logger.error(ae.toString());
 		} catch (RuntimeException re) {
 			logger.error(re.toString());
-			logger.info("incorrect username, password");
 		} catch (Exception e) {
 			logger.error(e.toString());
 		}
@@ -324,8 +281,8 @@ public class ClientController {
 	}
 
 	// Generate the protobuf file from sample data file
-	public File generateProtobuf(String path, String inputCSVFile, String modelType,
-			String modelName) throws IOException {
+	public File generateProtobuf(String path, String inputCSVFile, String modelType, String modelName)
+			throws IOException {
 		logger.info("Generating proto file");
 		logger.info("Model type is {}", modelType);
 		File protoFile = null;
@@ -490,7 +447,7 @@ public class ClientController {
 				throw new RuntimeException("Failed : HTTP error code : " + response.getStatusLine().getStatusCode());
 			}
 
-			logger.info("Model On-boarded successfully on " + url);
+			logger.info("Model On-boarded successfully on: " + url);
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -498,6 +455,96 @@ public class ClientController {
 		} finally {
 			httpclient.getConnectionManager().shutdown();
 		}
+	}
+
+	public String checkToken(String tokenType, String tokenFilePath, String authUrl) {
+
+		JSONObject obj = new JSONObject();
+		JSONObject obj1 = new JSONObject();
+		String token = null;
+		
+		logger.info("Token Type is: " + tokenType);
+
+		if (tokenType.equalsIgnoreCase("apitoken")) {
+
+			if (tokenFilePath != null && !tokenFilePath.isEmpty()) {
+
+				BufferedReader reader;
+				try {
+					reader = new BufferedReader(new FileReader(tokenFilePath));
+
+					StringBuilder stringBuilder = new StringBuilder();
+					String line = null;
+					String ls = System.getProperty("line.separator");
+					while ((line = reader.readLine()) != null) {
+						stringBuilder.append(line);
+						stringBuilder.append(ls);
+					}
+					// delete the last new line separator
+					stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+					reader.close();
+					token = stringBuilder.toString();
+
+				} catch (FileNotFoundException e) {
+
+					e.printStackTrace();
+				} catch (IOException e) {
+
+					e.printStackTrace();
+				}
+			} else {
+
+				System.out.println("Please fetch API Token from Acumos Portal Marketplace and save it");
+				System.exit(1);
+			}
+
+		} else if (tokenType.equalsIgnoreCase("jwttoken")) {
+
+			int count = 1;
+
+			try {
+				while (count < 4) {
+					Scanner sc = new Scanner(System.in);
+					System.out.println("Enter Username");
+					String username = sc.next();
+					// sc.close();
+
+					System.out.println("Please enter the password");
+					Scanner sc1 = new Scanner(System.in);
+					String passwd = sc1.next();
+					// sc1.close();
+
+					obj1.put("username", username);
+					obj1.put("password", passwd);
+					obj.put("request_body", obj1);
+
+					token = loginUser(obj.toString(), authUrl);
+
+					if (token != null) {
+						try {
+							// Create a new FileWriter object
+							FileWriter fileWriter = new FileWriter("tokenfile.txt");
+							fileWriter.write(token);
+							fileWriter.close();
+							FileUtils.copyFileToDirectory(new File("tokenfile.txt"), new File(tokenFilePath));
+							count++;
+							break;
+						} catch (Exception e) {
+							logger.error(e.getMessage(), e);
+						}
+					} else {
+						count++;
+					}
+				}
+				if (count == 4) {
+					System.exit(1);
+				}
+			} catch (IOException | ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return token;
 	}
 
 }
