@@ -154,7 +154,7 @@ public class ClientController {
 					// Generate Metadata.json file
 					client.generateMetadata(modelType, modelName);
 
-					if (onboardingType.equalsIgnoreCase("webonboard")) {
+					if (onboardingType != null && onboardingType.equalsIgnoreCase("webonboard")) {
 						// if (!valid) {
 						List<String> files = new ArrayList<>();
 						files.add(new File("modelpackage.zip").getAbsolutePath());
