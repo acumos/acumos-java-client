@@ -154,8 +154,8 @@ public class ClientController {
 					// Generate Metadata.json file
 					client.generateMetadata(modelType, modelName);
 
-					if (onboardingType.equalsIgnoreCase("webonboard")) {
-						// if (!valid) {
+					if (onboardingType != null && onboardingType.equalsIgnoreCase("webonboard")) {
+						logger.info("Creating modeldump for web based onboarding");
 						List<String> files = new ArrayList<>();
 						files.add(new File("modelpackage.zip").getAbsolutePath());
 						files.add(new File("metadata.json").getAbsolutePath());
@@ -447,7 +447,7 @@ public class ClientController {
 				throw new RuntimeException("Failed : HTTP error code : " + response.getStatusLine().getStatusCode());
 			}
 
-			logger.info("Model On-boarded successfully on " + url);
+			logger.info("Model On-boarded successfully on: " + url);
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -462,6 +462,8 @@ public class ClientController {
 		JSONObject obj = new JSONObject();
 		JSONObject obj1 = new JSONObject();
 		String token = null;
+		
+		logger.info("Token Type is: " + tokenType);
 
 		if (tokenType.equalsIgnoreCase("apitoken")) {
 
@@ -544,5 +546,6 @@ public class ClientController {
 		}
 		return token;
 	}
+  
 
 }
