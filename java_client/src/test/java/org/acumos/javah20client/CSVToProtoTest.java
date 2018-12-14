@@ -20,6 +20,7 @@
 
 package org.acumos.javah20client;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,8 +30,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.powermock.core.classloader.annotations.PrepareForTest;
 
 @RunWith(MockitoJUnitRunner.class)
+@PrepareForTest(CSVToProto.class)
 public class CSVToProtoTest {
 	
 	@Mock
@@ -91,5 +94,10 @@ public class CSVToProtoTest {
 		List<String> dataTypeList = new ArrayList<>();
 		dataTypeList.add(CSVToProto.getProtoDataType(value));
 		CSVToProto.createMessage(messageName, inputFields, dataTypeList, true);		
+	}
+	
+	@Test
+	public void writeToProtoTest( ) throws FileNotFoundException, IOException {
+		File f = cSVToProto.writeToProto(SAMPLE_CSV_FILE_PATH, "sampleModel");
 	}
 }

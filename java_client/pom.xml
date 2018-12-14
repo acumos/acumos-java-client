@@ -24,7 +24,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.acumos.acumos-java-client</groupId>
 	<artifactId>java_client</artifactId>
-	<version>1.12.0-SNAPSHOT</version>
+	<version>1.13.0-SNAPSHOT</version>
 	<name>Acumos Java Client</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -33,6 +33,11 @@
 		<start-class>org.acumos.javah20client.ClientController</start-class>
 		<!-- For distributionManagement section -->
 		<acumos.nexus.url>https://nexus.acumos.org</acumos.nexus.url>
+		
+		<jacocoVersion>0.7.6.201602180812</jacocoVersion>
+		<sonar.exclusions>**/scripts/**/*,**.js</sonar.exclusions>
+		<sonar.test.exclusions>**/test/**/*,**/tests/**/*</sonar.test.exclusions>
+		<enforcer.skip>false</enforcer.skip>
 	</properties>
 	<!-- No repositories section. Only needs Maven central, aka public. -->
 	<dependencies>
@@ -93,12 +98,12 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
 			<version>1.10.19</version>
 			<scope>test</scope>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>ai.h2o</groupId>
 			<artifactId>h2o-genmodel</artifactId>
@@ -110,6 +115,34 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>1.10.19</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-core</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		
+		 <!-- <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.10.8</version>
+        </dependency> -->
+        
 	</dependencies>
 	<build>
 		<plugins>
@@ -198,7 +231,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.7.6.201602180812</version>
@@ -217,7 +250,72 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
+			<plugin>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<!-- Override OParent version -->
+			<version>${jacocoVersion}</version>
+			<configuration>
+				<excludes>
+					<exclude>*</exclude>
+				</excludes>
+			</configuration> 
+			<executions>
+				<!-- disable jacoco executions from oparent -->
+				<execution>
+					<id>pre-unit-test</id>
+					<phase>none</phase>
+				</execution>
+				<execution>
+					<id>post-unit-test</id>
+					<phase>none</phase>
+				</execution>
+				<execution>
+					<id>pre-integration-test</id>
+					<phase>none</phase>
+				</execution>
+				<execution>
+					<id>post-integration-test</id>
+					<phase>none</phase>
+				</execution>
+				<!-- Order matters -->
+				 <execution>
+					<id>portal-prepare-agent</id>
+					<goals>
+						<goal>prepare-agent</goal>
+					</goals>
+					<configuration>
+						<destFile>${sonar.jacoco.reportPath}</destFile>
+					</configuration>
+				</execution>
+				<!-- offline instrumentation for PowerMock-->
+				<execution>
+				 	<id>portal-offline-instrument</id>
+					<goals>
+						<goal>instrument</goal>
+					</goals>
+				</execution>
+				<execution>
+					<id>portal-restore-instrumented-classes</id>
+					<phase>test</phase>
+					<goals>
+						<goal>restore-instrumented-classes</goal>
+					</goals>
+				</execution>
+				<execution>
+					<id>portal-post-unit-test</id>
+					<phase>test</phase>
+					<goals>
+						<goal>report</goal>
+					</goals>
+					<configuration>
+						<dataFile>${sonar.jacoco.reportPath}</dataFile>
+						<outputDirectory>${project.basedir}/target/site/jacoco</outputDirectory>
+					</configuration>
+				</execution> 
+			</executions>
+		</plugin>
 		</plugins>
 	</build>
 	<!-- The client jar must be deployed to Nexus. The IDs must match Jenkins 
