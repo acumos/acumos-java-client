@@ -20,23 +20,29 @@
 
 package org.acumos.javah20client;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
-
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({ClientController.class, H2oCSVtoProto.class})
 public class H2oCSVtoProtoTest {
 	
-	@Mock
+	@InjectMocks
 	H2oCSVtoProto h2oCSVtoProto;
 	
-	private static final String SAMPLE_CSV_FILE_PATH = "IRIS3.csv";
-	static final String h2oModelFullPath = "modelpackage.zip";
+	String projectPath = System.getProperty("user.dir");
+	private String csvPath = projectPath + File.separator + "IRIS3.csv";
+	
 	List<String> inputFields = new ArrayList<>();
 	List<String> dataTypeList = new ArrayList<>();
 	List<String> outputFields = new ArrayList<>();
@@ -83,12 +89,13 @@ public class H2oCSVtoProtoTest {
 		H2oCSVtoProto.createMessage(messageName, inputFields, dataTypeList, true);		
 	}
 	
-/*	@Test
+	@Test
 	public void writeToProtoTest() throws FileNotFoundException, IOException {
-		String modelName = "sampleH2o";
+		String modelName = "model";
+		String modelPath = projectPath + File.separator + "model.zip";
 		System.out.println("In writeToProtoTest()");
-		h2oCSVtoProto.writeToProto(SAMPLE_CSV_FILE_PATH, modelName, h2oModelFullPath);
+		h2oCSVtoProto.writeToProto(csvPath, modelName, modelPath);
 		System.out.println("After writeToProtoTest()");
-	}*/
+	}
 
 }

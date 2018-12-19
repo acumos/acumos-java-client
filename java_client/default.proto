@@ -1,18 +1,13 @@
 syntax = "proto3";
 option java_package = "com.google.protobuf";
 option java_outer_classname = "DatasetProto";
-service Generics16 {
+service modelService {
   rpc transform (DataFrame) returns (Prediction);
 }
 message DataFrameRow {
-int32 sepal_length = 1;
-double sepal_width = 2;
-double petal_length = 3;
-double petal_width = 4;
 }
 message DataFrame { 
 repeated DataFrameRow rows = 1;
  }
 message Prediction {
-repeated string species = 1;
 }
