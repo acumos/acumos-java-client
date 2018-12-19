@@ -16,8 +16,7 @@
  */
 package org.acumos.javah20client;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,33 +24,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.Header;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
-import org.json.simple.parser.ParseException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.BDDMockito.Then;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
-import org.mockito.stubbing.OngoingStubbing;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-
-import static org.mockito.Mockito.when;
-import static org.powermock.api.mockito.PowerMockito.mockStatic;
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.doThrow;
 
 
 
@@ -60,7 +45,7 @@ import static org.mockito.Mockito.doThrow;
 public class ClientControllerTest {
 
 
-	@InjectMocks 
+	@InjectMocks
 	ClientController clientController;// = new ClientController();
 
 	JSONObject obj = new JSONObject();
@@ -71,13 +56,10 @@ public class ClientControllerTest {
 	String projectPath = System.getProperty("user.dir");
 	String authUrl = "http://cognita-dev1-vm01-core.eastus.cloudapp.azure.com:8090/onboarding-app/v2/auth";
 	HttpPost p = new HttpPost(authUrl);
-	
 	@Mock
 	DefaultHttpClient defaultHttpClient;
-	
 	@Mock
 	HttpResponse resp;
-	
 
 	@Mock
 	StringEntity stringEntity;
@@ -101,10 +83,8 @@ public class ClientControllerTest {
 		clientController.getConfigFile(projectPath);
 	}
 
-	
 	@Test
 	public void loginUserTest() throws Exception {
-		
 		obj1.put("username", "testUser");
 		obj1.put("password", "testPswd");
 		obj.put("request_body", obj1);
@@ -112,30 +92,16 @@ public class ClientControllerTest {
 //		PowerMockito.whenNew(StringEntity.class).withArguments(Mockito.anyObject(), Mockito.anyObject()).thenReturn(stringEntity); 
 	//	PowerMockito.whenNew(StringEntity.class).withArguments(Mockito.anyString(), Mockito.anyString()).thenReturn(stringEntity);
 		//p.setEntity(new StringEntity(obj, ContentType.create("application/json")));
-		
 		PowerMockito.whenNew(DefaultHttpClient.class).withNoArguments().thenReturn(defaultHttpClient);
 
-
 		PowerMockito.when(defaultHttpClient.execute(Mockito.anyObject())).thenReturn(resp);
-		
 		Object object = new Object();
-		
-		  
-				
 		//Header header = OngoingStubbing<T>;
 		PowerMockito.when(resp.getFirstHeader(Mockito.anyString())).thenReturn(null);
-		
 		//assertEquals(expected, actual);
-		
 		token = ClientController.loginUser(obj.toString(), authUrl);
 		assertEquals(token, null);
-		
-		
-		
-		
-
 	}
-	 
 
 	@Test
 	public void generateProtobufTest() throws IOException {
@@ -178,12 +144,12 @@ public class ClientControllerTest {
 
 	/*
 	 * @Test public void pushModelTest() {
-	 * 
+	 *
 	 * try { File proto = new File("default.proto");
 	 * ClientController.pushModel(serviceUrl, "modelpackage.zip", "metadata.json",
 	 * proto, token); assert (false); } catch (Exception e) { assert (true); } }
 	 */
-	
+
 	@Test
 	public void checkTokenTest() throws Exception {
 
@@ -194,13 +160,9 @@ public class ClientControllerTest {
 		obj1.put("username", "dummy");
 		obj1.put("password", "dummy");
 		obj.put("request_body", obj1);
-	
 		PowerMockito.whenNew(DefaultHttpClient.class).withNoArguments().thenReturn(defaultHttpClient);
-
 		p.setEntity(new StringEntity(obj.toString(), ContentType.create("application/json")));
-		
 		PowerMockito.when(defaultHttpClient.execute(Mockito.anyObject())).thenReturn(resp);
-		
 		clientController.checkToken(tokenType, tokenFilePath, authUrl);*/
 	}
 }

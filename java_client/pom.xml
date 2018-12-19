@@ -24,7 +24,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.acumos.acumos-java-client</groupId>
 	<artifactId>java_client</artifactId>
-	<version>1.13.0-SNAPSHOT</version>
+	<version>1.13.1-SNAPSHOT</version>
 	<name>Acumos Java Client</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -33,7 +33,6 @@
 		<start-class>org.acumos.javah20client.ClientController</start-class>
 		<!-- For distributionManagement section -->
 		<acumos.nexus.url>https://nexus.acumos.org</acumos.nexus.url>
-		
 		<jacocoVersion>0.7.6.201602180812</jacocoVersion>
 		<sonar.exclusions>**/scripts/**/*,**.js</sonar.exclusions>
 		<sonar.test.exclusions>**/test/**/*,**/tests/**/*</sonar.test.exclusions>
@@ -125,7 +124,6 @@
 			<artifactId>mockito-core</artifactId>
 			<version>1.10.19</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.powermock</groupId>
 			<artifactId>powermock-core</artifactId>
@@ -136,13 +134,11 @@
 			<artifactId>powermock-module-junit4</artifactId>
 			<version>1.6.1</version>
 		</dependency>
-		
 		 <!-- <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>1.10.8</version>
         </dependency> -->
-        
 	</dependencies>
 	<build>
 		<plugins>
@@ -154,7 +150,7 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-			<!-- add build information to manifest. Java provides access to the implementation 
+			<!-- add build information to manifest. Java provides access to the implementation
 				version for a package, so cram the build number into there. -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -260,7 +256,7 @@
 				<excludes>
 					<exclude>*</exclude>
 				</excludes>
-			</configuration> 
+			</configuration>
 			<executions>
 				<!-- disable jacoco executions from oparent -->
 				<execution>
@@ -313,12 +309,12 @@
 						<dataFile>${sonar.jacoco.reportPath}</dataFile>
 						<outputDirectory>${project.basedir}/target/site/jacoco</outputDirectory>
 					</configuration>
-				</execution> 
+				</execution>
 			</executions>
 		</plugin>
 		</plugins>
 	</build>
-	<!-- The client jar must be deployed to Nexus. The IDs must match Jenkins 
+	<!-- The client jar must be deployed to Nexus. The IDs must match Jenkins
 		settings for credentials. -->
 	<distributionManagement>
 		<repository>

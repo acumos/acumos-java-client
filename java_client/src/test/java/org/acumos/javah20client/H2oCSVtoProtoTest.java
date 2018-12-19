@@ -20,32 +20,38 @@
 
 package org.acumos.javah20client;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
-
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({ClientController.class, H2oCSVtoProto.class})
 public class H2oCSVtoProtoTest {
-	
-	@Mock
+
+	@InjectMocks
 	H2oCSVtoProto h2oCSVtoProto;
-	
-	private static final String SAMPLE_CSV_FILE_PATH = "IRIS3.csv";
-	static final String h2oModelFullPath = "modelpackage.zip";
+
+	String projectPath = System.getProperty("user.dir");
+	private String csvPath = projectPath + File.separator + "IRIS3.csv";
+
 	List<String> inputFields = new ArrayList<>();
 	List<String> dataTypeList = new ArrayList<>();
 	List<String> outputFields = new ArrayList<>();
-	
+
 /*	@Test
 	public void getH2oModelInfoTest() throws Exception {
 		h2oCSVtoProto.getH2oModelInfo(h2oModelFullPath, inputFields, outputFields);
 	}*/
-	
+
 	@Test
 	public void getProtoDataTypeTest() {
 		String value = "Test";
@@ -55,7 +61,7 @@ public class H2oCSVtoProtoTest {
 		value = "True";
 		H2oCSVtoProto.getProtoDataType(value);
 	}
-	
+
 	@Test
 	public void createServiceTest() {
 		String serviceName = "Demo";
@@ -63,32 +69,33 @@ public class H2oCSVtoProtoTest {
 		String outputMessageName = "output";
 		H2oCSVtoProto.createService(serviceName, inputMessageName, outputMessageName);
 	}
-	
+
 	@Test
 	public void createProtoHeaderTest() {
 		H2oCSVtoProto.createProtoHeader();
 	}
-	
+
 	@Test
 	public void createProtoFooterTest() {
 		H2oCSVtoProto.createProtoFooter();
 	}
-	
+
 	@Test
 	public void createMessageTest(){
 		String value = "TestValue";
 		String messageName = "SampleMsg";
 		inputFields.add(CSVToProto.getProtoDataType(value));
 		dataTypeList.add(CSVToProto.getProtoDataType(value));
-		H2oCSVtoProto.createMessage(messageName, inputFields, dataTypeList, true);		
+		H2oCSVtoProto.createMessage(messageName, inputFields, dataTypeList, true);
 	}
-	
-/*	@Test
+
+	@Test
 	public void writeToProtoTest() throws FileNotFoundException, IOException {
-		String modelName = "sampleH2o";
+		String modelName = "model";
+		String modelPath = projectPath + File.separator + "model.zip";
 		System.out.println("In writeToProtoTest()");
-		h2oCSVtoProto.writeToProto(SAMPLE_CSV_FILE_PATH, modelName, h2oModelFullPath);
+		h2oCSVtoProto.writeToProto(csvPath, modelName, modelPath);
 		System.out.println("After writeToProtoTest()");
-	}*/
+	}
 
 }
