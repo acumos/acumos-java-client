@@ -27,6 +27,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
@@ -70,14 +71,17 @@ public class ClientController {
 		try {
 			boolean modelVal;
 			File model = null;
-			File servicejar = null;
+			File servicejar = null, licenseFile= null;
 			String token = null, tokenType = null, tokenFilePath = null;
 			int count = 1;
 			String inputCSVFile = null;
 			String modelType = null, path = null, modelName = null, onboardingType = null, dumpPath = null;
 
 			logger.info("Length : {} ", args.length);
+			// command line arguments
+			modelType = args[0];
 			path = args[1];
+			modelName = args[2];
 
 			//String projectPath = System.getProperty("user.dir");
 			Properties prop = new Properties();
@@ -91,11 +95,7 @@ public class ClientController {
 				tokenFilePath = prop.getProperty("token_file");
 				dumpPath = prop.getProperty("dump_path");
 
-				// get the model name from command line
-				modelType = args[0];
-				modelName = args[2];
-
-				if (args.length < 5) {
+				if (args.length == 4) {
 
 					String temp = args[3];
 					if (temp.contains("csv")) {
@@ -104,7 +104,7 @@ public class ClientController {
 						onboardingType = temp;
 					}
 
-				} else {
+				} else if (args.length == 5) {
 					inputCSVFile = args[3];
 					onboardingType = args[4];
 				}
@@ -148,6 +148,17 @@ public class ClientController {
 
 					// Generate Protobuf file
 					File protof = client.generateProtobuf(path, inputCSVFile, modelType, modelName);
+					
+					// Get licence File if available
+					File dir = new File(path);
+					String[] fileList = dir.list();
+					for (String name: fileList) {
+						if (name.toLowerCase().contains("license") || name.toLowerCase().contains(".json"))
+						{
+							licenseFile = new File(path + File.separator + name);
+						}
+					}
+					
 
 					// Generate Metadata.json file
 					client.generateMetadata(modelType, modelName);
@@ -158,15 +169,22 @@ public class ClientController {
 						files.add(new File("modelpackage.zip").getAbsolutePath());
 						files.add(new File("metadata.json").getAbsolutePath());
 						files.add(protof.getAbsolutePath());
+						if(licenseFile!=null && licenseFile.exists()) {
+							files.add(licenseFile.getAbsolutePath());
+						}
 						client.zipFile(files, "modeldump.zip");
 						FileUtils.copyFileToDirectory(new File("modeldump.zip"), new File(dumpPath));
 						logger.info("copied modeldump.zip to destination folder");
 
-					} else {
+						} else {
+							// Call Rest Client for Onboarding API
 
-						// Call Rest Client for Onboarding API
-						pushModel(serviceUrl, "modelpackage.zip", "metadata.json", protof, token);
-					}
+							if(licenseFile!=null && licenseFile.exists()) {
+								pushModel(serviceUrl, "modelpackage.zip", "metadata.json", protof, licenseFile, token);
+							} else {
+								pushModel(serviceUrl, "modelpackage.zip", "metadata.json", protof, null, token);
+							}
+						}
 				} catch (FileNotFoundException fe) {
 					logger.info(fe.getMessage());
 					logger.error(fe.toString());
@@ -408,7 +426,7 @@ public class ClientController {
 	}
 
 	// Restful service to push the model to onboarding server
-	public static void pushModel(String url, String modelFilePath, String metadataFilePath, File protoFile,
+	public static void pushModel(String url, String modelFilePath, String metadataFilePath, File protoFile, File licenseFile, 
 			String token) {
 		HttpClient httpclient = null;
 		try {
@@ -434,6 +452,11 @@ public class ClientController {
 					metadataFile.getName());
 			builder.addBinaryBody("schema", new FileInputStream(protoFile), ContentType.MULTIPART_FORM_DATA,
 					protoFile.getName());
+			
+			if(licenseFile!=null && licenseFile.exists()) {
+			builder.addBinaryBody("license", new FileInputStream(licenseFile), ContentType.MULTIPART_FORM_DATA,
+					licenseFile.getName());
+			}
 
 			HttpEntity entity = builder.build();
 			post.setEntity(entity);
