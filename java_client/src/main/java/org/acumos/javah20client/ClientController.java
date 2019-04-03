@@ -5,9 +5,9 @@
  * under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *  
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * This file is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
@@ -70,6 +70,7 @@ public class ClientController {
 
 		try {
 			boolean modelVal;
+			String isMicroserviceFlag = null;
 			File model = null;
 			File servicejar = null, licenseFile= null;
 			String token = null, tokenType = null, tokenFilePath = null;
@@ -94,6 +95,7 @@ public class ClientController {
 				tokenType = prop.getProperty("token_type");
 				tokenFilePath = prop.getProperty("token_file");
 				dumpPath = prop.getProperty("dump_path");
+				isMicroserviceFlag = prop.getProperty("isMicroservice");
 
 				if (args.length == 4) {
 
@@ -117,7 +119,7 @@ public class ClientController {
 			// boolean valid = false;
 
 			token = client.checkToken(tokenType, tokenFilePath, authUrl);
-			
+
 			if (token!=null && !token.isEmpty()) {
 
 			modelVal = client.isValidWord(modelName);
@@ -148,7 +150,7 @@ public class ClientController {
 
 					// Generate Protobuf file
 					File protof = client.generateProtobuf(path, inputCSVFile, modelType, modelName);
-					
+
 					// Get licence File if available
 					File dir = new File(path);
 					String[] fileList = dir.list();
@@ -158,7 +160,7 @@ public class ClientController {
 							licenseFile = new File(path + File.separator + name);
 						}
 					}
-					
+
 
 					// Generate Metadata.json file
 					client.generateMetadata(modelType, modelName);
@@ -180,9 +182,9 @@ public class ClientController {
 							// Call Rest Client for Onboarding API
 
 							if(licenseFile!=null && licenseFile.exists()) {
-								pushModel(serviceUrl, "modelpackage.zip", "metadata.json", protof, licenseFile, token);
+								pushModel(serviceUrl, "modelpackage.zip", "metadata.json", protof, licenseFile, token,isMicroserviceFlag);
 							} else {
-								pushModel(serviceUrl, "modelpackage.zip", "metadata.json", protof, null, token);
+								pushModel(serviceUrl, "modelpackage.zip", "metadata.json", protof, null, token,isMicroserviceFlag);
 							}
 						}
 				} catch (FileNotFoundException fe) {
@@ -426,8 +428,8 @@ public class ClientController {
 	}
 
 	// Restful service to push the model to onboarding server
-	public static void pushModel(String url, String modelFilePath, String metadataFilePath, File protoFile, File licenseFile, 
-			String token) {
+	public static void pushModel(String url, String modelFilePath, String metadataFilePath, File protoFile, File licenseFile,
+			String token,String msFlag) {
 		HttpClient httpclient = null;
 		try {
 
@@ -452,7 +454,7 @@ public class ClientController {
 					metadataFile.getName());
 			builder.addBinaryBody("schema", new FileInputStream(protoFile), ContentType.MULTIPART_FORM_DATA,
 					protoFile.getName());
-			
+
 			if(licenseFile!=null && licenseFile.exists()) {
 			builder.addBinaryBody("license", new FileInputStream(licenseFile), ContentType.MULTIPART_FORM_DATA,
 					licenseFile.getName());
@@ -461,6 +463,7 @@ public class ClientController {
 			HttpEntity entity = builder.build();
 			post.setEntity(entity);
 			post.setHeader("Authorization", token);
+			post.addHeader("isCreateMicroservice",msFlag);
 
 			HttpResponse response = httpclient.execute(post);
 
@@ -483,7 +486,7 @@ public class ClientController {
 		JSONObject obj = new JSONObject();
 		JSONObject obj1 = new JSONObject();
 		String token = null;
-		
+
 		logger.info("Token Type is: " + tokenType);
 
 		if (tokenType.equalsIgnoreCase("apitoken")) {
