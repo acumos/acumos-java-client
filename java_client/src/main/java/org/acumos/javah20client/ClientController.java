@@ -70,6 +70,7 @@ public class ClientController {
 
 		try {
 			boolean modelVal;
+			String isMicroserviceFlag = null;
 			File model = null;
 			File servicejar = null, licenseFile= null;
 			String token = null, tokenType = null, tokenFilePath = null;
@@ -94,6 +95,7 @@ public class ClientController {
 				tokenType = prop.getProperty("token_type");
 				tokenFilePath = prop.getProperty("token_file");
 				dumpPath = prop.getProperty("dump_path");
+				isMicroserviceFlag = prop.getProperty("isMicroservice");
 
 				if (args.length == 4) {
 
@@ -180,9 +182,9 @@ public class ClientController {
 							// Call Rest Client for Onboarding API
 
 							if(licenseFile!=null && licenseFile.exists()) {
-								pushModel(serviceUrl, "modelpackage.zip", "metadata.json", protof, licenseFile, token);
+								pushModel(serviceUrl, "modelpackage.zip", "metadata.json", protof, licenseFile, token,isMicroserviceFlag);
 							} else {
-								pushModel(serviceUrl, "modelpackage.zip", "metadata.json", protof, null, token);
+								pushModel(serviceUrl, "modelpackage.zip", "metadata.json", protof, null, token,isMicroserviceFlag);
 							}
 						}
 				} catch (FileNotFoundException fe) {
@@ -427,7 +429,7 @@ public class ClientController {
 
 	// Restful service to push the model to onboarding server
 	public static void pushModel(String url, String modelFilePath, String metadataFilePath, File protoFile, File licenseFile, 
-			String token) {
+			String token,String msFlag) {
 		HttpClient httpclient = null;
 		try {
 
@@ -461,6 +463,7 @@ public class ClientController {
 			HttpEntity entity = builder.build();
 			post.setEntity(entity);
 			post.setHeader("Authorization", token);
+			post.addHeader("isCreateMicroservice",msFlag);
 
 			HttpResponse response = httpclient.execute(post);
 
