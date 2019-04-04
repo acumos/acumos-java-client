@@ -20,7 +20,12 @@
 Acumos Java Client Release Notes
 ================================
 
-Version 1.14.0 15-March 2018
+Version 2.0.0 04-April 2019
+-------------------------------
+* `ACUMOS-2264 <https://jira.acumos.org/browse/ACUMOS-2264/>`_
+
+
+Version 1.14.0 15-March 2019
 -------------------------------
 * `ACUMOS-2264 <https://jira.acumos.org/browse/ACUMOS-2264/>`_
 
