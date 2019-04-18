@@ -153,11 +153,12 @@ Changes in application.properties file
 5.	token_type – apitoken (for api based token authentication),jwttoken(for jwt token based authentication)
 6.	token_file – Path where token file is present
 7.	dump_path – path where modeldump needs to be save
+8.  isMicroservice - True/False based on user's choice to generate microservice
 
 Pass the following argument as an input to run the JavaClient.jar file
 
 1.	H/G – H for H2O model and G for Generic java model
-2.	Supporting folder path – pass the path where modelrunner, model file, application.properties and data file are present
+2.	Supporting folder path – pass the path where modelrunner, model file, application.properties, license.json and data file are present
 3.	ModelName – The name of model file
 4.	DataFile – name of the data file present in supporting folder(optional in case if you have .proto file)
 5.	OnboardingType - pass WebOnboard if needed modeldump for webbased onboarding. For onboarding through client keep it blank(Optional)
