@@ -22,30 +22,30 @@ Acumos Java Client Release Notes
 
 Version 2.0.0 04-April 2019
 -------------------------------
-* `ACUMOS-2264 <https://jira.acumos.org/browse/ACUMOS-2264/>`_
-
+* Modify acumos-java-client in accordance with task 2262 (create microcervice parameter) : `ACUMOS-2264 <https://jira.acumos.org/browse/ACUMOS-2264/>`_
 
 Version 1.14.0 15-March 2019
 -------------------------------
-* `ACUMOS-2264 <https://jira.acumos.org/browse/ACUMOS-2264/>`_
+* Modify acumos-java-client in accordance with task 2262 (create microcervice parameter) : `ACUMOS-2264 <https://jira.acumos.org/browse/ACUMOS-2264/>`_
+* Modify acumos-java-client to take into account license file : `ACUMOS-2277 <https://jira.acumos.org/browse/ACUMOS-2277/>`_
 
 Version 1.11.1 20-November 2018
 -------------------------------
-* `ACUMOS-1916 <https://jira.acumos.org/browse/ACUMOS-1916/>`_
+* API token authentication not working for java model when onboarded through CLI : `ACUMOS-1916 <https://jira.acumos.org/browse/ACUMOS-1916/>`_
 
 Version 1.11.0 28-September 2018
 --------------------------------
-* `ACUMOS-1337 <https://jira.acumos.org/browse/ACUMOS-1337/>`_
-* `ACUMOS-1312 <https://jira.acumos.org/browse/ACUMOS-1312/>`_
+* add licenses to code and docs : `ACUMOS-1337 <https://jira.acumos.org/browse/ACUMOS-1337/>`_
+* Fix RST compile warnings : `ACUMOS-1312 <https://jira.acumos.org/browse/ACUMOS-1312/>`_
 
 Version 1.10.0 5-June 2018
 --------------------------
-* `ACUMOS-909 <https://jira.acumos.org/browse/ACUMOS-909/>`_
-* `ACUMOS-954 <https://jira.acumos.org/browse/ACUMOS-954/>`_
+* Move protobuf library version to config out of code : `ACUMOS-909 <https://jira.acumos.org/browse/ACUMOS-909/>`_
+* Password displayed at command line while onboarding H2O model : `ACUMOS-954 <https://jira.acumos.org/browse/ACUMOS-954/>`_
 
 Version 1.0.9 22-May 2018
 -------------------------
-* `ACUMOS-818 <https://jira.acumos.org/browse/ACUMOS-818/>`_
+* Clean windows-specific code that constructs file paths `ACUMOS-818 <https://jira.acumos.org/browse/ACUMOS-818/>`_
 
 Version 1.0.8 March 2018
 ------------------------
