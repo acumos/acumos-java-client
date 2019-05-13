@@ -18,9 +18,9 @@
 .. NOTE: THIS FILE IS LINKED TO FROM THE DOCUMENTATION PROJECT
 .. IF YOU CHANGE THE LOCATION OR NAME OF THIS FILE, YOU MUST UPDATE THE INDEX IN THE DOCS PROJECT
 
-==========================================
-On-Boarding H2o.ai and Generic Java Models
-==========================================
+============================
+Java Model on-boarding guide
+============================
 
 The Acumos Java Client Library command line utility is used to on-board H2o.ai and Generic Java models. This library creates artifacts from an H2o or Generic Java model and pushes the artifacts to the on-boarding server for the H2o Model runner to be able to use them.
 
@@ -79,7 +79,7 @@ b. Prepare a supporting folder with the following contents. This folder will con
            rpc transform (DataFrame) returns (Prediction);
            }
 
-    #. application.properties file - Mention the port number on which the service exposed by the model will finally run on. The push_url and auth_url are used only by CLI on-boarding and depend of your own Acumos installation, you can retrieve it on your Acumos portal in the ON-BOARDING MODEL page.
+    #. application.properties file - Mention the port number on which the service exposed by the model will finally run on. The push_url and auth_url are used only by CLI on-boarding and depend of your own Acumos installation, you can retrieve them on your Acumos portal in the ON-BOARDING MODEL page.
 
         .. code-block:: python
 
@@ -151,7 +151,7 @@ b. Prepare a supporting folder with the following contents. This folder will con
             modelClassName=org.acumos.ml.XModel
             modelMethod=predict
 
-    #. License File - If you have a license associated with your model, Add it in the supproting folder in the following form : license.json
+    #. License File - If you have a license associated with your model, Add it in the supproting folder in the following form : license.json. Remark : After onboarding the model with license, the artifacts will show license file with name "license.json" even if user has uploaded the license file with different name.
 
 
 Create your modeldump.zip file
