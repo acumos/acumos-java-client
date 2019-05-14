@@ -38,7 +38,6 @@ Allows the H2o or Generic Java model and other artifacts to become available in 
 - Data scientist runs the JavaClient jar (Available in Nexus https://nexus.acumos.org/#nexus-search;quick~java_client), which creates a Protobuf (default.proto) file for the Model, creates the required metadata.json file and an artifact called modelpackage.zip.
 - Data scientist can manually upload these generated artifacts to the Acumos Marketplace via its Web interface, this is WEB on-boarding.
 - Or Data scientist can use the Acumos java client to onboard  model onto the on-boarding server by providing the on-boarding server URL, this is CLI on-boarding.
-- Please refer to the Model on-boarding guide to know how to use CLI on-boarding : https://docs.acumos.org/en/latest/submodules/acumos-java-client/docs/end-user-guide/onboarding-java-guide.html
 
 Model Runner:
 -------------
