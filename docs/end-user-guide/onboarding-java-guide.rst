@@ -151,7 +151,7 @@ b. Prepare a supporting folder with the following contents. This folder will con
             modelClassName=org.acumos.ml.XModel
             modelMethod=predict
 
-    #. License File - If you have a license associated with your model, Add it in the supproting folder in the following form : license.json. Remark : After onboarding the model with license, the artifacts will show license file with name "license.json" even if user has uploaded the license file with different name.
+    #. License File - If you have a license associated with your model, Add it in the supporting folder in the following form : license.json. If the license file extension is not 'json' the license on-boarding will not be posible and if the name is not 'license' Acumos will rename your license file as license.json and you will see your license file named as license.json in the artefacts table. If you upload a new version of your license after on-boaring, a number revision will be added to the name of your license file like : "license-2.json". To help user create the license file expected by Acumos a license editor is available on the web : https://acumos-license-editor.stackblitz.io/#/ `Acumos license editor <https://acumos-license-editor.stackblitz.io/#/>`_ 
 
 
 Create your modeldump.zip file
