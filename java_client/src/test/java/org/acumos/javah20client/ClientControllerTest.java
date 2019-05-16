@@ -106,7 +106,7 @@ public class ClientControllerTest {
 	@Test
 	public void generateProtobufTest() throws IOException {
 
-		clientController.generateProtobuf("/", null, null, null);
+		clientController.generateProtobuf("/", null, null, null, null);
 
 	}
 
