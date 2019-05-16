@@ -77,6 +77,7 @@ public class ClientController {
 			int count = 1;
 			String inputCSVFile = null;
 			String modelType = null, path = null, modelName = null, onboardingType = null, dumpPath = null;
+			String modelMethod = null;
 
 			logger.info("Length : {} ", args.length);
 			// command line arguments
@@ -87,6 +88,7 @@ public class ClientController {
 			//String projectPath = System.getProperty("user.dir");
 			Properties prop = new Properties();
 			InputStream input = null;
+			InputStream inputModelConfig = null;
 			try {
 				input = new FileInputStream(new File(path, "application.properties"));
 				prop.load(input);
@@ -96,6 +98,10 @@ public class ClientController {
 				tokenFilePath = prop.getProperty("token_file");
 				dumpPath = prop.getProperty("dump_path");
 				isMicroserviceFlag = prop.getProperty("isMicroservice");
+				
+				inputModelConfig = new FileInputStream(new File(path, "modelConfig.properties"));
+				prop.load(inputModelConfig);
+				modelMethod = prop.getProperty("modelMethod"); 
 
 				if (args.length == 4) {
 
@@ -149,7 +155,7 @@ public class ClientController {
 					client.generateModelService(model, servicejar, congif, modelType, appFile);
 
 					// Generate Protobuf file
-					File protof = client.generateProtobuf(path, inputCSVFile, modelType, modelName);
+					File protof = client.generateProtobuf(path, inputCSVFile, modelType, modelName, modelMethod);
 
 					// Get licence File if available
 					File dir = new File(path);
@@ -299,7 +305,7 @@ public class ClientController {
 	}
 
 	// Generate the protobuf file from sample data file
-	public File generateProtobuf(String path, String inputCSVFile, String modelType, String modelName)
+	public File generateProtobuf(String path, String inputCSVFile, String modelType, String modelName, String modelMethod)
 			throws IOException {
 		logger.info("Generating proto file");
 		logger.info("Model type is {}", modelType);
@@ -325,7 +331,7 @@ public class ClientController {
 			} else {
 				logger.debug("Entered generic java protobuf generation call");
 				CSVToProto c = new CSVToProto();
-				protoFile = c.writeToProto(inputPath, modelName);
+				protoFile = c.writeToProto(inputPath, modelName, modelMethod);
 			}
 			return protoFile;
 		}

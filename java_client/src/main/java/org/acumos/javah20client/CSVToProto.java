@@ -59,8 +59,8 @@ public class CSVToProto {
 		return dataType;
 	}
 
-	public static String createService(String serviceName, String inputMessageName, String outputMessageName) {
-		final String template = "service %s {\n" + "  rpc transform (DataFrame) returns (Prediction);\n" + "}";
+	public static String createService(String serviceName, String inputMessageName, String outputMessageName, String modelMethod) {
+		final String template = "service %s {\n" + "  rpc " + modelMethod +" (DataFrame) returns (Prediction);\n" + "}";
 		return String.format(template, serviceName, inputMessageName, outputMessageName);
 	}
 
@@ -100,7 +100,7 @@ public class CSVToProto {
 		return sb.toString();
 	}
 
-	public File writeToProto(String SAMPLE_CSV_FILE_PATH, String modelName) throws FileNotFoundException, IOException {
+	public File writeToProto(String SAMPLE_CSV_FILE_PATH, String modelName, String modelMethod) throws FileNotFoundException, IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(SAMPLE_CSV_FILE_PATH));
 
 		String[] header = reader.readLine().split(",");
@@ -138,7 +138,7 @@ public class CSVToProto {
 		sb.append('\n');
 		sb.append("option java_outer_classname = \"DatasetProto\";");
 		sb.append('\n');
-		sb.append(createService(modelName, "DataFrame", outputMessageName));
+		sb.append(createService(modelName, "DataFrame", outputMessageName, modelMethod));
 		sb.append('\n');
 		sb.append(createMessage(inputMessageName, inputFields, dataTypeList, false));
 		sb.append('\n');
