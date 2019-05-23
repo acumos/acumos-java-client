@@ -187,8 +187,14 @@ public class H2oCSVtoProto {
 		return dataType;
 	}
 
-	public static String createService(String serviceName, String inputMessageName, String outputMessageName) {
-		final String template = "service %s {\n" + "  rpc transform (DataFrame) returns (Prediction);\n" + "}";
+	public static String createService(String serviceName, String inputMessageName, String outputMessageName, List<String> h2oModelNameList) {
+		String template = null;
+		StringBuffer rpcString = new StringBuffer();
+		for(String modelMethod : h2oModelNameList) {
+			outputMessageName = modelMethod+"Out";
+			rpcString.append("  rpc "+modelMethod+" (DataFrame) returns ("+modelMethod+"Out);\n");
+		}
+		template = "service %s {\n" + rpcString + "}";
 		return String.format(template, serviceName, inputMessageName, outputMessageName);
 	}
 
@@ -228,7 +234,7 @@ public class H2oCSVtoProto {
 		return sb.toString();
 	}
 
-	public File writeToProto(String SAMPLE_CSV_FILE_PATH, String modelName, String h2oModelFullPath)
+	public File writeToProto(String SAMPLE_CSV_FILE_PATH, String modelName, String h2oModelFullPath, List<String> h2oModelNameList)
 			throws FileNotFoundException, IOException {
 
 		BufferedReader reader = new BufferedReader(new FileReader(SAMPLE_CSV_FILE_PATH));
@@ -283,19 +289,22 @@ public class H2oCSVtoProto {
 		sb.append('\n');
 
 		final String inputMessageName = "DataFrameRow";
-		final String outputMessageName = "Prediction";
+		String outputMessageName = null;
 		String svcName = modelName + "Service";
 		sb.append("option java_package = \"com.google.protobuf\";");
 		sb.append('\n');
 		sb.append("option java_outer_classname = \"DatasetProto\";");
 		sb.append('\n');
-		sb.append(createService(svcName, "DataFrame", outputMessageName));
+		sb.append(createService(svcName, "DataFrame", outputMessageName, h2oModelNameList));
 		sb.append('\n');
+		for(String modelMethod : h2oModelNameList) {
+			outputMessageName = modelMethod+"Out";
+			sb.append(createMessage(outputMessageName, outputFields, outdataTypeList, true));
+			sb.append('\n');
+		}
 		sb.append(createMessage(inputMessageName, inputFields, dataTypeList, false));
 		sb.append('\n');
 		sb.append("message DataFrame { \nrepeated DataFrameRow rows = 1;\n }");
-		sb.append('\n');
-		sb.append(createMessage(outputMessageName, outputFields, outdataTypeList, true));
 		sb.append('\n');
 		sb.append(createProtoFooter());
 

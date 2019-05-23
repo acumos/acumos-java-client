@@ -27,6 +27,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
@@ -78,7 +79,10 @@ public class ClientController {
 			String inputCSVFile = null;
 			String modelType = null, path = null, modelName = null, onboardingType = null, dumpPath = null;
 			String modelMethod = null;
-
+			String h2oModelMethod = null;
+			List<String> modelNameList = new ArrayList<String>();
+			List<String> h2oModelNameList = new ArrayList<String>();
+			
 			logger.info("Length : {} ", args.length);
 			// command line arguments
 			modelType = args[0];
@@ -98,11 +102,18 @@ public class ClientController {
 				tokenFilePath = prop.getProperty("token_file");
 				dumpPath = prop.getProperty("dump_path");
 				isMicroserviceFlag = prop.getProperty("isMicroservice");
+				h2oModelMethod = prop.getProperty("h2oModelMethod");
 				
 				inputModelConfig = new FileInputStream(new File(path, "modelConfig.properties"));
 				prop.load(inputModelConfig);
-				modelMethod = prop.getProperty("modelMethod"); 
-
+				modelMethod = prop.getProperty("modelMethod");
+				
+				if(modelType.equals("G")) {
+					modelNameList = returnModelMethodList(modelMethod);
+				}else if(modelType.equals("H")) {
+					h2oModelNameList = returnModelMethodList(h2oModelMethod);
+				}
+				
 				if (args.length == 4) {
 
 					String temp = args[3];
@@ -150,12 +161,17 @@ public class ClientController {
 					File congif = client.getConfigFile(path);
 
 					File appFile = client.getAppFile(path);
-
+					File protof = null;
+					
 					// Call generateModelService input is modelService.jar
 					client.generateModelService(model, servicejar, congif, modelType, appFile);
 
 					// Generate Protobuf file
-					File protof = client.generateProtobuf(path, inputCSVFile, modelType, modelName, modelMethod);
+					if (modelType.equals("G")) {
+						protof = client.generateProtobuf(path, inputCSVFile, modelType, modelName, modelNameList);
+					}else if (modelType.equals("H")) {
+						protof = client.generateProtobuf(path, inputCSVFile, modelType, modelName, h2oModelNameList);
+					}
 
 					// Get licence File if available
 					File dir = new File(path);
@@ -218,6 +234,22 @@ public class ClientController {
 			logger.error(e.toString());
 		}
 
+	}
+
+	private static List<String> returnModelMethodList(String modelMethod) {
+
+		String[] modelNameArray = new String[] {};
+		List<String> modelNameList = new ArrayList<String>();
+
+		if (modelMethod != null) {
+			if (modelMethod.contains(",")) {
+				modelNameArray = modelMethod.split(",");
+				modelNameList = Arrays.asList(modelNameArray);
+			} else {
+				modelNameList.add(modelMethod);
+			}
+		}
+		return modelNameList;
 	}
 
 	public boolean isValidWord(String w) {
@@ -305,7 +337,7 @@ public class ClientController {
 	}
 
 	// Generate the protobuf file from sample data file
-	public File generateProtobuf(String path, String inputCSVFile, String modelType, String modelName, String modelMethod)
+	public File generateProtobuf(String path, String inputCSVFile, String modelType, String modelName, List<String> modelNameList)
 			throws IOException {
 		logger.info("Generating proto file");
 		logger.info("Model type is {}", modelType);
@@ -314,7 +346,7 @@ public class ClientController {
 		String h2oModelFullPath = null;
 
 		if (inputCSVFile == null) {
-			logger.info("The input csv file is null");
+			logger.info("The input csv file is null, so using User provided proto file.");
 			protoFile = new File(path + File.separator + "default.proto");
 			return protoFile;
 		} else {
@@ -322,16 +354,18 @@ public class ClientController {
 			h2oModelFullPath = path + File.separator + modelName + ".zip";
 
 			logger.info("I/P File : {} ", inputPath);
+			logger.info("Generating Proto file from inputCsv file");
 			logger.info("Model type is {}", modelType);
+			
 			if (modelType.equals("H")) {
 				logger.debug("Entered h2o protobuf generation call");
 				H2oCSVtoProto c = new H2oCSVtoProto();
-				protoFile = c.writeToProto(inputPath, modelName, h2oModelFullPath);
+				protoFile = c.writeToProto(inputPath, modelName, h2oModelFullPath, modelNameList);
 
 			} else {
 				logger.debug("Entered generic java protobuf generation call");
 				CSVToProto c = new CSVToProto();
-				protoFile = c.writeToProto(inputPath, modelName, modelMethod);
+				protoFile = c.writeToProto(inputPath, modelName, modelNameList);
 			}
 			return protoFile;
 		}
