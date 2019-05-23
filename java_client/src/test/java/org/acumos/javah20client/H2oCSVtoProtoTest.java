@@ -67,7 +67,9 @@ public class H2oCSVtoProtoTest {
 		String serviceName = "Demo";
 		String inputMessageName = "input";
 		String outputMessageName = "output";
-		H2oCSVtoProto.createService(serviceName, inputMessageName, outputMessageName);
+		List<String> h2oModelNameTestList = new ArrayList<>();
+		h2oModelNameTestList.add("predict");
+		H2oCSVtoProto.createService(serviceName, inputMessageName, outputMessageName, h2oModelNameTestList);
 	}
 
 	@Test
@@ -93,8 +95,10 @@ public class H2oCSVtoProtoTest {
 	public void writeToProtoTest() throws FileNotFoundException, IOException {
 		String modelName = "model";
 		String modelPath = projectPath + File.separator + "model.zip";
+		List<String> h2oModelNameTestList = new ArrayList<>();
+		h2oModelNameTestList.add("predict");
 		System.out.println("In writeToProtoTest()");
-		h2oCSVtoProto.writeToProto(csvPath, modelName, modelPath);
+		h2oCSVtoProto.writeToProto(csvPath, modelName, modelPath, h2oModelNameTestList);
 		System.out.println("After writeToProtoTest()");
 	}
 

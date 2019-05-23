@@ -59,8 +59,9 @@ public class CSVToProtoTest {
 		String serviceName = "SService";
 		String inputMessageName = "SInputmsg";
 		String outputMessageName = "SOutputmsg";
-		String modelMethod = "predict";
-		CSVToProto.createService(serviceName, inputMessageName, outputMessageName, modelMethod);
+		List<String> modelNameTestList = new ArrayList<>();
+		modelNameTestList.add("predict");
+		CSVToProto.createService(serviceName, inputMessageName, outputMessageName, modelNameTestList);
 	}
 	
 	@Test
@@ -99,6 +100,10 @@ public class CSVToProtoTest {
 	
 	@Test
 	public void writeToProtoTest( ) throws FileNotFoundException, IOException {
-		File f = cSVToProto.writeToProto(SAMPLE_CSV_FILE_PATH, "sampleModel", "predict");
+		
+		List<String> modelNameTestList = new ArrayList<String>();
+		modelNameTestList.add("predict");
+		
+		File f = cSVToProto.writeToProto(SAMPLE_CSV_FILE_PATH, "sampleModel", modelNameTestList);
 	}
 }

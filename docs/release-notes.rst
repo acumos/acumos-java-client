@@ -20,6 +20,11 @@
 Acumos Java Client Release Notes
 ================================
 
+Version 2.1.0 23-May 2019
+-------------------------------
+* Java Client needs to use the modeler's default.proto to onboad generic java model : `ACUMOS-1881 <https://jira.acumos.org/browse/ACUMOS-1881/>`_
+* Support multiple java methods other than one single predict method : `ACUMOS-1543 <https://jira.acumos.org/browse/ACUMOS-1543/>`_
+
 Version 2.0.0 04-April 2019
 -------------------------------
 * Modify acumos-java-client in accordance with task 2262 (create microcervice parameter) : `ACUMOS-2264 <https://jira.acumos.org/browse/ACUMOS-2264/>`_
