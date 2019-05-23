@@ -5,9 +5,9 @@
  * under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *  
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * This file is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
@@ -24,7 +24,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class CSVToProto {
 
@@ -59,8 +58,14 @@ public class CSVToProto {
 		return dataType;
 	}
 
-	public static String createService(String serviceName, String inputMessageName, String outputMessageName, String modelMethod) {
-		final String template = "service %s {\n" + "  rpc " + modelMethod +" (DataFrame) returns (Prediction);\n" + "}";
+	public static String createService(String serviceName, String inputMessageName, String outputMessageName, List<String> modelNameList) {
+		String template = "";
+		StringBuffer rpcString = new StringBuffer();
+		for(String modelMethod : modelNameList) {
+			outputMessageName = modelMethod+"Out";
+			rpcString.append("  rpc " + modelMethod +" (DataFrame) returns ("+modelMethod+"Out);\n");
+		}
+		template = "service %s {\n" + rpcString.toString() + "}";
 		return String.format(template, serviceName, inputMessageName, outputMessageName);
 	}
 
@@ -100,7 +105,7 @@ public class CSVToProto {
 		return sb.toString();
 	}
 
-	public File writeToProto(String SAMPLE_CSV_FILE_PATH, String modelName, String modelMethod) throws FileNotFoundException, IOException {
+	public File writeToProto(String SAMPLE_CSV_FILE_PATH, String modelName, List<String> modelNameList) throws FileNotFoundException, IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(SAMPLE_CSV_FILE_PATH));
 
 		String[] header = reader.readLine().split(",");
@@ -133,18 +138,26 @@ public class CSVToProto {
 
 		//String svcName = modelName + "Service";
 		final String inputMessageName = "DataFrameRow";
-		final String outputMessageName = "Prediction";
+		String outputMessageName = null;
+
 		sb.append("option java_package = \"com.google.protobuf\";");
 		sb.append('\n');
 		sb.append("option java_outer_classname = \"DatasetProto\";");
 		sb.append('\n');
-		sb.append(createService(modelName, "DataFrame", outputMessageName, modelMethod));
+
+		sb.append(createService(modelName, "DataFrame", outputMessageName, modelNameList));
 		sb.append('\n');
+
+		for(String modelMethod : modelNameList) {
+			outputMessageName = modelMethod+"Out";
+			sb.append(createMessage(outputMessageName, outputFields, outdataTypeList, true));
+			sb.append('\n');
+		}
+
 		sb.append(createMessage(inputMessageName, inputFields, dataTypeList, false));
 		sb.append('\n');
 		sb.append("message DataFrame { \nrepeated DataFrameRow rows = 1;\n }");
-		sb.append('\n');
-		sb.append(createMessage(outputMessageName, outputFields, outdataTypeList, true));
+		
 		sb.append('\n');
 		sb.append(createProtoFooter());
 

@@ -35,12 +35,12 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 @RunWith(MockitoJUnitRunner.class)
 @PrepareForTest(CSVToProto.class)
 public class CSVToProtoTest {
-	
+
 	@Mock
 	CSVToProto cSVToProto;// = new CSVToProto();
-	
+
 	public final String SAMPLE_CSV_FILE_PATH = "IRIS2.csv";
-	
+
 	@Test
 	public void getProtoDataTypeTest(){
 		String value = "TestFunctionality";
@@ -53,52 +53,57 @@ public class CSVToProtoTest {
 		value = "True";
 		dataType = CSVToProto.getProtoDataType(value);
 	}
-	
+
 	@Test
 	public void createServiceTest(){
 		String serviceName = "SService";
 		String inputMessageName = "SInputmsg";
 		String outputMessageName = "SOutputmsg";
-		String modelMethod = "predict";
-		CSVToProto.createService(serviceName, inputMessageName, outputMessageName, modelMethod);
+		List<String> modelNameTestList = new ArrayList<>();
+		modelNameTestList.add("predict");
+		CSVToProto.createService(serviceName, inputMessageName, outputMessageName, modelNameTestList);
 	}
-	
+
 	@Test
 	public void createProtoHeaderTest(){
 		CSVToProto.createProtoHeader();
 	}
-	
+
 	@Test
 	public void createProtoFooterTest(){
 		CSVToProto.createProtoFooter();
 	}
-	
+
 	/*@Test
 	public void writeToProtoTest() throws FileNotFoundException, IOException{
 		cSVToProto.writeToProto(SAMPLE_CSV_FILE_PATH);
 	}*/
-	
+
 	@Test
 	public void mainTest() throws IOException{
 		String[] args = null;
 		CSVToProto.main(args);
 	}
-	
+
 	@Test
 	public void createMessageTest(){
-		
+
 		String value = "TestValue";
 		String messageName = "SampleMsg";
-		
+
 		List<String> inputFields = new ArrayList<>();
 		inputFields.add(CSVToProto.getProtoDataType(value));
 		List<String> dataTypeList = new ArrayList<>();
 		dataTypeList.add(CSVToProto.getProtoDataType(value));
-		CSVToProto.createMessage(messageName, inputFields, dataTypeList, true);		
+		CSVToProto.createMessage(messageName, inputFields, dataTypeList, true);
 	}
-	
+
 	@Test
 	public void writeToProtoTest( ) throws FileNotFoundException, IOException {
-		File f = cSVToProto.writeToProto(SAMPLE_CSV_FILE_PATH, "sampleModel", "predict");
+
+		List<String> modelNameTestList = new ArrayList<String>();
+		modelNameTestList.add("predict");
+
+		File f = cSVToProto.writeToProto(SAMPLE_CSV_FILE_PATH, "sampleModel", modelNameTestList);
 	}
 }
