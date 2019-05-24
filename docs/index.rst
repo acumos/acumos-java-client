@@ -19,9 +19,10 @@
 ==================
 Acumos Java Client
 ==================
-    
+
 .. toctree::
-       :maxdepth: 2
-    
+       :maxdepth: 1
+
        release-notes
        developer-guide
+       end-user-guide/onboarding-java-guide
