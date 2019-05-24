@@ -132,6 +132,7 @@ b. Prepare a supporting folder with the following contents. This folder will con
            token_file = D:/Cognita/model/JavaGeneric/supporting
            dump_path = D:/Cognita/model/JavaGeneric/dump
            isMicroservice = true
+           h2oModelMethod = predict,classify,transform
 
            # Linux some properties are specific to java generic models
 
@@ -144,14 +145,14 @@ b. Prepare a supporting folder with the following contents. This folder will con
            plugin_root=/tmp/plugins
 
 
-    #. modelConfig.properties - Add this file only in case of Generic Java model onboarding. This file contains the modelMethod and modelClassName of the model.
+    #. modelConfig.properties - Add this file only in case of Generic Java model onboarding. This file contains the modelMethod and modelClassName of the model. Modeler can pass more thqan one model merhod in modelMethod field.
 
         .. code-block:: python
 
             modelClassName=org.acumos.ml.XModel
-            modelMethod=predict
+            modelMethod=predict,classify,transform
 
-    #. License File - If you have a license associated with your model, Add it in the supporting folder in the following form : license.json. If the license file extension is not 'json' the license on-boarding will not be posible and if the name is not 'license' Acumos will rename your license file as license.json and you will see your license file named as license.json in the artefacts table. If you upload a new version of your license after on-boarding, a number revision will be added to the name of your license file like : "license-2.json". To help user create the license file expected by Acumos a license editor is available on the web : `Acumos license editor <https://acumos-license-editor.stackblitz.io/#/>`_
+    #. License File - If you have a license associated with your model, Add it in the supporting folder in the following form : license.json. If the license file extension is not 'json' the license on-boarding will not be possible and if the name is not 'license' Acumos will rename your license file as license.json and you will see your license file named as license.json in the artifacts table. If you upload a new version of your license after on-boarding, a number revision will be added to the name of your license file like : "license-2.json". To help user create the license file expected by Acumos a license editor is available on the web : `Acumos license editor <https://acumos-license-editor.stackblitz.io/#/>`_
 
 
 Create your modeldump.zip file
@@ -169,6 +170,7 @@ Changes in application.properties file
 6.	token_file – Path where token file is present
 7.	dump_path – path where modeldump needs to be save
 8.      isMicroservice - True/False based on user's choice to generate microservice
+9.      h2oModelMethod = predict,classify (modeler can pass mulptiple method methods for H2O model)
 
 Pass the following argument as an input to run the JavaClient.jar file
 
