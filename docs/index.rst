@@ -24,4 +24,8 @@ Acumos Java Client
        :maxdepth: 2
     
        release-notes
+       
+       :maxdepth: 1
+
        developer-guide
+       
