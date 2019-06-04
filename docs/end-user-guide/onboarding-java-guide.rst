@@ -18,9 +18,9 @@
 .. NOTE: THIS FILE IS LINKED TO FROM THE DOCUMENTATION PROJECT
 .. IF YOU CHANGE THE LOCATION OR NAME OF THIS FILE, YOU MUST UPDATE THE INDEX IN THE DOCS PROJECT
 
-============================
-Java Model on-boarding guide
-============================
+====================================
+Acumos Java Client on-boarding guide
+====================================
 
 The Acumos Java Client Library command line utility is used to on-board H2o.ai and Generic Java models. This library creates artifacts from an H2o or Generic Java model and pushes the artifacts to the on-boarding server for the H2o Model runner to be able to use them.
 
