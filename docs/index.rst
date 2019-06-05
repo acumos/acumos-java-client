@@ -25,4 +25,4 @@ Acumos Java Client
 
        release-notes
        developer-guide
-       end-user-guide/onboarding-java-guide
+       onboarding-java-guide
