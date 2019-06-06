@@ -22,25 +22,37 @@
 Acumos Java Client User Guide
 =============================
 
-The Acumos Java Client Library command line utility is used to on-board H2o.ai and Generic Java models. This library creates artifacts from an H2o or Generic Java model and pushes the artifacts to the on-boarding server for the H2o Model runner to be able to use them. 
+The Acumos Java Client Library command line utility is used to on-board H2o.ai and Generic Java models.
+This library creates artifacts from an H2o or Generic Java model and pushes the artifacts to the
+on-boarding server for the H2o Model runner to be able to use them.
 
 High-Level Flow
 ===============
 
-#) The Modeler creates a model in H2o and exports it in the MOJO model format (.zip file). For Generic Java, the Modeler creates a model and exports it in the .jar format.
-#) The Modeler runs the JavaClient jar, which creates a Protobuf (default.proto) file for the Model, creates the required metadata.json file and an artifact called modelpackage.zip.
-#) Depending on the choice of the Modeler, he can manually upload these generated artifacts to the Acumos Marketplace via its Web interface. This is Web-based on-boarding. We will see how to do this in this article.
-#) Or the Java client library itself, on-boards the model onto the on-boarding server if the modeler provides the on-boarding server URL. This is CLI-based on-boarding.
+#) The Modeler creates a model in H2o and exports it in the MOJO model format (.zip file). For Generic
+Java, the Modeler creates a model and exports it in the .jar format.
+#) The Modeler runs the JavaClient jar, which creates a Protobuf (default.proto) file for the Model,
+creates the required metadata.json file and an artifact called modelpackage.zip.
+#) Depending on the choice of the Modeler, he can manually upload these generated artifacts to the
+Acumos Marketplace via its Web interface. This is Web-based on-boarding. We will see how to do this in
+this article.
+#) Or the Java client library itself, on-boards the model onto the on-boarding server if the modeler
+provides the on-boarding server URL. This is CLI-based on-boarding.
 
-The Model Runner provides a wrapper around the ML model, packages it as a containerized microservice and exposes a predict method as a REST endpoint. When the model is onboarded and deployed, this method (REST endpoint) can then be called by other external applications to request predictions off of the model.
+The Model Runner provides a wrapper around the ML model, packages it as a containerized microservice and
+exposes a predict method as a REST endpoint. When the model is onboarded and deployed, this method (REST
+endpoint) can then be called by other external applications to request predictions off of the model.
 
-Please refer to the Acumos Java Client Installation and Maintenance Guide prior to the followings.
-
+Please refer to the `Acumos Java Client Installation and Maintenance Guide <https://docs.acumos.org/en/latest/submodules/acumos-java-client/docs/instalation-and-maintenance-guide.html>`_ prior to the followings.
 
 Create your modeldump.zip file
 ==============================
 
-It exists two ways to onboard a model, by CLI (command Line Interface) and by Web (drag and drop directly on the Acumos portal Web onboarding page). If you used CLI you need to be authenticated, currently it exists two ways to be authenticated : authentication by jwt token or authentication by api token. The jwt token is provided by the auth_url API while the api token is available on the acumos portal in the user setings. We strongly recommend to use api token as the jwt token method will be disable.
+It exists two ways to onboard a model, by CLI (command Line Interface) and by Web (drag and drop directly
+on the Acumos portal Web onboarding page). If you used CLI you need to be authenticated, currently it
+exists two ways to be authenticated : authentication by jwt token or authentication by api token. The jwt
+token is provided by the auth_url API while the api token is available on the acumos portal in the user
+setings. We strongly recommend to use api token as the jwt token method will be disable.
 
 Changes in application.properties file
 
@@ -61,12 +73,15 @@ Pass the following argument as an input to run the JavaClient.jar file
        java -jar java_client-2.0.0.jar <modelType> <SupportingFolderPath> <ModelName> <inputCSVFile> <OnboardingType>
 
 1.	modelType – H for H2O model and G for Generic java model
-2.	SupportingFolderPath – pass the path where modelrunner, model file, application.properties, license.json and data file are present
+2.	SupportingFolderPath – pass the path where modelrunner, model file, application.properties,
+license.json and data file are present
 3.	ModelName – The name of model file
 4.	inputCSVFile – name of the data file present in supporting folder(optional in case if you have .proto file)
-5.	OnboardingType - pass "WebOnboard" if needed modeldump for webbased onboarding. For onboarding through client keep it blank(Optional)
+5.	OnboardingType - pass "WebOnboard" if needed modeldump for webbased onboarding. For onboarding through
+client keep it blank(Optional)
 
-If you used CLI-based onboarding, you don't need to perform the steps outlined just below. The Java client has done it for you. You will see a message on the terminal that states the model onboarded successfully.
+If you used CLI-based onboarding, you don't need to perform the steps outlined just below. The Java client has
+done it for you. You will see a message on the terminal that states the model onboarded successfully.
 
 Onboarding to the Acumos Portal
 ===============================
