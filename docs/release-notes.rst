@@ -20,6 +20,10 @@
 Acumos Java Client Release Notes
 ================================
 
+Version 2.2.0 11-June 2019
+-------------------------------
+* H2O Model dump is not getting created with latest deployed JavaClient : `ACUMOS-2998 <https://jira.acumos.org/browse/ACUMOS-2998/>`_
+
 Version 2.1.0 23-May 2019
 -------------------------------
 * Java Client needs to use the modeler's default.proto to onboad generic java model : `ACUMOS-1881 <https://jira.acumos.org/browse/ACUMOS-1881/>`_

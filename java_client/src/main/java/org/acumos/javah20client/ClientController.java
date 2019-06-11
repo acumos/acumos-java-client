@@ -104,11 +104,10 @@ public class ClientController {
 				isMicroserviceFlag = prop.getProperty("isMicroservice");
 				h2oModelMethod = prop.getProperty("h2oModelMethod");
 
-				inputModelConfig = new FileInputStream(new File(path, "modelConfig.properties"));
-				prop.load(inputModelConfig);
-				modelMethod = prop.getProperty("modelMethod");
-
 				if(modelType.equals("G")) {
+					inputModelConfig = new FileInputStream(new File(path, "modelConfig.properties"));
+					prop.load(inputModelConfig);
+					modelMethod = prop.getProperty("modelMethod");
 					modelNameList = returnModelMethodList(modelMethod);
 				}else if(modelType.equals("H")) {
 					h2oModelNameList = returnModelMethodList(h2oModelMethod);
