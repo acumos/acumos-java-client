@@ -22,4 +22,5 @@ Acumos Java Client Tutorial
     
 .. toctree::
        :maxdepth: 1
+
        lesson1
