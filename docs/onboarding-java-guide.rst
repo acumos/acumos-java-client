@@ -38,7 +38,7 @@ The Model Runner provides a wrapper around the ML model, packages it as a contai
 exposes a predict method as a REST endpoint. When the model is onboarded and deployed, this method (REST
 endpoint) can then be called by other external applications to request predictions off of the model.
 
-Please refer to the `Acumos Java Client Installation and Maintenance Guide <https://docs.acumos.org/en/latest/submodules/acumos-java-client/docs/instalation-and-maintenance-guide.html>`_ prior to the followings.
+Please refer to the `Acumos Java Client Installation and Maintenance Guide <instalation-and-maintenance-guide.html>`_ prior to the followings.
 
 Create your modeldump.zip file & use CLI on-boarding
 ====================================================
@@ -54,12 +54,14 @@ Changes in application.properties file
 1.	Pass the model file name
 2.	Model Type - H or G  (H for H2O model and G for Generic java model)
 3.	push_url – respective url on which user wants to onboard the model
-4.	auth_url – auth url  (for jwt token authentication)
+4.	auth_url – auth url for jwt token authentication 
 5.	token_type – apitoken (for api based token authentication),jwttoken(for jwt token based authentication)
 6.	token_file – Path where token file is present
 7.	dump_path – path where modeldump needs to be save
 8.	isMicroservice - True/False based on user's choice to generate microservice
 9.	h2oModelMethod = predict,classify (modeler can pass mulptiple method methods for H2O model)
+
+For push_url and auth_url, please refer to `on-boarding API user guide <../../on-boarding/docs/api-docs.html>`_
 
 Pass the following argument as an input to run the JavaClient.jar file
 
