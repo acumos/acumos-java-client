@@ -56,7 +56,14 @@ Technology and Frameworks
 
 Project Resources
 =================
-- Gerrit repo : `acumos-java-client <https://gerrit.acumos.org/r/#/admin/projects/acumos-java-client>`_
+
+- Gerrit repo :
+
+`acumos-java-client <https://gerrit.acumos.org/r/#/admin/projects/acumos-java-client>`_
+`generic-model-runner <https://gerrit.acumos.org/r/q/project:generic-model-runner>`_
+
+- Jira :
+
 - `Jira <https://jira.acumos.org>`_
 
 Development Setup
@@ -73,11 +80,14 @@ Data scientist can download the latest version of the Java Client jar from Nexus
 
 Data scientist can download the latest version of the h2o-genericjava-modelrunner jar from  Nexus : https://nexus.acumos.org/#nexus-search;quick~runner
 
-To clone the client library project: git clone https://gerrit.acumos.org/r/acumos-java-client
+To clone the client library project: use the http, https or ssh command available at https://gerrit.acumos.org/r/acumos-java-client
 
-To clone the model runner project : git clone https://gerrit.acumos.org/r/generic-model-runner
+To clone the model runner project : use the http, https or ssh command available at https://gerrit.acumos.org/r/generic-model-runner
 
-To build the project, you can use : mvn clean install
+To build the project, you can use :
+
+.. code-block
+	 mvn clean install
 
 To build the model runner project, refer to instructions provided in generic-model-runner folder This will give you the same h2o-genericjava-model runner mentioned earlier.
 
