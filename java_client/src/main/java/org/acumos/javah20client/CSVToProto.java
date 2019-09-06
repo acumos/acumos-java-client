@@ -58,12 +58,13 @@ public class CSVToProto {
 		return dataType;
 	}
 
-	public static String createService(String serviceName, String inputMessageName, String outputMessageName, List<String> modelNameList) {
+	public static String createService(String serviceName, String inputMessageName, String outputMessageName,
+			List<String> modelNameList) {
 		String template = "";
 		StringBuffer rpcString = new StringBuffer();
-		for(String modelMethod : modelNameList) {
-			outputMessageName = modelMethod+"Out";
-			rpcString.append("  rpc " + modelMethod +" (DataFrame) returns ("+modelMethod+"Out);\n");
+		for (String modelMethod : modelNameList) {
+			outputMessageName = modelMethod + "Out";
+			rpcString.append("  rpc " + modelMethod + " (DataFrame) returns (" + modelMethod + "Out);\n");
 		}
 		template = "service %s {\n" + rpcString.toString() + "}";
 		return String.format(template, serviceName, inputMessageName, outputMessageName);
@@ -105,7 +106,38 @@ public class CSVToProto {
 		return sb.toString();
 	}
 
-	public File writeToProto(String SAMPLE_CSV_FILE_PATH, String modelName, List<String> modelNameList) throws FileNotFoundException, IOException {
+	public static String createMessage(final String messageName, List<String> fields, List<String> dtList,
+			boolean isRepeated, String modelMethod) {
+		final String startTemplate = "message %s {\n";
+		final String endTemplate = "}";
+
+		StringBuffer sb = new StringBuffer();
+		sb.append(String.format(startTemplate, messageName));
+		int i = 0;
+		int j = 1;
+		for (String f : fields) {
+			if (f.contains(modelMethod)) {
+				// Is repeated the right thing?
+				if (isRepeated)
+					sb.append("repeated ");
+				// sb.append(getProtoDataType(f));
+				sb.append(dtList.get(i));
+				sb.append(' ');
+				sb.append(f);
+				sb.append(" = ");
+				sb.append("" + j + ";");
+				sb.append('\n');
+			}
+			i++;
+			j++;
+
+		}
+		sb.append(endTemplate);
+		return sb.toString();
+	}
+
+	public File writeToProto(String SAMPLE_CSV_FILE_PATH, String modelName, List<String> modelNameList)
+			throws FileNotFoundException, IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(SAMPLE_CSV_FILE_PATH));
 
 		String[] header = reader.readLine().split(",");
@@ -136,7 +168,7 @@ public class CSVToProto {
 		sb.append(createProtoHeader());
 		sb.append('\n');
 
-		//String svcName = modelName + "Service";
+		// String svcName = modelName + "Service";
 		final String inputMessageName = "DataFrameRow";
 		String outputMessageName = null;
 
@@ -148,8 +180,8 @@ public class CSVToProto {
 		sb.append(createService(modelName, "DataFrame", outputMessageName, modelNameList));
 		sb.append('\n');
 
-		for(String modelMethod : modelNameList) {
-			outputMessageName = modelMethod+"Out";
+		for (String modelMethod : modelNameList) {
+			outputMessageName = modelMethod + "Out";
 			sb.append(createMessage(outputMessageName, outputFields, outdataTypeList, true));
 			sb.append('\n');
 		}
@@ -157,7 +189,57 @@ public class CSVToProto {
 		sb.append(createMessage(inputMessageName, inputFields, dataTypeList, false));
 		sb.append('\n');
 		sb.append("message DataFrame { \nrepeated DataFrameRow rows = 1;\n }");
-		
+
+		sb.append('\n');
+		sb.append(createProtoFooter());
+
+		System.out.println(sb.toString());
+		File p = new File("default.proto");
+
+		FileWriter proto = new FileWriter(p);
+		proto.write(sb.toString());
+		proto.close();
+
+		return p;
+	}
+
+	public File writeToProto(String modelName, List<String> modelNameList, List<String> dataTypeList,
+			List<String> outdataTypeList, List<String> inputFields, List<String> matchingMethodList)
+			throws FileNotFoundException, IOException {
+
+		List<String> outputFields = new ArrayList<>();
+
+		for (int i = 0; i < matchingMethodList.size(); i++) {
+			outputFields.add(matchingMethodList.get(i) + "Output");
+		}
+
+		// Creating Proto....!
+		StringBuffer sb = new StringBuffer();
+		sb.append(createProtoHeader());
+		sb.append('\n');
+
+		// String svcName = modelName + "Service";
+		final String inputMessageName = "DataFrameRow";
+		String outputMessageName = null;
+
+		sb.append("option java_package = \"com.google.protobuf\";");
+		sb.append('\n');
+		sb.append("option java_outer_classname = \"DatasetProto\";");
+		sb.append('\n');
+
+		sb.append(createService(modelName, "DataFrame", outputMessageName, modelNameList));
+		sb.append('\n');
+
+		for (String modelMethod : modelNameList) {
+			outputMessageName = modelMethod + "Out";
+			sb.append(createMessage(outputMessageName, outputFields, outdataTypeList, true, modelMethod));
+			sb.append('\n');
+		}
+
+		sb.append(createMessage(inputMessageName, inputFields, dataTypeList, false));
+		sb.append('\n');
+		sb.append("message DataFrame { \nrepeated DataFrameRow rows = 1;\n }");
+
 		sb.append('\n');
 		sb.append(createProtoFooter());
 

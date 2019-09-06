@@ -20,6 +20,10 @@
 Acumos Java Client Release Notes
 ================================
 
+Version 3.0.0 9-Sept 2019
+-------------------------------
+* Modify or create new java client for MLlib : `ACUMOS-3129 <https://jira.acumos.org/browse/ACUMOS-3129/>`_
+
 Version 2.2.0 11-June 2019
 -------------------------------
 * H2O Model dump is not getting created with latest deployed JavaClient : `ACUMOS-2998 <https://jira.acumos.org/browse/ACUMOS-2998/>`_
