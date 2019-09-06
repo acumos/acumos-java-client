@@ -92,7 +92,7 @@ public class H2oCSVtoProtoTest {
 	}
 
 	@Test
-	public void writeToProtoTest() throws FileNotFoundException, IOException {
+	public void writeToProtoTest() throws Exception {
 		String modelName = "model";
 		String modelPath = projectPath + File.separator + "model.zip";
 		List<String> h2oModelNameTestList = new ArrayList<>();
