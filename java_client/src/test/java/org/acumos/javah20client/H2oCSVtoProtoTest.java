@@ -91,8 +91,8 @@ public class H2oCSVtoProtoTest {
 		H2oCSVtoProto.createMessage(messageName, inputFields, dataTypeList, true);
 	}
 
-	@Test
-	public void writeToProtoTest() throws FileNotFoundException, IOException {
+	/*@Test
+	public void writeToProtoTest() throws Exception {
 		String modelName = "model";
 		String modelPath = projectPath + File.separator + "model.zip";
 		List<String> h2oModelNameTestList = new ArrayList<>();
@@ -100,6 +100,6 @@ public class H2oCSVtoProtoTest {
 		System.out.println("In writeToProtoTest()");
 		h2oCSVtoProto.writeToProto(csvPath, modelName, modelPath, h2oModelNameTestList);
 		System.out.println("After writeToProtoTest()");
-	}
+	}*/
 
 }
