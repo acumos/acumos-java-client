@@ -19,6 +19,7 @@
 -->
 
 # Acumos Java Client
+![Acumoslogo](/docs/images/Acumos_logo_white.png)
 
 
  This repository holds the Acumos Java Client(https://gerrit.acumos.org/r/acumos-java-client) which helps provide a way to use H2o.ai and Generic Java in the Acumos Platform. 
