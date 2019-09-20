@@ -20,6 +20,10 @@
 Acumos Java Client Release Notes
 ================================
 
+Version 3.1.0 20-Sept 2019 
+-------------------------------
+* user credentials are not needed in case of webonboarding : `ACUMOS-3464 <https://jira.acumos.org/browse/ACUMOS-3464/>`_
+
 Version 3.0.0 9-Sept 2019 
 -------------------------------
 * Modify or create new java client for MLlib : `ACUMOS-3129 <https://jira.acumos.org/browse/ACUMOS-3129/>`_

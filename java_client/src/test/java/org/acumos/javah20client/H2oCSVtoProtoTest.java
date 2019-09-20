@@ -91,7 +91,7 @@ public class H2oCSVtoProtoTest {
 		H2oCSVtoProto.createMessage(messageName, inputFields, dataTypeList, true);
 	}
 
-	/*@Test
+/*	@Test
 	public void writeToProtoTest() throws Exception {
 		String modelName = "model";
 		String modelPath = projectPath + File.separator + "model.zip";

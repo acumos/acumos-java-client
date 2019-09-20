@@ -18,7 +18,7 @@ public interface ClientControllerInterface {
 
 	public void zipFile(List<String> files, String name);
 
-	public void generateModelService(File model, File service, File congif, String modelType, File appFile);
+	public void generateModelService(File model, File service, File congif, String modelType, File appFile, File sparkConf);
 
 	public File generateProtobuf(String path, String inputCSVFile, String modelType, String modelName,
 			List<String> modelNameList) throws Exception;
@@ -35,4 +35,6 @@ public interface ClientControllerInterface {
 	public String checkToken(String tokenType, String tokenFilePath, String authUrl);
 	
 	public String getModelService(String supportingPath);
+	
+	public File getsparkConfigFile(String path) throws FileNotFoundException;
 }

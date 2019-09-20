@@ -2,6 +2,7 @@ package org.acumos.javah20client;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -255,4 +256,17 @@ public class JavaSparkModelImpl extends AbstractClientController {
 			return protoFile;
 		}
 	}
+		
+	// Get the model.jar file
+	public void generateModelService(File model, File service, File congif, String modelType, File appFile, File sparkConf) {
+
+		// Pack modelService.jar and model.jar into zip file
+		List<String> files = new ArrayList<String>();
+		files.add(model.getAbsolutePath());
+		files.add(appFile.getAbsolutePath());
+		files.add(congif.getAbsolutePath());
+		files.add(sparkConf.getAbsolutePath());
+		zipFile(files, "modelpackage.zip");
+	}
+
 }
