@@ -90,9 +90,12 @@ public class ClientController {
 				onboardingType = args[4];
 			}
 
-			token = clientRef.checkToken(tokenType, tokenFilePath, authUrl);
+			logger.debug("onboarding Type is " + onboardingType);
+			if (onboardingType == null || !onboardingType.equalsIgnoreCase("webonboard")) {
+				token = clientRef.checkToken(tokenType, tokenFilePath, authUrl);
+			}
 
-			if (token != null && !token.isEmpty()) {
+			if ((token != null && !token.isEmpty()) || onboardingType.equalsIgnoreCase("webonboard")) {
 
 				modelVal = clientRef.isValidWord(modelName);
 
@@ -105,13 +108,22 @@ public class ClientController {
 
 					try {
 
-						File congif = clientRef.getConfigFile(path);
+						File config = null;
+						if (!modelType.equalsIgnoreCase("H")) {
+							config = clientRef.getConfigFile(path);
+						}
+						
+						File sparkConfig = null;
+						if (modelType.equalsIgnoreCase("S")) {
+							sparkConfig = clientRef.getsparkConfigFile(path);
+						}
+						
 
 						File appFile = clientRef.getAppFile(path);
 						File protof = null;
 
 						// create the modelpackage.zip file
-						clientRef.generateModelService(model, servicejar, congif, modelType, appFile);
+						clientRef.generateModelService(model, servicejar, config, modelType, appFile, sparkConfig);
 
 						// Generate Protobuf file
 						protof = clientRef.generateProtobuf(path, inputCSVFile, modelType, modelName, modelNameList);
@@ -120,7 +132,7 @@ public class ClientController {
 						File dir = new File(path);
 						String[] fileList = dir.list();
 						for (String name : fileList) {
-							if (name.toLowerCase().contains("license") || name.toLowerCase().contains(".json")) {
+							if (name.toLowerCase().contains("license") && name.toLowerCase().contains(".json")) {
 								licenseFile = new File(path + File.separator + name);
 							}
 						}
@@ -128,7 +140,7 @@ public class ClientController {
 						// Generate Metadata.json file
 						clientRef.generateMetadata(modelType, modelName);
 						
-						if (protof != null) {
+						if (protof.exists()) {
 
 							if (onboardingType != null && onboardingType.equalsIgnoreCase("webonboard")) {
 								logger.info("Creating modeldump for web based onboarding");
@@ -154,6 +166,8 @@ public class ClientController {
 											token, isMicroserviceFlag);
 								}
 							}
+						} else {
+							throw new FileNotFoundException("proto file is not generated/provided");
 						}
 					} catch (FileNotFoundException fe) {
 						logger.error(fe.getMessage());

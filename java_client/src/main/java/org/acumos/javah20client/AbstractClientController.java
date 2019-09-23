@@ -106,29 +106,6 @@ public abstract class AbstractClientController implements ClientControllerInterf
 
 	}
 
-	// Get the model.jar file
-	public void generateModelService(File model, File service, File congif, String modelType, File appFile) {
-
-		// Pack modelService.jar and model.jar into zip file
-		List<String> files = new ArrayList<String>();
-		files.add(model.getAbsolutePath());
-		files.add(service.getAbsolutePath());
-		files.add(appFile.getAbsolutePath());
-		if (modelType.equals("G")) {
-			files.add(congif.getAbsolutePath());
-		}
-		zipFile(files, "modelpackage.zip");
-	}
-
-	// Generate the modelConfig.properties file from directory
-	public File getConfigFile(String path) throws FileNotFoundException {
-
-		logger.info("Get modelConfig.properties");
-		File conFile = null;
-		conFile = new File(path + File.separator + "modelConfig.properties");
-		return conFile;
-	}
-
 	// Generate the application.properties file from directory
 	public File getAppFile(String path) throws FileNotFoundException {
 
@@ -280,6 +257,34 @@ public abstract class AbstractClientController implements ClientControllerInterf
 			}
 		}
 		return token;
+	}
+	
+	// Generate the modelConfig.properties file from directory
+	public File getConfigFile(String path) throws FileNotFoundException {
+
+		logger.info("Get modelConfig.properties file");
+		File conFile = null;
+		conFile = new File(path + File.separator + "modelConfig.properties");
+		
+		if (!conFile.exists()) {
+			throw new FileNotFoundException("modelConfig.properties for model is missing");
+		}
+		
+		return conFile;
+	}
+	
+	// Generate the sparkConfig.json file from directory
+	public File getsparkConfigFile(String path) throws FileNotFoundException {
+
+		logger.info("Get sparkConfig.json file");
+		File sparkConFile = null;
+		sparkConFile = new File(path + File.separator + "sparkConfig.json");
+		
+		if (!sparkConFile.exists()) {
+			throw new FileNotFoundException("sparkConfig.json for spark model is missing");
+		}
+		
+		return sparkConFile;
 	}
 
 }

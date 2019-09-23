@@ -256,4 +256,18 @@ public class JavaGenericModelImpl extends AbstractClientController {
 			return protoFile;
 		}
 	}
+	
+	// Get the model.jar file
+	public void generateModelService(File model, File service, File congif, String modelType, File appFile, File sparkConf) {
+
+		// Pack modelService.jar and model.jar into zip file
+		List<String> files = new ArrayList<String>();
+		files.add(model.getAbsolutePath());
+		files.add(service.getAbsolutePath());
+		files.add(appFile.getAbsolutePath());
+		files.add(congif.getAbsolutePath());
+		zipFile(files, "modelpackage.zip");
+	}
+
+
 }

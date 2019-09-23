@@ -72,15 +72,16 @@ public class ClientControllerTest {
 		File demo2 = new File("modelConfig.properties");
 		File demo3 = new File("metadata.json");
 		File demo4 = new File("tokenfile.txt");
-		abstractClientController.generateModelService(demo1, demo2, demo3, modelType, demo4);
+		File demo5 = new File("tokenfile.txt");
+		abstractClientController.generateModelService(demo1, demo2, demo3, modelType, demo4, demo5);
 		modelType = "G";
-		abstractClientController.generateModelService(demo1, demo2, demo3, modelType, demo4);
+		abstractClientController.generateModelService(demo1, demo2, demo3, modelType, demo4, demo5);
 	}
 
 	@Test
 	public void getConfigFileTest() throws FileNotFoundException {
 
-		projectPath = projectPath + File.separator + "testdata";
+		projectPath = projectPath + File.separator;
 		abstractClientController.getConfigFile(projectPath);
 	}
 
