@@ -37,4 +37,6 @@ public interface ClientControllerInterface {
 	public String getModelService(String supportingPath);
 	
 	public File getsparkConfigFile(String path) throws FileNotFoundException;
+	
+	public File getModelFile(String path, String modelName);
 }

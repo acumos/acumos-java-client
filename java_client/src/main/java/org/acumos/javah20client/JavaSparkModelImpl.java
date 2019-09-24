@@ -268,5 +268,11 @@ public class JavaSparkModelImpl extends AbstractClientController {
 		files.add(sparkConf.getAbsolutePath());
 		zipFile(files, "modelpackage.zip");
 	}
+	
+	//Get the model file
+	public File getModelFile(String path, String modelName) {
+		return new File(path + File.separator + modelName + ".jar");
+	}
+
 
 }

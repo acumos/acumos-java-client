@@ -104,9 +104,10 @@ public class ClientController {
 					// Get the service jar from supporting folder
 					String servicePath = clientRef.getModelService(path);
 					servicejar = new File(servicePath);
-					model = new File(path + File.separator + modelName + ".jar");
 
 					try {
+						
+						model = clientRef.getModelFile(path, modelName);
 
 						File config = null;
 						if (!modelType.equalsIgnoreCase("H")) {
