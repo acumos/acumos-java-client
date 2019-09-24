@@ -93,3 +93,8 @@ requested and deployed by a user, your model runs as a dockerized microservice o
 of your choice and exposes a predict method as a REST endpoint. This method can be called by other
 external applications to request predictions off of your model.
 
+===================================
+Acumos Spark Java Client User Guide
+===================================
+
+coming soon
