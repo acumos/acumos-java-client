@@ -29,7 +29,7 @@ on-boarding server for the H2o Model runner to be able to use them.
 High-Level Flow
 ===============
 
-#) The Modeler creates a model in H2o and exports it in the MOJO model format (.zip file). For Generic Java, the Modeler creates a model and exports it in the .jar format.
+#) The Modeler creates a model in H2o and exports it in the MOJO model format (.zip file). For Generic Java and Spark the Modeler creates a model and exports it in the .jar format.
 #) The Modeler runs the JavaClient jar, which creates a Protobuf (default.proto) file for the Model, creates the required metadata.json file and an artifact called modelpackage.zip.
 #) Depending on the choice of the Modeler, he can manually upload these generated artifacts to the Acumos Marketplace via its Web interface. This is Web-based on-boarding. We will see how to do this in this article.
 #) Or the Java client library itself, on-boards the model onto the on-boarding server if the modeler provides the on-boarding server URL. This is CLI-based on-boarding.
@@ -47,12 +47,13 @@ It exists two ways to onboard a model, by CLI (command Line Interface) and by We
 on the Acumos portal Web onboarding page). If you used CLI you need to be authenticated, currently it
 exists two ways to be authenticated : authentication by jwt token or authentication by api token. The jwt
 token is provided by the auth_url API while the api token is available on the acumos portal in the user
-setings. We strongly recommend to use api token as the jwt token method will be disable.
+setings. In Case of ApiToken modeler needs to pass the apitonen in a token file under supporting foler. 
+We strongly recommend to use api token as the jwt token method will be disable.
 
 Changes in application.properties file
 
 1.	Pass the model file name
-2.	Model Type - H or G  (H for H2O model and G for Generic java model)
+2.	Model Type - H/G/S  (H for H2O model, G for Generic java model, S for Java Spark)
 3.	push_url – respective url on which user wants to onboard the model
 4.	auth_url – auth url for jwt token authentication 
 5.	token_type – apitoken (for api based token authentication),jwttoken(for jwt token based authentication)
@@ -69,10 +70,10 @@ Pass the following argument as an input to run the JavaClient.jar file
 
        java -jar java_client-2.0.0.jar <modelType> <SupportingFolderPath> <ModelName> <inputCSVFile> <OnboardingType>
 
-1.	modelType – H for H2O model and G for Generic java model
+1.	modelType – H for H2O model, G for Generic java model, S for Java Spark
 2.	SupportingFolderPath – pass the path where modelrunner, model file, application.properties, license.json and data file are present
 3.	ModelName – The name of model file
-4.	inputCSVFile – name of the data file present in supporting folder(optional in case if you have .proto file)
+4.	inputCSVFile – name of the data file present in supporting folder, optional in case if you have .proto file(OR moderler can generate proto file for Java Generic and Java Spark models by inspecting the model)
 5.	OnboardingType - pass "WebOnboard" if needed modeldump for webbased onboarding. For onboarding through client keep it blank(Optional)
 
 If you used CLI-based onboarding, you don't need to perform the steps outlined just below. The Java client has
@@ -92,9 +93,3 @@ You can now see, rate, review, comment, collaborate on your model in the Acumos 
 requested and deployed by a user, your model runs as a dockerized microservice on the infrastructure
 of your choice and exposes a predict method as a REST endpoint. This method can be called by other
 external applications to request predictions off of your model.
-
-===================================
-Acumos Spark Java Client User Guide
-===================================
-
-coming soon
