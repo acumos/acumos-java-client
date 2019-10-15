@@ -54,13 +54,8 @@ public class ClientController {
 
 			logger.info("Length : {} ", args.length);
 			// command line arguments
-			modelType = args[0];
-			path = args[1];
-			modelName = args[2];
-
-			// Get the modelImp reference according to the model type
-			logger.info("Model type is {}", modelType);
-			ClientControllerInterface clientRef = getModelImplementer(modelType);
+			path = args[0];
+			modelName = args[1];
 
 			Properties prop = new Properties();
 			InputStream input = null;
@@ -73,21 +68,25 @@ public class ClientController {
 			tokenFilePath = prop.getProperty("token_file");
 			dumpPath = prop.getProperty("dump_path");
 			isMicroserviceFlag = prop.getProperty("isMicroservice");
+			modelType = prop.getProperty("model_type");
+			// Get the modelImp reference according to the model type
+			logger.info("Model type is {}", modelType);
+			ClientControllerInterface clientRef = getModelImplementer(modelType);
 
 			modelNameList = clientRef.returnModelMethodList(path);
 
-			if (args.length == 4) {
+			if (args.length == 3) {
 
-				String temp = args[3];
+				String temp = args[2];
 				if (temp.contains("csv")) {
 					inputCSVFile = temp;
 				} else {
 					onboardingType = temp;
 				}
 
-			} else if (args.length == 5) {
-				inputCSVFile = args[3];
-				onboardingType = args[4];
+			} else if (args.length == 4) {
+				inputCSVFile = args[2];
+				onboardingType = args[3];
 			}
 
 			logger.debug("onboarding Type is " + onboardingType);

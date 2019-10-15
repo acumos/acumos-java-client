@@ -65,10 +65,18 @@ Changes in application.properties file
 For push_url and auth_url, please refer to `on-boarding API user guide <../../on-boarding/docs/api-docs.html>`_
 
 Pass the following argument as an input to run the JavaClient.jar file
+Note: There has been a change in the arguments list. No need to pass the argument <modeType> now. It is taken from application.properties file in SupportingFolderPath.
 
+OLD :-
 .. code-block:: python
 
        java -jar java_client-2.0.0.jar <modelType> <SupportingFolderPath> <ModelName> <inputCSVFile> <OnboardingType>
+
+NEW UPDATE :-
+.. code-block:: python
+
+       java -jar java_client-2.0.0.jar <SupportingFolderPath> <ModelName> <inputCSVFile> <OnboardingType>
+
 
 1.	modelType – H for H2O model, G for Generic java model, S for Java Spark
 2.	SupportingFolderPath – pass the path where modelrunner, model file, application.properties, license.json and data file are present
