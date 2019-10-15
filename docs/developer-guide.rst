@@ -22,19 +22,19 @@ Acumos Java Client Developer Guide
 
 Overview
 ========
-- The Acumos Java client is part of the Acumos Tools for H2o.ai and Generic Java models.
+- The Acumos Java client is part of the Acumos Tools for H2o.ai, Generic Java and Java Spark models.
 - The Acumos Java client is a command line utility that Data Scientist runs on his local machine or wherever he has the model to onboard it into Acumos.
-- Both of them, model and Acumos Java cient together, provide a way to use H2o.ai and Generic Java in the Acumos Platform.
+- Both of them, model and Acumos Java cient together, provide a way to use H2o.ai, Generic Java and Java Spark in the Acumos Platform.
 
 Architecture and Design
 =======================
 
 Java Client Library:
 --------------------
-Allows the H2o or Generic Java model and other artifacts to become available in the onboarding server for the H2o Model runner to be able to use them.
+Allows the H2o/Generic Java/Java Spark model and other artifacts to become available in the onboarding server for the H2o Model runner to be able to use them.
 
 - The Data Scientist creates his model in H2o and exports it in the MOJO model format (.zip file) using any interface (eg.Python, Flow, R) provided by H2o
-- For Generic Java, the Data scientist creates his model and exports it in the .jar format.
+- For Generic Java and Java Spark the Data scientist creates his model and exports it in the .jar format.
 - Data scientist runs the JavaClient jar (Available in Nexus https://nexus.acumos.org/#nexus-search;quick~java_client), which creates a Protobuf (default.proto) file for the Model, creates the required metadata.json file and an artifact called modelpackage.zip.
 - Data scientist can manually upload these generated artifacts to the Acumos Marketplace via its Web interface, this is WEB on-boarding.
 - Or Data scientist can use the Acumos java client to onboard  model onto the on-boarding server by providing the on-boarding server URL, this is CLI on-boarding.
@@ -46,6 +46,8 @@ Allows the on-boarded Model to be run as containerized microservice and allows o
 
 - Essentially, provides a wrapper around the ML model, packages it as a containerized microservice and exposes a predict method as a rest endpoint.
 - When the model is on-boarded and deployed, this method (REST endpoint) can then be called by other external applications to request model's predictions.
+- generic-model-runner is used to onboard H2O.ai and Generic Java models.
+- spark-model-runner is used to onboard Java Spark models.
 
 Technology and Frameworks
 =========================
@@ -63,6 +65,8 @@ Project Resources
 
 `generic-model-runner <https://gerrit.acumos.org/r/q/project:generic-model-runner>`_
 
+`spark-model-runner <https://gerrit.acumos.org/r/spark-model-runner>`_
+
 - Jira : `Link to Acumos Jira <https://jira.acumos.org>`_
 
 Development Setup
@@ -79,14 +83,18 @@ Data scientist can download the latest version of the Java Client jar from Nexus
 
 Data scientist can download the latest version of the h2o-genericjava-modelrunner jar from  Nexus : https://nexus.acumos.org/#nexus-search;quick~runner
 
+Data scientist can download the latest version of the spark-modelrunner jar from  Nexus : https://nexus.acumos.org/#nexus-search;quick~spark-modelrunner
+
 To clone the client library project: use the http, https or ssh command available at https://gerrit.acumos.org/r/admin/repos/acumos-java-client
 
-To clone the model runner project : use the http, https or ssh command available at https://gerrit.acumos.org/r/q/project:generic-model-runner
+To clone the h2o-genericjava model runner project : use the http, https or ssh command available at https://gerrit.acumos.org/r/q/project:generic-model-runner
+
+To clone the Spark model runner project : use the http, https or ssh command available at https://gerrit.acumos.org/r/spark-model-runner
 
 To build the project, you can use :
 
 .. code:: bash
-    
+
     mvn clean install
 
 To build the model runner project, refer to instructions provided in generic-model-runner folder This will give you the same h2o-genericjava-model runner mentioned earlier.
