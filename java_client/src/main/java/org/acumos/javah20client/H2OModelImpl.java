@@ -162,7 +162,6 @@ public class H2OModelImpl extends AbstractClientController {
 		// Pack modelService.jar and model.jar into zip file
 		List<String> files = new ArrayList<String>();
 		files.add(model.getAbsolutePath());
-		files.add(service.getAbsolutePath());
 		files.add(appFile.getAbsolutePath());
 		zipFile(files, "modelpackage.zip");
 	}
