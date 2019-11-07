@@ -100,10 +100,6 @@ public class ClientController {
 
 				if (modelVal == true) {
 
-					// Get the service jar from supporting folder
-					String servicePath = clientRef.getModelService(path);
-					servicejar = new File(servicePath);
-
 					try {
 						
 						model = clientRef.getModelFile(path, modelName);
