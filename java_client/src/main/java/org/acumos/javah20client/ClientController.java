@@ -100,24 +100,20 @@ public class ClientController {
 
 				if (modelVal == true) {
 
-					// Get the service jar from supporting folder
-					String servicePath = clientRef.getModelService(path);
-					servicejar = new File(servicePath);
-
 					try {
-						
+
 						model = clientRef.getModelFile(path, modelName);
 
 						File config = null;
 						if (!modelType.equalsIgnoreCase("H")) {
 							config = clientRef.getConfigFile(path);
 						}
-						
+
 						File sparkConfig = null;
 						if (modelType.equalsIgnoreCase("S")) {
 							sparkConfig = clientRef.getsparkConfigFile(path);
 						}
-						
+
 
 						File appFile = clientRef.getAppFile(path);
 						File protof = null;
@@ -139,7 +135,7 @@ public class ClientController {
 
 						// Generate Metadata.json file
 						clientRef.generateMetadata(modelType, modelName);
-						
+
 						if (protof.exists()) {
 
 							if (onboardingType != null && onboardingType.equalsIgnoreCase("webonboard")) {
