@@ -47,7 +47,7 @@ public class H2OModelImpl extends AbstractClientController {
 		}
 		return modelNameList;
 	}
-	
+
 	//Get the model service jar file
 	public String getModelService(String supportingPath)
 	{
@@ -155,18 +155,17 @@ public class H2OModelImpl extends AbstractClientController {
 			return protoFile;
 		}
 	}
-	
+
 	// Get the model.jar file
 	public void generateModelService(File model, File service, File congif, String modelType, File appFile, File sparkConf) {
 
 		// Pack modelService.jar and model.jar into zip file
 		List<String> files = new ArrayList<String>();
 		files.add(model.getAbsolutePath());
-		files.add(service.getAbsolutePath());
 		files.add(appFile.getAbsolutePath());
 		zipFile(files, "modelpackage.zip");
 	}
-	
+
 	//Get the model file
 	public File getModelFile(String path, String modelName) {
 		return new File(path + File.separator + modelName + ".zip");
