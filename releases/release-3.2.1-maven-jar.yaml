@@ -1,0 +1,5 @@
+---
+distribution_type: maven
+version: 3.2.1
+project: acumos-java-client
+log_dir: acumos-java-client-maven-stage-master/379/
