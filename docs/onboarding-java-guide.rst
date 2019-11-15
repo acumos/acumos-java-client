@@ -64,25 +64,18 @@ Changes in application.properties file
 
 For push_url and auth_url, please refer to `on-boarding API user guide <../../on-boarding/docs/api-docs.html>`_
 
-Pass the following argument as an input to run the JavaClient.jar file
-Note: There has been a change in the arguments list. No need to pass the argument <modeType> now. It is taken from application.properties file in SupportingFolderPath.
+Pass the following argument as an input to run the JavaClient.jar file (Note: There has been a change in the arguments
+list. No need to pass the argument <modeType> now. It is taken from application.properties file in SupportingFolderPath.)
 
-OLD :-
-.. code-block:: python
-
-       java -jar java_client-2.0.0.jar <modelType> <SupportingFolderPath> <ModelName> <inputCSVFile> <OnboardingType>
-
-NEW UPDATE :-
 .. code-block:: python
 
        java -jar java_client-2.0.0.jar <SupportingFolderPath> <ModelName> <inputCSVFile> <OnboardingType>
 
-
-1.	modelType – H for H2O model, G for Generic java model, S for Java Spark
-2.	SupportingFolderPath – pass the path where modelrunner, model file, application.properties, license.json and data file are present
-3.	ModelName – The name of model file
-4.	inputCSVFile – name of the data file present in supporting folder, optional in case if you have .proto file(OR moderler can generate proto file for Java Generic and Java Spark models by inspecting the model)
-5.	OnboardingType - pass "WebOnboard" if needed modeldump for webbased onboarding. For onboarding through client keep it blank(Optional)
+1.	SupportingFolderPath – pass the path where modelrunner, model file, application.properties, license.json and data file are present
+2.	ModelName – The name of model file
+3.	inputCSVFile – name of the data file present in supporting folder, optional in case if you have .proto file(OR moderler can generate
+ proto file for Java Generic and Java Spark models by inspecting the model)
+4.	OnboardingType - pass "WebOnboard" if needed modeldump for webbased onboarding. For onboarding through client keep it blank(Optional)
 
 If you used CLI-based onboarding, you don't need to perform the steps outlined just below. The Java client has
 done it for you. You will see a message on the terminal that states the model onboarded successfully.
