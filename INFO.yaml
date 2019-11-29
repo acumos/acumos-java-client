@@ -40,15 +40,10 @@ meetings:
 repositories:
     - 'acumos-java-client'
 committers:
-    - name: 'Aimee Ukasick'
-      email: 'aimeeu@research.att.com'
-      company: 'ATT'
-      id: 'aimeeu'
-      timezone: 'America/Chicago'
-    - name: 'Jabeen Shaikh'
-      email: 'js00353493@techmahindra.com'
+    - name: 'Mukhtar Shaikh'
+      email: 'sx00352475@techmahindra.com'
       company: 'TechMahindra'
-      id: 'jabeen'
+      id: 'mukthar'
       timezone: 'Asia/Kolkata'
 tsc:
     approval: 'https://lists.acumos.org/g/tscgeneral'
