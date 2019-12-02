@@ -23,7 +23,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class JavaGenericModelImpl extends AbstractClientController {
-	
+
 	// Get the model method
 	public List<String> returnModelMethodList(String path) {
 
@@ -54,7 +54,7 @@ public class JavaGenericModelImpl extends AbstractClientController {
 		}
 		return modelNameList;
 	}
-	
+
 	//Get the model service jar file
 	public String getModelService(String supportingPath)
 	{
@@ -150,7 +150,7 @@ public class JavaGenericModelImpl extends AbstractClientController {
 				logger.info("The input csv file is null, so using User provided proto file.");
 				return protoFile;
 			} else {
-				
+
 				logger.info("Generating proto file by inspecting model file");
 
 				InputStream inputModelConfig = null;
@@ -256,14 +256,13 @@ public class JavaGenericModelImpl extends AbstractClientController {
 			return protoFile;
 		}
 	}
-	
+
 	// Get the model.jar file
 	public void generateModelService(File model, File service, File congif, String modelType, File appFile, File sparkConf) {
 
 		// Pack modelService.jar and model.jar into zip file
 		List<String> files = new ArrayList<String>();
 		files.add(model.getAbsolutePath());
-		files.add(service.getAbsolutePath());
 		files.add(appFile.getAbsolutePath());
 		files.add(congif.getAbsolutePath());
 		zipFile(files, "modelpackage.zip");
