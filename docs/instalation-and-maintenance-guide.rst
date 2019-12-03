@@ -28,8 +28,8 @@ Prerequisites
 - Java 8 or Java 9
 - Download the following Released components:
 
-    - `Java Client <https://nexus.acumos.org/#nexus-search;quick~java-client>`_ v2.0.0 (java_client-2.0.0.jar)
-    - `Generic Model Runner <https://nexus.acumos.org/#nexus-search;h2o-genericjava-modelrunner>`_ v2.2.3 (h2o-genericjava-modelrunner-2.2.3.jar)
+    - `Java Client <https://nexus.acumos.org/content/repositories/releases/org/acumos/acumos-java-client/java_client/>`_ download the latest version of the JavaClient jar
+    - `Generic Model Runner <https://nexus.acumos.org/content/repositories/releases/org/acumos/generic-model-runner/h2o-genericjava-modelrunner/>`_ download the latest version of the h20-genericjava-modelrunner
 
 
 Preparing to On-Board your H2o or a Generic Java Model
