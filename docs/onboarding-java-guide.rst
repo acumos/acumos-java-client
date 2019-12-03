@@ -94,3 +94,11 @@ You can now see, rate, review, comment, collaborate on your model in the Acumos 
 requested and deployed by a user, your model runs as a dockerized microservice on the infrastructure
 of your choice and exposes a predict method as a REST endpoint. This method can be called by other
 external applications to request predictions off of your model.
+
+Soup to nuts for Java
+=====================
+
+For a more detailed approach, you can follow the `Soup to nuts Example: Onboarding Models using JAVA CLIENT in Acumos <https://wiki.acumos.org/pages/resumedraft.action?draftId=28705403&draftShareId=de13026a-1fd0-4a3e-a26a-ab6e748a6d9a& >`_
+ that is a step by step guide to on-board a java model.
+
+
