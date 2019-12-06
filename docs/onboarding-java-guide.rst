@@ -93,4 +93,4 @@ The needed TOSCA artifacts and docker images are produced when the model is onbo
 You can now see, rate, review, comment, collaborate on your model in the Acumos marketplace. When
 requested and deployed by a user, your model runs as a dockerized microservice on the infrastructure
 of your choice and exposes a predict method as a REST endpoint. This method can be called by other
-external applications to request predictions off of your model.
+external applications to request predictions of your model.
