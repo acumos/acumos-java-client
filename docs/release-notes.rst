@@ -19,6 +19,10 @@
 ================================
 Acumos Java Client Release Notes
 ================================
+Version 3.3.0 06-Dec 2019
+------
+* Acumos java client should remove accepting modelrunner(h2o/java model service) as a parameter : `ACUMOS-3760 <https://jira.acumos.org/browse/ACUMOS-3760/>`_
+* Java Client should take Model Type from application.properties files : `ACUMOS-3562 <https://jira.acumos.org/browse/ACUMOS-3562/>`_
 
 Version 3.1.0 20-Sept 2019 
 -------------------------------
