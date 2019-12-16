@@ -20,29 +20,34 @@
 Acumos Java Client Release Notes
 ================================
 
-Version 3.1.0 20-Sept 2019 
--------------------------------
+Version 3.3.0 16-Dec 2019
+-------------------------
+* Acumos java client should remove accepting modelrunner(h2o/java model service) as a parameter : `ACUMOS-3760 <https://jira.acumos.org/browse/ACUMOS-3760/>`_
+* Externalizing H2O model service jar -1 : `ACUMOS-1965 <https://jira.acumos.org/browse/ACUMOS-1965/>`_
+
+Version 3.1.0 20-Sept 2019
+--------------------------
 * user credentials are not needed in case of webonboarding : `ACUMOS-3464 <https://jira.acumos.org/browse/ACUMOS-3464/>`_
 
-Version 3.0.0 9-Sept 2019 
--------------------------------
+Version 3.0.0 9-Sept 2019
+-------------------------
 * Modify or create new java client for MLlib : `ACUMOS-3129 <https://jira.acumos.org/browse/ACUMOS-3129/>`_
 
 Version 2.2.0 11-June 2019
--------------------------------
+--------------------------
 * H2O Model dump is not getting created with latest deployed JavaClient : `ACUMOS-2998 <https://jira.acumos.org/browse/ACUMOS-2998/>`_
 
 Version 2.1.0 23-May 2019
--------------------------------
+-------------------------
 * Java Client needs to use the modeler's default.proto to onboad generic java model : `ACUMOS-1881 <https://jira.acumos.org/browse/ACUMOS-1881/>`_
 * Support multiple java methods other than one single predict method : `ACUMOS-1543 <https://jira.acumos.org/browse/ACUMOS-1543/>`_
 
 Version 2.0.0 04-April 2019
--------------------------------
+---------------------------
 * Modify acumos-java-client in accordance with task 2262 (create microcervice parameter) : `ACUMOS-2264 <https://jira.acumos.org/browse/ACUMOS-2264/>`_
 
 Version 1.14.0 15-March 2019
--------------------------------
+----------------------------
 * Modify acumos-java-client in accordance with task 2262 (create microcervice parameter) : `ACUMOS-2264 <https://jira.acumos.org/browse/ACUMOS-2264/>`_
 * Modify acumos-java-client to take into account license file : `ACUMOS-2277 <https://jira.acumos.org/browse/ACUMOS-2277/>`_
 
