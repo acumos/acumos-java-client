@@ -28,6 +28,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
@@ -36,7 +37,9 @@ import org.slf4j.LoggerFactory;
 public abstract class AbstractClientController implements ClientControllerInterface {
 
 	static Logger logger = LoggerFactory.getLogger(AbstractClientController.class);
-
+	
+	public static final String DOCKER_IMAGE_URI = "dockerImageUri";
+	
 	public boolean isValidWord(String w) {
 		return w.matches("^[a-zA-Z0-9_-]*$");
 	}
@@ -158,6 +161,11 @@ public abstract class AbstractClientController implements ClientControllerInterf
 			if (response.getStatusLine().getStatusCode() != 200 && response.getStatusLine().getStatusCode() != 201) {
 				throw new RuntimeException("Failed : HTTP error code : " + response.getStatusLine().getStatusCode());
 			}
+			//add response entity in jsonobject
+			JSONObject respEntity = new JSONObject(EntityUtils.toString(response.getEntity()));
+            
+			//logging the dockeriamgeUrI
+            logger.info("DockerImageUri: "+respEntity.getString(DOCKER_IMAGE_URI));	
 
 			logger.info("Model On-boarded successfully on: " + url);
 
