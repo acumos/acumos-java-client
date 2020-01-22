@@ -78,7 +78,8 @@ list. No need to pass the argument <modeType> now. It is taken from application.
 4.	OnboardingType - pass "WebOnboard" if needed modeldump for webbased onboarding. For onboarding through client keep it blank(Optional)
 
 If you used CLI-based onboarding, you don't need to perform the steps outlined just below. The Java client has
-done it for you. You will see a message on the terminal that states the model onboarded successfully.
+done it for you. You will see a message on the terminal that states the model onboarded successfully. This message will give you Acumos docker
+URI of your model, that you can use to load the Acumos docker image in your own docker registry.
 
 Onboarding to the Acumos Portal : Web On-boarding
 =================================================
