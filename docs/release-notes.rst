@@ -20,6 +20,10 @@
 Acumos Java Client Release Notes
 ================================
 
+Version 4.1.0 21 Jan 2020
+-------------------------
+* Acumos java client should give image tag URL : `ACUMOS-3898 <https://jira.acumos.org/browse/ACUMOS-3898/>`
+
 Version 3.3.0 16-Dec 2019
 -------------------------
 * Acumos java client should remove accepting modelrunner(h2o/java model service) as a parameter : `ACUMOS-3760 <https://jira.acumos.org/browse/ACUMOS-3760/>`_
