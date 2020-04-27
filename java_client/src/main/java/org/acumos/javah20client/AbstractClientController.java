@@ -165,7 +165,8 @@ public abstract class AbstractClientController implements ClientControllerInterf
 			JSONObject respEntity = new JSONObject(EntityUtils.toString(response.getEntity()));
 
 			//logging the dockeriamgeUrI
-            logger.info("DockerImageUri: "+respEntity.getString(DOCKER_IMAGE_URI));
+			if(respEntity.has(DOCKER_IMAGE_URI))
+				logger.info("DockerImageUri: "+respEntity.getString(DOCKER_IMAGE_URI));
 
 			logger.info("Model On-boarded successfully on: " + url);
 
