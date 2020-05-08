@@ -20,6 +20,11 @@
 Acumos Java Client Release Notes
 ================================
 
+Version 4.2.0 08 May 2020
+-------------------------
+* <IST>H2O- Java onboarding is failing with latest Java client 4.1.0 `ACUMOS-4106 <https://jira.acumos.org/browse/ACUMOS-4106>`_
+
+
 Version 4.1.0 21 Jan 2020
 -------------------------
 * Acumos java client should give image tag URL : `ACUMOS-3898 <https://jira.acumos.org/browse/ACUMOS-3898/>`
