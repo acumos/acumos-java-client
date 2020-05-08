@@ -1,0 +1,5 @@
+---
+distribution_type: maven
+version: 4.2.0
+project: acumos-java-client
+log_dir: acumos-java-client-maven-stage-master/558/
