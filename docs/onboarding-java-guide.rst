@@ -52,7 +52,7 @@ We strongly recommend to use api token as the jwt token method will be disable.
 
 Changes in application.properties file
 
-1.	Pass the model file name
+1.	Pass the model file name.
 2.	Model Type - H/G/S  (H for H2O model, G for Generic java model, S for Java Spark)
 3.	push_url – respective url on which user wants to onboard the model
 4.	auth_url – auth url for jwt token authentication
