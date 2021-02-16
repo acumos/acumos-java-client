@@ -49,7 +49,7 @@ public class ClientController {
 			File servicejar = null, licenseFile = null;
 			String token = null, tokenType = null, tokenFilePath = null;
 			String inputCSVFile = null;
-			String modelType = null, path = null, modelName = null, onboardingType = null, dumpPath = null;
+			String modelType = null, path = null, modelName = null, onboardingType = null, dumpPath = null, deployModel = null;
 			List<String> modelNameList = new ArrayList<String>();
 
 			logger.info("Length : {} ", args.length);
@@ -80,13 +80,33 @@ public class ClientController {
 				String temp = args[2];
 				if (temp.contains("csv")) {
 					inputCSVFile = temp;
+				} else if (temp.equals("true") || temp.equals("false")) {
+					deployModel = temp;
 				} else {
 					onboardingType = temp;
 				}
 
 			} else if (args.length == 4) {
+
+				String temp1 = args[2];
+				String temp2 = args[3];
+
+				if (temp1.contains("csv")) {
+					inputCSVFile = temp1;
+					if (temp2.equals("true") || temp2.equals("false")) {
+						deployModel = temp2;
+					} else {
+						onboardingType = temp2;
+					}
+				} else {
+					onboardingType = temp1;
+					deployModel = temp2;
+				}
+
+			} else if (args.length == 5) {
 				inputCSVFile = args[2];
 				onboardingType = args[3];
+				deployModel = args[4];
 			}
 
 			logger.debug("onboarding Type is " + onboardingType);
@@ -156,10 +176,10 @@ public class ClientController {
 
 								if (licenseFile != null && licenseFile.exists()) {
 									clientRef.pushModel(serviceUrl, "modelpackage.zip", "metadata.json", protof,
-											licenseFile, token, isMicroserviceFlag);
+											licenseFile, token, isMicroserviceFlag, deployModel);
 								} else {
 									clientRef.pushModel(serviceUrl, "modelpackage.zip", "metadata.json", protof, null,
-											token, isMicroserviceFlag);
+											token, isMicroserviceFlag, deployModel);
 								}
 							}
 						} else {

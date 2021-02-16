@@ -120,7 +120,7 @@ public abstract class AbstractClientController implements ClientControllerInterf
 
 	// Restful service to push the model to onboarding server
 	public void pushModel(String url, String modelFilePath, String metadataFilePath, File protoFile, File licenseFile,
-			String token, String msFlag) {
+			String token, String msFlag, String deployModel) {
 		HttpClient httpclient = null;
 		try {
 
@@ -155,6 +155,7 @@ public abstract class AbstractClientController implements ClientControllerInterf
 			post.setEntity(entity);
 			post.setHeader("Authorization", token);
 			post.addHeader("isCreateMicroservice", msFlag);
+			post.addHeader("deploy", deployModel);
 
 			HttpResponse response = httpclient.execute(post);
 

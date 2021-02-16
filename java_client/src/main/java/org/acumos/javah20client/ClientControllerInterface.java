@@ -30,13 +30,13 @@ public interface ClientControllerInterface {
 	public void generateMetadata(String modelType, String name);
 
 	public void pushModel(String url, String modelFilePath, String metadataFilePath, File protoFile, File licenseFile,
-			String token, String msFlag);
+			String token, String msFlag, String deployModel);
 
 	public String checkToken(String tokenType, String tokenFilePath, String authUrl);
-	
+
 	public String getModelService(String supportingPath);
-	
+
 	public File getsparkConfigFile(String path) throws FileNotFoundException;
-	
+
 	public File getModelFile(String path, String modelName);
 }
