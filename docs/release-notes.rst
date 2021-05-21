@@ -20,6 +20,12 @@
 Acumos Java Client Release Notes
 ================================
 
+Version 5.0.1 21 May 2020
+-------------------------
+* Adding deploy parameter in JavaClient `ACUMOS-4306 <https://jira.acumos.org/browse/ACUMOS-4306>`_
+* Updated recent HttpComponents Dependancy version `ACUMOS-4331 <https://jira.acumos.org/browse/ACUMOS-4331>`_
+
+
 Version 4.2.0 08 May 2020
 -------------------------
 * <IST>H2O- Java onboarding is failing with latest Java client 4.1.0 `ACUMOS-4106 <https://jira.acumos.org/browse/ACUMOS-4106>`_
