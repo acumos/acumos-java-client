@@ -29,8 +29,6 @@ Prerequisites
 - Download the following Released components:
 
     - `Java Client <https://nexus.acumos.org/content/repositories/releases/org/acumos/acumos-java-client/java_client/>`_ download the latest version of the JavaClient jar
-    - `Generic Model Runner <https://nexus.acumos.org/content/repositories/releases/org/acumos/generic-model-runner/h2o-genericjava-modelrunner/>`_ download the latest version of the h20-genericjava-modelrunner
-
 
 Preparing to On-Board your H2o or a Generic Java Model
 ======================================================
@@ -40,7 +38,6 @@ a. Place the Java Client jar in one folder locally. This is the folder from whic
 b. Prepare a supporting folder with the following contents. This folder will contain items that will  be used as input for the java client jar.
 
     #. Models - In case of H2o, your model will be a MOJO zip file.  In case of Generic Java, the model will be a jar file.
-    #. Model runner or Service jar - For H2O rename h2o-genericjava-modelrunner-2.2.3.jar (previously downloaded) to H2OModelService.jar for H20 or to GenericModelService.jar for Java model and Place it in the supporting folder.
     #. CSV file used for training the model - Place the csv file (with header having the same column names used for training but without the quotes (“ ”) ) you used for training the model here. This is used for autogenerating the .proto file. If you don’t have the .proto file, you will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto.
     #. default.proto - This is only needed  If you don't have sample csv data for training, then you will have to provide the proto file yourself. In this case, Java Client cannot autogenerate the .proto file. You will have to supply the .proto file yourself in the supporting folder. Make sure you name it default.proto Also make sure, the default.proto file for the model is in the following format. You need to appropriately replace the data and datatypes under DataFrameRow and Prediction according to your model.
 
@@ -98,12 +95,12 @@ b. Prepare a supporting folder with the following contents. This folder will con
            spring.http.multipart.max-request-size=100MB
 
            # Linux version
- 
+
            #default_model=/models/model.jar
            default_model=/models/Generic15.jar
            default_protofile=/models/default.proto
 
-           logging.file = ./logs/modelrunner.log 
+           logging.file = ./logs/modelrunner.log
 
            # The value of model_type can be H or G
            # if model_type is H, then the /predict method will use H2O model; otherwise, it will use generic Model
@@ -114,12 +111,12 @@ b. Prepare a supporting folder with the following contents. This folder will con
            isMicroservice=true
 
            push_url = http://cognita-dev1-vm01-core.eastus.cloudapp.azure.com:8090/onboarding-app/v2/models
-           auth_url = http://cognita-dev1-vm01-core.eastus.cloudapp.azure.com:8090/onboarding-app/v2/auth
-           token_type = jwttoken
-           #token_file = D:/js00353493/ATT/Cognita/model/H2O/model/tokenfile.txt
-           token_file = D:/Cognita/model/JavaGeneric/supporting
+
+           token_type = apitoken
+           token_file = D:/js00353493/ATT/Cognita/model/supporting/tokenfile.txt
+
            dump_path = D:/Cognita/model/JavaGeneric/dump
-           isMicroservice = true
+           isMicroservice = True
            h2oModelMethod = predict,classify,transform
 
            # Linux some properties are specific to java generic models
@@ -140,5 +137,4 @@ b. Prepare a supporting folder with the following contents. This folder will con
             modelClassName=org.acumos.ml.XModel
             modelMethod=predict,classify,transform
 
-    #. License Profile File - If you have a license profile associated with your model, Add it in the supporting folder in the following form : license.json. If the license profile file extension is not 'json' the license on-boarding will not be possible and if the name is not 'license' Acumos will rename your license profile file as license.json and you will see your license profile file named as license.json in the artifacts table. If you upload a new version of your license profile after on-boarding, a number revision will be added to the name of your license profile file like : "license-2.json". To help user create the license profile file expected by Acumos a license user guide is available here : `License Profile Editor user guide <../../license-manager/docs/user-guide-license-profile-editor.html>`_
-
+    #. License Profile File(Optional) - If you have a license profile associated with your model, Add it in the supporting folder in the following form : license.json. If the license profile file extension is not 'json' the license on-boarding will not be possible and if the name is not 'license' Acumos will rename your license profile file as license.json and you will see your license profile file named as license.json in the artifacts table. If you upload a new version of your license profile after on-boarding, a number revision will be added to the name of your license profile file like : "license-2.json". To help user create the license profile file expected by Acumos a license user guide is available here : `License Profile Editor user guide <../../license-manager/docs/user-guide-license-profile-editor.html>`_
